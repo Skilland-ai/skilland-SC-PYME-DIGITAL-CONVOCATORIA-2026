@@ -1,0 +1,1280 @@
+<!doctype html>
+<html lang="es">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skilland - Pyme Digital 2026</title>
+    <meta
+      name="description"
+      content="Hasta 7.000 euros para implementar IA y digitalizar tu empresa con Pyme Digital 2026. Skilland te ayuda a plantear, preparar e implantar proyectos digitales con sentido de negocio."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy: #0e1b4d;
+        --navy-2: #142a6b;
+        --ink: #17213f;
+        --text: #31405f;
+        --muted: #667799;
+        --mint: #7ed1b2;
+        --mint-dark: #5bb894;
+        --mint-soft: #dff7ee;
+        --lime: #d7f36b;
+        --paper: #fafaf8;
+        --paper-2: #f0f5f2;
+        --white: #ffffff;
+        --line: rgba(14, 27, 77, 0.12);
+        --line-dark: rgba(255, 255, 255, 0.14);
+        --shadow: 0 24px 80px rgba(14, 27, 77, 0.14);
+        --shadow-soft: 0 12px 36px rgba(14, 27, 77, 0.08);
+        --radius: 22px;
+        --radius-sm: 12px;
+        --container: 1180px;
+        --font: "Sora", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font);
+        background: var(--paper);
+        color: var(--text);
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+        overflow-x: hidden;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      .shell {
+        width: min(var(--container), calc(100% - 48px));
+        margin-inline: auto;
+      }
+
+      .nav {
+        position: fixed;
+        inset: 18px 0 auto;
+        z-index: 20;
+        pointer-events: none;
+      }
+
+      .nav-inner {
+        width: min(var(--container), calc(100% - 48px));
+        margin: 0 auto;
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 999px;
+        background: rgba(14, 27, 77, 0.72);
+        backdrop-filter: blur(20px);
+        color: var(--white);
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 20px;
+        pointer-events: auto;
+        box-shadow: 0 16px 40px rgba(6, 14, 42, 0.2);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        font-weight: 800;
+      }
+
+      .brand-mark {
+        width: 32px;
+        height: 42px;
+        object-fit: contain;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 20px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .nav-links a:hover {
+        color: var(--white);
+      }
+
+      .button {
+        display: inline-flex;
+        min-height: 48px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 999px;
+        padding: 0 22px;
+        font-weight: 800;
+        font-size: 14px;
+        border: 1px solid transparent;
+        cursor: pointer;
+      }
+
+      .button-primary {
+        color: var(--navy);
+        background: linear-gradient(135deg, var(--mint), var(--lime));
+        box-shadow: 0 14px 34px rgba(126, 209, 178, 0.28);
+      }
+
+      .button-secondary {
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 0.18);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .hero {
+        position: relative;
+        min-height: 860px;
+        padding: 130px 0 80px;
+        overflow: hidden;
+        color: var(--white);
+        background:
+          radial-gradient(circle at 78% 18%, rgba(126, 209, 178, 0.22), transparent 24%),
+          radial-gradient(circle at 88% 82%, rgba(215, 243, 107, 0.12), transparent 28%),
+          linear-gradient(150deg, #08143d 0%, var(--navy) 52%, #173a7a 100%);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: linear-gradient(90deg, transparent 0%, #000 22%, #000 78%, transparent 100%);
+        opacity: 0.65;
+      }
+
+      .hero-system {
+        position: absolute;
+        right: max(26px, calc((100vw - var(--container)) / 2));
+        top: 170px;
+        width: 470px;
+        min-height: 520px;
+        opacity: 0.95;
+      }
+
+      .system-card {
+        position: absolute;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.08);
+        backdrop-filter: blur(14px);
+        border-radius: 20px;
+        padding: 18px;
+        box-shadow: 0 22px 60px rgba(0, 0, 0, 0.16);
+      }
+
+      .system-card strong {
+        display: block;
+        font-size: 14px;
+        margin-bottom: 8px;
+      }
+
+      .system-card span {
+        display: block;
+        font-size: 12px;
+        line-height: 1.45;
+        color: rgba(255, 255, 255, 0.64);
+      }
+
+      .system-card.main {
+        inset: 80px 74px auto auto;
+        width: 260px;
+        min-height: 190px;
+        background: linear-gradient(150deg, rgba(126, 209, 178, 0.22), rgba(255, 255, 255, 0.08));
+      }
+
+      .system-card.top {
+        inset: 0 auto auto 32px;
+        width: 190px;
+      }
+
+      .system-card.left {
+        inset: 260px auto auto 0;
+        width: 210px;
+      }
+
+      .system-card.bottom {
+        inset: auto 22px 0 auto;
+        width: 260px;
+      }
+
+      .system-line {
+        position: absolute;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, var(--mint), transparent);
+        opacity: 0.7;
+        transform-origin: left center;
+      }
+
+      .system-line.one {
+        width: 160px;
+        left: 190px;
+        top: 98px;
+        transform: rotate(18deg);
+      }
+
+      .system-line.two {
+        width: 180px;
+        left: 150px;
+        top: 275px;
+        transform: rotate(-22deg);
+      }
+
+      .system-line.three {
+        width: 140px;
+        right: 95px;
+        top: 300px;
+        transform: rotate(72deg);
+      }
+
+      .hero-content {
+        position: relative;
+        z-index: 1;
+        max-width: 690px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        min-height: 34px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(126, 209, 178, 0.28);
+        background: rgba(126, 209, 178, 0.12);
+        color: rgba(255, 255, 255, 0.86);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--mint);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1 {
+        margin-top: 28px;
+        font-size: 72px;
+        line-height: 1.02;
+        letter-spacing: 0;
+      }
+
+      .hero-lead {
+        margin-top: 28px;
+        max-width: 640px;
+        font-size: 21px;
+        line-height: 1.58;
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .hero-actions {
+        margin-top: 34px;
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .hero-note {
+        margin-top: 16px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+      }
+
+      .hero-stats {
+        position: relative;
+        z-index: 1;
+        margin-top: 72px;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        overflow: hidden;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero-stat {
+        padding: 22px 24px;
+        border-right: 1px solid rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-stat:last-child {
+        border-right: 0;
+      }
+
+      .hero-stat strong {
+        display: block;
+        font-size: 25px;
+        color: var(--white);
+        margin-bottom: 6px;
+      }
+
+      .hero-stat span {
+        font-size: 13px;
+        line-height: 1.45;
+        color: rgba(255, 255, 255, 0.62);
+      }
+
+      .section {
+        padding: 100px 0;
+      }
+
+      .section-dark {
+        background: var(--navy);
+        color: var(--white);
+      }
+
+      .section-white {
+        background: var(--white);
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--mint-dark);
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+      }
+
+      .section-kicker::before {
+        content: "";
+        width: 28px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--mint);
+      }
+
+      .section-title {
+        margin-top: 16px;
+        max-width: 850px;
+        color: var(--navy);
+        font-size: 48px;
+        line-height: 1.08;
+        overflow-wrap: break-word;
+      }
+
+      .section-dark .section-title,
+      .section-dark .section-kicker {
+        color: var(--white);
+      }
+
+      .section-text {
+        margin-top: 18px;
+        max-width: 720px;
+        font-size: 18px;
+        line-height: 1.7;
+        color: var(--muted);
+      }
+
+      .section-dark .section-text {
+        color: rgba(255, 255, 255, 0.7);
+      }
+
+      .opportunity {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 50px;
+        align-items: center;
+      }
+
+      .opportunity-panel {
+        border-radius: 30px;
+        background: linear-gradient(150deg, var(--navy), var(--navy-2));
+        color: var(--white);
+        padding: 36px;
+        box-shadow: var(--shadow);
+      }
+
+      .opportunity-panel .big {
+        font-size: 64px;
+        line-height: 1;
+        font-weight: 800;
+      }
+
+      .opportunity-list {
+        margin-top: 26px;
+        display: grid;
+        gap: 12px;
+      }
+
+      .opportunity-item {
+        display: grid;
+        grid-template-columns: 12px 1fr;
+        gap: 12px;
+        color: rgba(255, 255, 255, 0.78);
+        line-height: 1.5;
+      }
+
+      .opportunity-item::before {
+        content: "";
+        width: 10px;
+        height: 10px;
+        border-radius: 999px;
+        background: var(--mint);
+        margin-top: 8px;
+      }
+
+      .principles {
+        display: grid;
+        gap: 14px;
+      }
+
+      .principle {
+        padding: 22px 24px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--white);
+      }
+
+      .principle strong {
+        display: block;
+        color: var(--navy);
+        margin-bottom: 7px;
+        font-size: 18px;
+      }
+
+      .principle span {
+        color: var(--muted);
+        line-height: 1.6;
+      }
+
+      .projects-head {
+        display: flex;
+        align-items: end;
+        justify-content: space-between;
+        gap: 40px;
+        margin-bottom: 38px;
+      }
+
+      .projects-head .section-title {
+        margin-top: 12px;
+      }
+
+      .project-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .project-card {
+        min-height: 330px;
+        padding: 28px;
+        border-radius: 24px;
+        border: 1px solid rgba(14, 27, 77, 0.1);
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(246, 250, 248, 0.96)),
+          var(--white);
+        display: flex;
+        flex-direction: column;
+        justify-content: space-between;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .project-num {
+        width: 52px;
+        height: 52px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        background: var(--mint-soft);
+        color: var(--navy);
+        font-weight: 900;
+      }
+
+      .project-card h3 {
+        margin-top: 24px;
+        color: var(--navy);
+        font-size: 25px;
+        line-height: 1.18;
+      }
+
+      .project-card p {
+        margin-top: 14px;
+        color: var(--muted);
+        line-height: 1.65;
+      }
+
+      .tags {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 8px;
+        margin-top: 26px;
+      }
+
+      .tag {
+        display: inline-flex;
+        min-height: 28px;
+        align-items: center;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: rgba(126, 209, 178, 0.13);
+        color: #266c56;
+        font-size: 12px;
+        font-weight: 700;
+      }
+
+      .process-layout {
+        display: grid;
+        grid-template-columns: 0.9fr 1.1fr;
+        gap: 50px;
+        align-items: start;
+      }
+
+      .process-copy {
+        position: sticky;
+        top: 120px;
+      }
+
+      .process-stack {
+        display: grid;
+        gap: 16px;
+      }
+
+      .process-step {
+        position: relative;
+        padding: 26px;
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid var(--line-dark);
+        display: grid;
+        grid-template-columns: 68px 1fr;
+        gap: 22px;
+      }
+
+      .step-index {
+        width: 72px;
+        height: 58px;
+        border-radius: 18px;
+        display: grid;
+        place-items: center;
+        background: linear-gradient(135deg, var(--mint), var(--lime));
+        color: var(--navy);
+        font-weight: 900;
+        font-size: 18px;
+      }
+
+      .process-step h3 {
+        color: var(--white);
+        font-size: 24px;
+      }
+
+      .process-step p {
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.68);
+        line-height: 1.65;
+      }
+
+      .step-output {
+        margin-top: 18px;
+        padding: 12px 14px;
+        border-radius: 14px;
+        background: rgba(126, 209, 178, 0.12);
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .quote-panel {
+        margin-top: 28px;
+        padding: 28px;
+        border-radius: 24px;
+        background: var(--mint-soft);
+        color: var(--navy);
+        font-size: 28px;
+        line-height: 1.22;
+        font-weight: 800;
+      }
+
+      .fit-grid {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 22px;
+      }
+
+      .fit-list {
+        display: grid;
+        gap: 12px;
+      }
+
+      .fit-item {
+        padding: 20px 22px;
+        border-radius: 18px;
+        border: 1px solid var(--line);
+        background: var(--white);
+        color: var(--navy);
+        font-weight: 700;
+        display: grid;
+        grid-template-columns: 18px 1fr;
+        gap: 12px;
+      }
+
+      .fit-item::before {
+        content: "";
+        width: 18px;
+        height: 18px;
+        border-radius: 999px;
+        background: var(--mint);
+        margin-top: 3px;
+      }
+
+      .before-after {
+        border-radius: 28px;
+        overflow: hidden;
+        background: var(--navy);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .compare-row {
+        padding: 28px;
+        border-bottom: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .compare-row:last-child {
+        border-bottom: 0;
+      }
+
+      .compare-label {
+        color: var(--mint);
+        font-size: 12px;
+        font-weight: 900;
+        text-transform: uppercase;
+      }
+
+      .compare-row p {
+        margin-top: 10px;
+        font-size: 24px;
+        line-height: 1.3;
+      }
+
+      .trust {
+        overflow: hidden;
+      }
+
+      .logos {
+        margin-top: 42px;
+        display: grid;
+        grid-template-columns: repeat(6, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .logo-tile {
+        min-height: 78px;
+        border-radius: 16px;
+        display: grid;
+        place-items: center;
+        padding: 16px;
+        background: #f7f9f7;
+        border: 1px solid rgba(14, 27, 77, 0.08);
+      }
+
+      .logo-tile img {
+        max-width: 118px;
+        max-height: 34px;
+        object-fit: contain;
+        filter: grayscale(1) contrast(1.03);
+        opacity: 0.78;
+        mix-blend-mode: multiply;
+      }
+
+      .cta {
+        position: relative;
+        overflow: hidden;
+        padding: 100px 0;
+        background:
+          radial-gradient(circle at 76% 20%, rgba(126, 209, 178, 0.22), transparent 22%),
+          linear-gradient(150deg, var(--navy) 0%, #102b68 100%);
+        color: var(--white);
+      }
+
+      .cta-grid {
+        display: grid;
+        grid-template-columns: 1fr 390px;
+        gap: 60px;
+        align-items: center;
+      }
+
+      .cta h2 {
+        font-size: 56px;
+        line-height: 1.05;
+      }
+
+      .cta p {
+        margin-top: 20px;
+        max-width: 700px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 19px;
+        line-height: 1.7;
+      }
+
+      .cta-box {
+        padding: 28px;
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.09);
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        backdrop-filter: blur(14px);
+      }
+
+      .cta-box strong {
+        display: block;
+        font-size: 20px;
+      }
+
+      .cta-box span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.68);
+        line-height: 1.6;
+      }
+
+      .cta-box .button {
+        width: 100%;
+        margin-top: 24px;
+      }
+
+      .legal {
+        padding: 28px 0;
+        background: #08143d;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+        line-height: 1.6;
+      }
+
+      .reveal {
+        opacity: 1;
+        transform: none;
+        transition: opacity 0.55s ease, transform 0.55s ease;
+      }
+
+      .reveal.is-visible {
+        opacity: 1;
+        transform: translateY(0);
+      }
+
+      @media (max-width: 1080px) {
+        h1 {
+          font-size: 58px;
+        }
+
+        .hero-system {
+          opacity: 0.36;
+          right: 10px;
+        }
+
+        .hero-stats,
+        .project-grid,
+        .logos {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .opportunity,
+        .process-layout,
+        .fit-grid,
+        .cta-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .process-copy {
+          position: static;
+        }
+      }
+
+      @media (max-width: 720px) {
+        .shell,
+        .nav-inner {
+          width: calc(100vw - 28px);
+          max-width: calc(100vw - 28px);
+        }
+
+        .nav-links {
+          display: none;
+        }
+
+        .nav-inner {
+          gap: 10px;
+        }
+
+        .nav-inner > .button {
+          display: none;
+        }
+
+        .nav-inner .button {
+          min-height: 40px;
+          padding-inline: 14px;
+          font-size: 12px;
+        }
+
+        .hero {
+          min-height: 760px;
+          padding: 104px 0 56px;
+        }
+
+        .hero-system {
+          display: none;
+        }
+
+        h1 {
+          font-size: 33px;
+          line-height: 1.08;
+          max-width: min(330px, calc(100vw - 44px));
+          overflow-wrap: break-word;
+        }
+
+        .hero-content {
+          width: 100%;
+          max-width: min(330px, calc(100vw - 44px));
+          overflow: hidden;
+        }
+
+        .hero-lead,
+        .section-text,
+        .hero-note,
+        .hero-actions,
+        .hero-stats {
+          width: 100%;
+          max-width: min(330px, calc(100vw - 44px));
+        }
+
+        .hero-stats {
+          margin-top: 38px;
+        }
+
+        .hero-lead,
+        .section-text,
+        .cta p {
+          font-size: 17px;
+        }
+
+        .hero-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .hero-actions .button {
+          width: 100%;
+        }
+
+        .section {
+          padding: 72px 0;
+        }
+
+        .section-title,
+        .cta h2 {
+          font-size: 32px;
+          line-height: 1.14;
+          max-width: min(330px, calc(100vw - 44px));
+          overflow-wrap: break-word;
+        }
+
+        .opportunity-panel {
+          padding: 28px;
+          width: 100%;
+          max-width: min(330px, calc(100vw - 44px));
+        }
+
+        .opportunity-panel .big {
+          font-size: 42px;
+          line-height: 1.04;
+          overflow-wrap: break-word;
+        }
+
+        .opportunity-list,
+        .opportunity-item,
+        .project-card,
+        .process-step,
+        .fit-item,
+        .before-after {
+          max-width: min(330px, calc(100vw - 44px));
+        }
+
+        .hero-stats,
+        .project-grid,
+        .logos {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-stat {
+          border-right: 0;
+          border-bottom: 1px solid rgba(255, 255, 255, 0.1);
+        }
+
+        .hero-stat:last-child {
+          border-bottom: 0;
+        }
+
+        .projects-head {
+          display: block;
+        }
+
+        .project-card {
+          min-height: 0;
+        }
+
+        .process-step {
+          grid-template-columns: 1fr;
+        }
+
+        .compare-row p,
+        .quote-panel {
+          font-size: 23px;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav" aria-label="Navegacion principal">
+      <div class="nav-inner">
+        <a class="brand" href="#inicio" aria-label="Skilland Pyme Digital 2026">
+          <img class="brand-mark" src="assets/skilland.svg" alt="" />
+          <span>Skilland</span>
+        </a>
+        <nav class="nav-links" aria-label="Secciones">
+          <a href="#proyectos">Proyectos</a>
+          <a href="#proceso">Proceso</a>
+          <a href="#encaje">Encaje</a>
+          <a href="#equipo">Equipo</a>
+        </nav>
+        <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagnostico%20gratuito%20para%20Pyme%20Digital%202026">Agendar</a>
+      </div>
+    </header>
+
+    <main>
+      <section class="hero" id="inicio">
+        <div class="hero-system" aria-hidden="true">
+          <div class="system-line one"></div>
+          <div class="system-line two"></div>
+          <div class="system-line three"></div>
+          <div class="system-card top">
+            <strong>Oportunidad publica</strong>
+            <span>Ayuda, requisitos, diagnostico oficial y prefinanciacion.</span>
+          </div>
+          <div class="system-card main">
+            <strong>Proyecto digital</strong>
+            <span>IA, automatizacion, CRM, datos y procesos conectados a una necesidad real.</span>
+          </div>
+          <div class="system-card left">
+            <strong>Preparacion</strong>
+            <span>Ficha previa, alcance, categoria, presupuesto y narrativa.</span>
+          </div>
+          <div class="system-card bottom">
+            <strong>Implantacion</strong>
+            <span>Si la ayuda avanza, ejecutamos la solucion y cuidamos la trazabilidad.</span>
+          </div>
+        </div>
+
+        <div class="shell">
+          <div class="hero-content reveal">
+            <span class="eyebrow">Pyme Digital 2026 · Santa Cruz de Tenerife</span>
+            <h1>Hasta 7.000 € para implementar IA y digitalizar tu empresa</h1>
+            <p class="hero-lead">
+              Skilland te ayuda a convertir la ayuda Pyme Digital 2026 en un proyecto real:
+              captacion, automatizacion, CRM, datos, agentes IA o digitalizacion de procesos.
+            </p>
+            <div class="hero-actions">
+              <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagnostico%20gratuito%20para%20Pyme%20Digital%202026">Agendar diagnostico gratuito</a>
+              <a class="button button-secondary" href="#proyectos">Ver proyectos posibles</a>
+            </div>
+            <p class="hero-note">Revisamos tu caso, vemos si puede encajar y te decimos con claridad si merece la pena avanzar.</p>
+          </div>
+
+          <div class="hero-stats reveal">
+            <div class="hero-stat">
+              <strong>7.000 €</strong>
+              <span>Coste directo elegible maximo orientativo del proyecto.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Fase 0</strong>
+              <span>Presentar solicitud sin coste inicial de implantacion.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Fase 1</strong>
+              <span>Diagnostico de necesidad TIC y diseño del proyecto.</span>
+            </div>
+            <div class="hero-stat">
+              <strong>Fase 2</strong>
+              <span>Ejecucion, evidencias y apoyo en justificacion.</span>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-white">
+        <div class="shell opportunity">
+          <div class="reveal">
+            <span class="section-kicker">La oportunidad</span>
+            <h2 class="section-title">No se trata de pedir una subvencion. Se trata de plantear bien un proyecto digital.</h2>
+            <p class="section-text">
+              La ayuda puede ser el vehiculo, pero lo importante es llegar con una necesidad clara:
+              que mejorar, que sistema implantar, que categoria encaja y como justificarlo.
+            </p>
+          </div>
+          <div class="opportunity-panel reveal">
+            <div class="big">De ayuda a<br />sistema</div>
+            <div class="opportunity-list">
+              <div class="opportunity-item">Analizamos si la empresa y la necesidad tienen sentido dentro de la convocatoria.</div>
+              <div class="opportunity-item">Diseñamos una ficha previa de proyecto para llegar al diagnostico con foco.</div>
+              <div class="opportunity-item">Si el proyecto avanza, Skilland puede actuar como proveedor TIC externo.</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="proyectos">
+        <div class="shell">
+          <div class="projects-head">
+            <div class="reveal">
+              <span class="section-kicker">Proyectos</span>
+              <h2 class="section-title">Que podemos construirte con la ayuda</h2>
+            </div>
+            <p class="section-text reveal">
+              Proyectos concretos de IA, automatizacion y digitalizacion para vender mas,
+              operar mejor y tomar decisiones con datos.
+            </p>
+          </div>
+
+          <div class="project-grid">
+            <article class="project-card reveal">
+              <div>
+                <span class="project-num">01</span>
+                <h3>Sistema comercial con IA</h3>
+                <p>Un sistema para captar leads, ordenarlos, priorizarlos y activar seguimientos automaticos con IA. Menos oportunidades perdidas. Mas control comercial.</p>
+              </div>
+              <div class="tags"><span class="tag">Leads</span><span class="tag">CRM</span><span class="tag">IA</span><span class="tag">Automatizacion</span></div>
+            </article>
+
+            <article class="project-card reveal">
+              <div>
+                <span class="project-num">02</span>
+                <h3>CRM automatizado con IA</h3>
+                <p>Pipeline comercial, tareas, recordatorios, proximos pasos y asistentes IA para que el equipo venda con mas foco y menos caos.</p>
+              </div>
+              <div class="tags"><span class="tag">Pipeline</span><span class="tag">Ventas</span><span class="tag">Seguimiento</span><span class="tag">IA</span></div>
+            </article>
+
+            <article class="project-card reveal">
+              <div>
+                <span class="project-num">03</span>
+                <h3>Automatizacion de procesos internos</h3>
+                <p>Convertimos tareas repetitivas en flujos digitales: documentos, emails, reportes, operaciones y coordinacion interna.</p>
+              </div>
+              <div class="tags"><span class="tag">Procesos</span><span class="tag">Operaciones</span><span class="tag">Backoffice</span></div>
+            </article>
+
+            <article class="project-card reveal">
+              <div>
+                <span class="project-num">04</span>
+                <h3>Dashboards y control del negocio</h3>
+                <p>Cuadros de mando para ver ventas, actividad, clientes, operaciones y KPIs sin depender de Excels dispersos.</p>
+              </div>
+              <div class="tags"><span class="tag">Datos</span><span class="tag">KPIs</span><span class="tag">Reporting</span></div>
+            </article>
+
+            <article class="project-card reveal">
+              <div>
+                <span class="project-num">05</span>
+                <h3>Agentes IA para equipos</h3>
+                <p>Asistentes internos entrenados para responder, clasificar, resumir, generar documentacion, apoyar ventas o acelerar soporte.</p>
+              </div>
+              <div class="tags"><span class="tag">Agentes</span><span class="tag">Soporte</span><span class="tag">Productividad</span></div>
+            </article>
+
+            <article class="project-card reveal">
+              <div>
+                <span class="project-num">06</span>
+                <h3>Web, captacion y automatizacion</h3>
+                <p>Landing, formularios, analitica, automatizacion y seguimiento para transformar visitas en oportunidades comerciales reales.</p>
+              </div>
+              <div class="tags"><span class="tag">Web</span><span class="tag">Formularios</span><span class="tag">Conversion</span></div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-dark" id="proceso">
+        <div class="shell process-layout">
+          <div class="process-copy reveal">
+            <span class="section-kicker">Proceso</span>
+            <h2 class="section-title">Primero se entra. Luego se diseña. Despues se ejecuta.</h2>
+            <p class="section-text">
+              El orden importa porque la convocatoria funciona por entrada y validacion.
+              Primero ayudamos a presentar la solicitud. Despues preparamos bien la necesidad TIC.
+              Si el proyecto avanza, ejecutamos y cuidamos la justificacion.
+            </p>
+            <div class="quote-panel">
+              La ayuda no se gana por tener una idea bonita. Se trabaja con velocidad, encaje y evidencias.
+            </div>
+          </div>
+
+          <div class="process-stack">
+            <article class="process-step reveal">
+              <span class="step-index">F0</span>
+              <div>
+                <h3>Solicitud y reserva de sitio</h3>
+                <p>Revisamos requisitos basicos, ordenamos lo necesario y ayudamos a presentar la solicitud cuanto antes para entrar en plazo y no perder posicion.</p>
+                <div class="step-output">Sin coste inicial de implantacion. Objetivo: solicitud presentada y sitio reservado.</div>
+              </div>
+            </article>
+
+            <article class="process-step reveal">
+              <span class="step-index">F1</span>
+              <div>
+                <h3>Diagnostico de necesidad TIC y diseño de proyecto</h3>
+                <p>Preparamos el diagnostico con una necesidad clara: problema, categoria, alcance, solucion propuesta, impacto esperado y presupuesto orientativo.</p>
+                <div class="step-output">Salida: ficha previa de necesidad TIC y proyecto defendible para Camara.</div>
+              </div>
+            </article>
+
+            <article class="process-step reveal">
+              <span class="step-index">F2</span>
+              <div>
+                <h3>Ejecucion y justificacion</h3>
+                <p>Si el proyecto avanza y queda validado, Skilland implanta la solucion, documenta entregables y ayuda a reunir evidencias limpias para justificar.</p>
+                <div class="step-output">Salida: sistema implantado, usable, trazable y justificable.</div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-white" id="encaje">
+        <div class="shell">
+          <span class="section-kicker">Encaje</span>
+          <h2 class="section-title">Esto tiene sentido si ahora mismo...</h2>
+          <p class="section-text">El mejor proyecto no empieza por la herramienta. Empieza por un problema visible en ventas, operaciones, soporte o control del negocio.</p>
+
+          <div class="fit-grid">
+            <div class="fit-list">
+              <div class="fit-item reveal">Pierdes oportunidades entre WhatsApp, email y Excel.</div>
+              <div class="fit-item reveal">Tu equipo repite tareas que podrian automatizarse.</div>
+              <div class="fit-item reveal">Quieres usar IA, pero no sabes por donde empezar.</div>
+              <div class="fit-item reveal">Tienes datos, pero no los conviertes en decisiones.</div>
+              <div class="fit-item reveal">Necesitas ordenar ventas, operaciones o reporting.</div>
+            </div>
+            <div class="before-after reveal">
+              <div class="compare-row">
+                <span class="compare-label">Antes</span>
+                <p>Leads dispersos, tareas manuales, datos invisibles y poca trazabilidad.</p>
+              </div>
+              <div class="compare-row">
+                <span class="compare-label">Despues</span>
+                <p>Sistema comercial, automatizacion, IA aplicada y control del negocio.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section trust" id="equipo">
+        <div class="shell">
+          <span class="section-kicker">Equipo</span>
+          <h2 class="section-title">Tecnologia, IA y formacion aplicada desde Canarias</h2>
+          <p class="section-text">
+            Skilland nace del equipo detras de Reboot Academy y EduKami. Creamos sistemas digitales,
+            formacion aplicada y soluciones con IA para convertir procesos, datos y conocimiento en capacidad real.
+          </p>
+
+          <div class="logos" aria-label="Organizaciones que confian en Skilland">
+            <div class="logo-tile"><img src="assets/trust-logos/bioksan.png" alt="Bioksan" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/gobierno-de-canarias.svg" alt="Gobierno de Canarias" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/icse.png" alt="ICSE" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/cluster-cet-canarias.png" alt="Cluster CET Canarias" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/proyectran.png" alt="Proyectran" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/cabildo-grancanaria.png" alt="Cabildo de Gran Canaria" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/fgull.png" alt="FGULL" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/fulpgc.png" alt="FULPGC" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/ulpgc.jpg" alt="ULPGC" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/itc.png" alt="ITC" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/orbidi.png" alt="Orbidi" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/adquiver.jpg" alt="AdQuiver" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/dimefarma.png" alt="Dimefarma" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/casa-africa.png" alt="Casa Africa" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/santacruz-desarrollo.png" alt="Sociedad de Desarrollo Santa Cruz" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/inetel.svg" alt="Inetel" /></div>
+          </div>
+        </div>
+      </section>
+
+      <section class="cta" id="diagnostico">
+        <div class="shell cta-grid">
+          <div class="reveal">
+            <h2>El primer paso es saber si encaja</h2>
+            <p>
+              Agenda un diagnostico gratuito. Revisamos tu caso, detectamos oportunidades
+              y te decimos con claridad que proyecto tendria sentido para tu empresa.
+            </p>
+          </div>
+          <div class="cta-box reveal">
+            <strong>Diagnostico gratuito Skilland</strong>
+            <span>Sesion consultiva, sin compromiso y con plazas limitadas por capacidad de acompañamiento.</span>
+            <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagnostico%20gratuito%20para%20Pyme%20Digital%202026">Abrir WhatsApp</a>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="legal">
+      <div class="shell">
+        Ayuda sujeta al cumplimiento de requisitos de la convocatoria, disponibilidad presupuestaria,
+        diagnostico de Camara, validacion del proyecto, concesion y prefinanciacion por parte de la empresa beneficiaria.
+        Skilland no garantiza la concesion de la ayuda ni sustituye la validacion formal de la convocatoria.
+      </div>
+    </footer>
+
+    <script>
+      const observer = new IntersectionObserver(
+        (entries) => {
+          entries.forEach((entry) => {
+            if (entry.isIntersecting) {
+              entry.target.classList.add("is-visible");
+              observer.unobserve(entry.target);
+            }
+          });
+        },
+        { threshold: 0.12 }
+      );
+
+      document.querySelectorAll(".reveal").forEach((el) => observer.observe(el));
+    </script>
+  </body>
+</html>

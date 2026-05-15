@@ -1,0 +1,18 @@
+{
+  "Comment": "Create A record for subvencion.santacruz.skilland.ai",
+  "Changes": [
+    {
+      "Action": "UPSERT",
+      "ResourceRecordSet": {
+        "Name": "subvencion.santacruz.skilland.ai.",
+        "Type": "A",
+        "TTL": 300,
+        "ResourceRecords": [
+          {
+            "Value": "212.227.253.60"
+          }
+        ]
+      }
+    }
+  ]
+}

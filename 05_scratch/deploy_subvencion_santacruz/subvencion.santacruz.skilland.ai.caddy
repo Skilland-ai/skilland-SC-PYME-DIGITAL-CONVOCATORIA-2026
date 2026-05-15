@@ -1,0 +1,10 @@
+subvencion.santacruz.skilland.ai {
+    root * /var/www/subvencion.santacruz.skilland.ai
+    encode zstd gzip
+    file_server
+
+    header {
+        X-Content-Type-Options "nosniff"
+        Referrer-Policy "strict-origin-when-cross-origin"
+    }
+}

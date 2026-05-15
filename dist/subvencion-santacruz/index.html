@@ -577,12 +577,12 @@
         background: rgba(255, 255, 255, 0.08);
         border: 1px solid var(--line-dark);
         display: grid;
-        grid-template-columns: 68px 1fr;
+        grid-template-columns: 96px 1fr;
         gap: 22px;
       }
 
       .step-index {
-        width: 72px;
+        width: 92px;
         height: 58px;
         border-radius: 18px;
         display: grid;
@@ -590,7 +590,8 @@
         background: linear-gradient(135deg, var(--mint), var(--lime));
         color: var(--navy);
         font-weight: 900;
-        font-size: 18px;
+        font-size: 15px;
+        letter-spacing: -0.02em;
       }
 
       .process-step h3 {
@@ -697,6 +698,30 @@
         display: grid;
         grid-template-columns: repeat(6, minmax(0, 1fr));
         gap: 12px;
+      }
+
+      .logos-heading {
+        margin-top: 34px;
+        max-width: 760px;
+        display: grid;
+        gap: 10px;
+      }
+
+      .logos-heading span {
+        color: var(--navy);
+        font-size: 15px;
+        font-weight: 900;
+        letter-spacing: 0.16em;
+        text-transform: uppercase;
+      }
+
+      .logos-heading p {
+        margin: 0;
+        max-width: 720px;
+        color: var(--muted);
+        font-size: 15px;
+        line-height: 1.55;
+        text-align: left;
       }
 
       .logo-tile {
@@ -810,9 +835,19 @@
 
         .opportunity,
         .process-layout,
+        .logos-heading,
         .fit-grid,
         .cta-grid {
           grid-template-columns: 1fr;
+        }
+
+        .logos-heading {
+          align-items: flex-start;
+          flex-direction: column;
+        }
+
+        .logos-heading p {
+          text-align: left;
         }
 
         .process-copy {
@@ -963,7 +998,7 @@
     </style>
   </head>
   <body>
-    <header class="nav" aria-label="Navegacion principal">
+    <header class="nav" aria-label="Navegación principal">
       <div class="nav-inner">
         <a class="brand" href="#inicio" aria-label="Skilland Pyme Digital 2026">
           <img class="brand-mark" src="assets/skilland.svg" alt="" />
@@ -975,7 +1010,7 @@
           <a href="#encaje">Encaje</a>
           <a href="#equipo">Equipo</a>
         </nav>
-        <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagnostico%20gratuito%20para%20Pyme%20Digital%202026">Agendar</a>
+        <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito%20para%20Pyme%20Digital%202026">Agendar</a>
       </div>
     </header>
 
@@ -986,20 +1021,20 @@
           <div class="system-line two"></div>
           <div class="system-line three"></div>
           <div class="system-card top">
-            <strong>Oportunidad publica</strong>
-            <span>Ayuda, requisitos, diagnostico oficial y prefinanciacion.</span>
+            <strong>Oportunidad pública</strong>
+            <span>Ayuda, requisitos, diagnóstico oficial y prefinanciación.</span>
           </div>
           <div class="system-card main">
             <strong>Proyecto digital</strong>
-            <span>IA, automatizacion, CRM, datos y procesos conectados a una necesidad real.</span>
+            <span>IA, automatización, CRM, datos y procesos conectados a una necesidad real.</span>
           </div>
           <div class="system-card left">
-            <strong>Preparacion</strong>
-            <span>Ficha previa, alcance, categoria, presupuesto y narrativa.</span>
+            <strong>Preparación</strong>
+            <span>Ficha previa, alcance, categoría, presupuesto y narrativa.</span>
           </div>
           <div class="system-card bottom">
-            <strong>Implantacion</strong>
-            <span>Si la ayuda avanza, ejecutamos la solucion y cuidamos la trazabilidad.</span>
+            <strong>Implantación</strong>
+            <span>Si la ayuda avanza, ejecutamos la solución y cuidamos la trazabilidad.</span>
           </div>
         </div>
 
@@ -1009,10 +1044,10 @@
             <h1>Hasta 7.000 € para implementar IA y digitalizar tu empresa</h1>
             <p class="hero-lead">
               Skilland te ayuda a convertir la ayuda Pyme Digital 2026 en un proyecto real:
-              captacion, automatizacion, CRM, datos, agentes IA o digitalizacion de procesos.
+              captación, automatización, CRM, datos, agentes IA o digitalización de procesos.
             </p>
             <div class="hero-actions">
-              <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagnostico%20gratuito%20para%20Pyme%20Digital%202026">Agendar diagnostico gratuito</a>
+              <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito%20para%20Pyme%20Digital%202026">Agendar diagnóstico gratuito</a>
               <a class="button button-secondary" href="#proyectos">Ver proyectos posibles</a>
             </div>
             <p class="hero-note">Revisamos tu caso, vemos si puede encajar y te decimos con claridad si merece la pena avanzar.</p>
@@ -1021,19 +1056,19 @@
           <div class="hero-stats reveal">
             <div class="hero-stat">
               <strong>7.000 €</strong>
-              <span>Coste directo elegible maximo orientativo del proyecto.</span>
+              <span>Coste directo elegible máximo orientativo del proyecto.</span>
             </div>
             <div class="hero-stat">
               <strong>Fase 0</strong>
-              <span>Presentar solicitud sin coste inicial de implantacion.</span>
+              <span>Presentar solicitud sin coste inicial de implantación.</span>
             </div>
             <div class="hero-stat">
               <strong>Fase 1</strong>
-              <span>Diagnostico de necesidad TIC y diseño del proyecto.</span>
+              <span>Diagnóstico de necesidad TIC y diseño del proyecto.</span>
             </div>
             <div class="hero-stat">
               <strong>Fase 2</strong>
-              <span>Ejecucion, evidencias y apoyo en justificacion.</span>
+              <span>Ejecución, evidencias y apoyo en justificación.</span>
             </div>
           </div>
         </div>
@@ -1043,17 +1078,17 @@
         <div class="shell opportunity">
           <div class="reveal">
             <span class="section-kicker">La oportunidad</span>
-            <h2 class="section-title">No se trata de pedir una subvencion. Se trata de plantear bien un proyecto digital.</h2>
+            <h2 class="section-title">No se trata de pedir una subvención. Se trata de plantear bien un proyecto digital.</h2>
             <p class="section-text">
-              La ayuda puede ser el vehiculo, pero lo importante es llegar con una necesidad clara:
-              que mejorar, que sistema implantar, que categoria encaja y como justificarlo.
+              La ayuda puede ser el vehículo, pero lo importante es llegar con una necesidad clara:
+              qué mejorar, qué sistema implantar, qué categoría encaja y cómo justificarlo.
             </p>
           </div>
           <div class="opportunity-panel reveal">
             <div class="big">De ayuda a<br />sistema</div>
             <div class="opportunity-list">
               <div class="opportunity-item">Analizamos si la empresa y la necesidad tienen sentido dentro de la convocatoria.</div>
-              <div class="opportunity-item">Diseñamos una ficha previa de proyecto para llegar al diagnostico con foco.</div>
+              <div class="opportunity-item">Diseñamos una ficha previa de proyecto para llegar al diagnóstico con foco.</div>
               <div class="opportunity-item">Si el proyecto avanza, Skilland puede actuar como proveedor TIC externo.</div>
             </div>
           </div>
@@ -1065,10 +1100,10 @@
           <div class="projects-head">
             <div class="reveal">
               <span class="section-kicker">Proyectos</span>
-              <h2 class="section-title">Que podemos construirte con la ayuda</h2>
+              <h2 class="section-title">Qué podemos construirte con la ayuda</h2>
             </div>
             <p class="section-text reveal">
-              Proyectos concretos de IA, automatizacion y digitalizacion para vender mas,
+              Proyectos concretos de IA, automatización y digitalización para vender más,
               operar mejor y tomar decisiones con datos.
             </p>
           </div>
@@ -1078,16 +1113,16 @@
               <div>
                 <span class="project-num">01</span>
                 <h3>Sistema comercial con IA</h3>
-                <p>Un sistema para captar leads, ordenarlos, priorizarlos y activar seguimientos automaticos con IA. Menos oportunidades perdidas. Mas control comercial.</p>
+                <p>Un sistema para captar leads, ordenarlos, priorizarlos y activar seguimientos automáticos con IA. Menos oportunidades perdidas. Más control comercial.</p>
               </div>
-              <div class="tags"><span class="tag">Leads</span><span class="tag">CRM</span><span class="tag">IA</span><span class="tag">Automatizacion</span></div>
+              <div class="tags"><span class="tag">Leads</span><span class="tag">CRM</span><span class="tag">IA</span><span class="tag">Automatización</span></div>
             </article>
 
             <article class="project-card reveal">
               <div>
                 <span class="project-num">02</span>
                 <h3>CRM automatizado con IA</h3>
-                <p>Pipeline comercial, tareas, recordatorios, proximos pasos y asistentes IA para que el equipo venda con mas foco y menos caos.</p>
+                <p>Pipeline comercial, tareas, recordatorios, próximos pasos y asistentes IA para que el equipo venda con más foco y menos caos.</p>
               </div>
               <div class="tags"><span class="tag">Pipeline</span><span class="tag">Ventas</span><span class="tag">Seguimiento</span><span class="tag">IA</span></div>
             </article>
@@ -1095,8 +1130,8 @@
             <article class="project-card reveal">
               <div>
                 <span class="project-num">03</span>
-                <h3>Automatizacion de procesos internos</h3>
-                <p>Convertimos tareas repetitivas en flujos digitales: documentos, emails, reportes, operaciones y coordinacion interna.</p>
+                <h3>Automatización de procesos internos</h3>
+                <p>Convertimos tareas repetitivas en flujos digitales: documentos, emails, reportes, operaciones y coordinación interna.</p>
               </div>
               <div class="tags"><span class="tag">Procesos</span><span class="tag">Operaciones</span><span class="tag">Backoffice</span></div>
             </article>
@@ -1114,7 +1149,7 @@
               <div>
                 <span class="project-num">05</span>
                 <h3>Agentes IA para equipos</h3>
-                <p>Asistentes internos entrenados para responder, clasificar, resumir, generar documentacion, apoyar ventas o acelerar soporte.</p>
+                <p>Asistentes internos entrenados para responder, clasificar, resumir, generar documentación, apoyar ventas o acelerar soporte.</p>
               </div>
               <div class="tags"><span class="tag">Agentes</span><span class="tag">Soporte</span><span class="tag">Productividad</span></div>
             </article>
@@ -1122,10 +1157,10 @@
             <article class="project-card reveal">
               <div>
                 <span class="project-num">06</span>
-                <h3>Web, captacion y automatizacion</h3>
-                <p>Landing, formularios, analitica, automatizacion y seguimiento para transformar visitas en oportunidades comerciales reales.</p>
+                <h3>Web, captación y automatización</h3>
+                <p>Landing, formularios, analítica, automatización y seguimiento para transformar visitas en oportunidades comerciales reales.</p>
               </div>
-              <div class="tags"><span class="tag">Web</span><span class="tag">Formularios</span><span class="tag">Conversion</span></div>
+              <div class="tags"><span class="tag">Web</span><span class="tag">Formularios</span><span class="tag">Conversión</span></div>
             </article>
           </div>
         </div>
@@ -1135,11 +1170,11 @@
         <div class="shell process-layout">
           <div class="process-copy reveal">
             <span class="section-kicker">Proceso</span>
-            <h2 class="section-title">Primero se entra. Luego se diseña. Despues se ejecuta.</h2>
+            <h2 class="section-title">Primero se entra. Luego se diseña. Después se ejecuta.</h2>
             <p class="section-text">
-              El orden importa porque la convocatoria funciona por entrada y validacion.
-              Primero ayudamos a presentar la solicitud. Despues preparamos bien la necesidad TIC.
-              Si el proyecto avanza, ejecutamos y cuidamos la justificacion.
+              El orden importa porque la convocatoria funciona por entrada y validación.
+              Primero ayudamos a presentar la solicitud. Después preparamos bien la necesidad TIC.
+              Si el proyecto avanza, ejecutamos y cuidamos la justificación.
             </p>
             <div class="quote-panel">
               La ayuda no se gana por tener una idea bonita. Se trabaja con velocidad, encaje y evidencias.
@@ -1148,28 +1183,28 @@
 
           <div class="process-stack">
             <article class="process-step reveal">
-              <span class="step-index">F0</span>
+              <span class="step-index">Fase 0</span>
               <div>
                 <h3>Solicitud y reserva de sitio</h3>
-                <p>Revisamos requisitos basicos, ordenamos lo necesario y ayudamos a presentar la solicitud cuanto antes para entrar en plazo y no perder posicion.</p>
-                <div class="step-output">Sin coste inicial de implantacion. Objetivo: solicitud presentada y sitio reservado.</div>
+                <p>Revisamos requisitos básicos, ordenamos lo necesario y ayudamos a presentar la solicitud cuanto antes para entrar en plazo y no perder posición.</p>
+                <div class="step-output">Sin coste inicial de implantación. Objetivo: solicitud presentada y sitio reservado.</div>
               </div>
             </article>
 
             <article class="process-step reveal">
-              <span class="step-index">F1</span>
+              <span class="step-index">Fase 1</span>
               <div>
-                <h3>Diagnostico de necesidad TIC y diseño de proyecto</h3>
-                <p>Preparamos el diagnostico con una necesidad clara: problema, categoria, alcance, solucion propuesta, impacto esperado y presupuesto orientativo.</p>
-                <div class="step-output">Salida: ficha previa de necesidad TIC y proyecto defendible para Camara.</div>
+                <h3>Diagnóstico de necesidad TIC y diseño de proyecto</h3>
+                <p>Preparamos el diagnóstico con una necesidad clara: problema, categoría, alcance, solución propuesta, impacto esperado y presupuesto orientativo.</p>
+                <div class="step-output">Salida: ficha previa de necesidad TIC y proyecto defendible para Cámara.</div>
               </div>
             </article>
 
             <article class="process-step reveal">
-              <span class="step-index">F2</span>
+              <span class="step-index">Fase 2</span>
               <div>
-                <h3>Ejecucion y justificacion</h3>
-                <p>Si el proyecto avanza y queda validado, Skilland implanta la solucion, documenta entregables y ayuda a reunir evidencias limpias para justificar.</p>
+                <h3>Ejecución y justificación</h3>
+                <p>Si el proyecto avanza y queda validado, Skilland implanta la solución, documenta entregables y ayuda a reunir evidencias limpias para justificar.</p>
                 <div class="step-output">Salida: sistema implantado, usable, trazable y justificable.</div>
               </div>
             </article>
@@ -1186,8 +1221,8 @@
           <div class="fit-grid">
             <div class="fit-list">
               <div class="fit-item reveal">Pierdes oportunidades entre WhatsApp, email y Excel.</div>
-              <div class="fit-item reveal">Tu equipo repite tareas que podrian automatizarse.</div>
-              <div class="fit-item reveal">Quieres usar IA, pero no sabes por donde empezar.</div>
+              <div class="fit-item reveal">Tu equipo repite tareas que podrían automatizarse.</div>
+              <div class="fit-item reveal">Quieres usar IA, pero no sabes por dónde empezar.</div>
               <div class="fit-item reveal">Tienes datos, pero no los conviertes en decisiones.</div>
               <div class="fit-item reveal">Necesitas ordenar ventas, operaciones o reporting.</div>
             </div>
@@ -1197,8 +1232,8 @@
                 <p>Leads dispersos, tareas manuales, datos invisibles y poca trazabilidad.</p>
               </div>
               <div class="compare-row">
-                <span class="compare-label">Despues</span>
-                <p>Sistema comercial, automatizacion, IA aplicada y control del negocio.</p>
+                <span class="compare-label">Después</span>
+                <p>Sistema comercial, automatización, IA aplicada y control del negocio.</p>
               </div>
             </div>
           </div>
@@ -1208,13 +1243,19 @@
       <section class="section trust" id="equipo">
         <div class="shell">
           <span class="section-kicker">Equipo</span>
-          <h2 class="section-title">Tecnologia, IA y formacion aplicada desde Canarias</h2>
+          <h2 class="section-title">Tecnología, IA y formación aplicada desde Canarias</h2>
           <p class="section-text">
-            Skilland nace del equipo detras de Reboot Academy y EduKami. Creamos sistemas digitales,
-            formacion aplicada y soluciones con IA para convertir procesos, datos y conocimiento en capacidad real.
+            Somos un equipo experto en IA, software, automatización, formación tecnológica y producto digital.
+            Diseñamos soluciones para empresas, administraciones y organizaciones que necesitan pasar de la
+            intención digital a sistemas que se usan de verdad.
           </p>
 
-          <div class="logos" aria-label="Organizaciones que confian en Skilland">
+          <div class="logos-heading">
+            <span>Confían en nosotros</span>
+            <p>Trabajamos con organizaciones de referencia del tejido productivo e institucional de Canarias.</p>
+          </div>
+
+          <div class="logos" aria-label="Organizaciones que confían en Skilland">
             <div class="logo-tile"><img src="assets/trust-logos/bioksan.png" alt="Bioksan" /></div>
             <div class="logo-tile"><img src="assets/trust-logos/gobierno-de-canarias.svg" alt="Gobierno de Canarias" /></div>
             <div class="logo-tile"><img src="assets/trust-logos/icse.png" alt="ICSE" /></div>
@@ -1228,7 +1269,7 @@
             <div class="logo-tile"><img src="assets/trust-logos/orbidi.png" alt="Orbidi" /></div>
             <div class="logo-tile"><img src="assets/trust-logos/adquiver.jpg" alt="AdQuiver" /></div>
             <div class="logo-tile"><img src="assets/trust-logos/dimefarma.png" alt="Dimefarma" /></div>
-            <div class="logo-tile"><img src="assets/trust-logos/casa-africa.png" alt="Casa Africa" /></div>
+            <div class="logo-tile"><img src="assets/trust-logos/casa-africa.png" alt="Casa África" /></div>
             <div class="logo-tile"><img src="assets/trust-logos/santacruz-desarrollo.png" alt="Sociedad de Desarrollo Santa Cruz" /></div>
             <div class="logo-tile"><img src="assets/trust-logos/inetel.svg" alt="Inetel" /></div>
           </div>
@@ -1240,14 +1281,14 @@
           <div class="reveal">
             <h2>El primer paso es saber si encaja</h2>
             <p>
-              Agenda un diagnostico gratuito. Revisamos tu caso, detectamos oportunidades
-              y te decimos con claridad que proyecto tendria sentido para tu empresa.
+              Agenda un diagnóstico gratuito. Revisamos tu caso, detectamos oportunidades
+              y te decimos con claridad qué proyecto tendría sentido para tu empresa.
             </p>
           </div>
           <div class="cta-box reveal">
-            <strong>Diagnostico gratuito Skilland</strong>
-            <span>Sesion consultiva, sin compromiso y con plazas limitadas por capacidad de acompañamiento.</span>
-            <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagnostico%20gratuito%20para%20Pyme%20Digital%202026">Abrir WhatsApp</a>
+            <strong>Diagnóstico gratuito Skilland</strong>
+            <span>Sesión consultiva, sin compromiso y con plazas limitadas por capacidad de acompañamiento.</span>
+            <a class="button button-primary" href="https://wa.me/34639351296?text=Hola%20Skilland%2C%20quiero%20agendar%20un%20diagn%C3%B3stico%20gratuito%20para%20Pyme%20Digital%202026">Abrir WhatsApp</a>
           </div>
         </div>
       </section>
@@ -1256,8 +1297,8 @@
     <footer class="legal">
       <div class="shell">
         Ayuda sujeta al cumplimiento de requisitos de la convocatoria, disponibilidad presupuestaria,
-        diagnostico de Camara, validacion del proyecto, concesion y prefinanciacion por parte de la empresa beneficiaria.
-        Skilland no garantiza la concesion de la ayuda ni sustituye la validacion formal de la convocatoria.
+        diagnóstico de Cámara, validación del proyecto, concesión y prefinanciación por parte de la empresa beneficiaria.
+        Skilland no garantiza la concesión de la ayuda ni sustituye la validación formal de la convocatoria.
       </div>
     </footer>
 

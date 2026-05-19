@@ -2,7 +2,7 @@
 
 | Stage | Skill | Status | Required input | Main output | Gate | Next | Notes |
 |---|---|---|---|---|---|---|---|
-| `01_intake` | `project-opportunity-intake` | `planned` | raw docs / user idea | `01_intake/intake_brief.md` | minimal only if blocked | `02_strategy_mapping` | no baja a estrategia |
+| `01_intake` | `project-opportunity-intake` | `implemented` | raw docs / user idea | `01_intake/intake_brief.md` | minimal only if blocked | `02_strategy_mapping` | skill creada; run/eval todavia pendientes |
 | `02_strategy_mapping` | `strategic-opportunity-mapper` | `planned` | intake brief + sources | `02_strategy/strategic_opportunity_brief.md` | user validation required | `03_qa_gate_1_strategy` | define tesis, no packs |
 | `03_qa_gate_1_strategy` | `compliance-qa-reviewer` | `planned` | strategic brief | `03_qa_gate_1/qa_strategy_report.md` | gate 1 | `04_context_pack` | revisa postura y claims |
 | `04_context_pack` | `context-knowledge-pack-builder` | `planned` | validated strategy + sources | `04_context_pack/context_master_brief.md` | optional if critical unknowns | `05_offer_architecture` | produce facts/constraints pack |

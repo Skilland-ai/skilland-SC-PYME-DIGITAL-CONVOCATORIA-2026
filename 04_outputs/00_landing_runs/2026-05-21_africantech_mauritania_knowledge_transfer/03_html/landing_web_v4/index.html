@@ -1,0 +1,1212 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>AfricanTech / Skilland — Knowledge Transfer Engine</title>
+    <meta
+      name="description"
+      content="Turn distributed expertise into accessible, practical and measurable training for the Mauritanian productive sector."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Outfit:wght@300;400;500;600;700;800&family=Plus+Jakarta+Sans:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        /* Colors */
+        --navy-950: #040a18;
+        --navy-900: #0a1128;
+        --navy-800: #101d42;
+        --navy-700: #1a2f6a;
+        --mint-500: #7ee0c4;
+        --mint-400: #9ff0db;
+        --mint-glow: rgba(126, 224, 196, 0.4);
+        --teal-500: #2d93ad;
+        --lime-500: #d7f36b;
+        --orange-500: #f4a261;
+        --white: #ffffff;
+        --slate-50: #f8fafc;
+        --slate-100: #f1f5f9;
+        --slate-200: #e2e8f0;
+        --slate-400: #94a3b8;
+        --slate-600: #475569;
+        --slate-900: #0f172a;
+
+        /* Typography */
+        --font-main: "Outfit", sans-serif;
+        --font-heading: "Plus Jakarta Sans", sans-serif;
+
+        /* Spacing & Borders */
+        --container: 1200px;
+        --radius-sm: 12px;
+        --radius-md: 20px;
+        --radius-lg: 32px;
+        --radius-xl: 48px;
+        --shadow-sm: 0 4px 6px -1px rgb(0 0 0 / 0.1);
+        --shadow-md: 0 12px 30px -5px rgb(0 0 0 / 0.1);
+        --shadow-lg: 0 20px 50px -12px rgb(0 0 0 / 0.15);
+      }
+
+      /* Base Reset */
+      * {
+        box-sizing: border-box;
+        margin: 0;
+        padding: 0;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        font-family: var(--font-main);
+        color: var(--slate-600);
+        background-color: var(--white);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        overflow-x: hidden;
+      }
+
+      [data-lang="es"] {
+        display: none;
+      }
+
+      body.is-es [data-lang="en"] {
+        display: none;
+      }
+
+      body.is-es [data-lang="es"] {
+        display: block;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 48px));
+        margin-inline: auto;
+      }
+
+      section {
+        padding: clamp(80px, 10vw, 160px) 0;
+        position: relative;
+      }
+
+      h1, h2, h3, h4 {
+        font-family: var(--font-heading);
+        color: var(--slate-900);
+        font-weight: 800;
+        line-height: 1.1;
+      }
+
+      p {
+        text-wrap: balance;
+      }
+
+      /* Navigation */
+      .nav {
+        position: fixed;
+        top: 24px;
+        width: 100%;
+        z-index: 1000;
+        pointer-events: none;
+      }
+
+      .nav-inner {
+        width: min(var(--container), calc(100% - 32px));
+        margin: 0 auto;
+        padding: 12px 16px;
+        background: rgba(4, 10, 24, 0.8);
+        backdrop-filter: blur(20px);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        pointer-events: auto;
+        box-shadow: 0 20px 40px rgba(0, 0, 0, 0.2);
+      }
+
+      .brand {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+        text-decoration: none;
+      }
+
+      .brand img {
+        height: 38px;
+        width: auto;
+      }
+
+      .brand-text {
+        font-weight: 800;
+        font-size: 14px;
+        color: var(--white);
+        line-height: 1;
+        letter-spacing: -0.02em;
+      }
+      .brand-text span {
+        display: block;
+        font-size: 11px;
+        font-weight: 400;
+        color: var(--slate-400);
+        margin-top: 2px;
+      }
+
+      .nav-links {
+        display: flex;
+        gap: 24px;
+      }
+
+      .nav-links a {
+        color: var(--slate-400);
+        text-decoration: none;
+        font-size: 13px;
+        font-weight: 600;
+        transition: color 0.2s;
+      }
+
+      .nav-links a:hover {
+        color: var(--white);
+      }
+
+      .nav-actions {
+        display: flex;
+        align-items: center;
+        gap: 12px;
+      }
+
+      .lang-switch {
+        background: rgba(255, 255, 255, 0.1);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 100px;
+        display: flex;
+        padding: 2px;
+      }
+
+      .lang-switch button {
+        background: none;
+        border: none;
+        color: var(--white);
+        padding: 6px 12px;
+        font-size: 11px;
+        font-weight: 800;
+        cursor: pointer;
+        border-radius: 100px;
+        opacity: 0.5;
+        transition: all 0.2s;
+      }
+
+      .lang-switch button.active {
+        background: var(--white);
+        color: var(--navy-950);
+        opacity: 1;
+      }
+
+      /* Hero */
+      .hero {
+        background: var(--navy-950);
+        color: var(--white);
+        padding: 180px 0 100px;
+        min-height: 85vh;
+        display: flex;
+        align-items: center;
+        overflow: hidden;
+      }
+
+      .hero::before {
+        content: '';
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        top: 0;
+        left: 0;
+        background-image: radial-gradient(circle at 70% 30%, var(--teal-500) 0%, transparent 40%),
+                          radial-gradient(circle at 10% 80%, var(--mint-500) 0%, transparent 30%);
+        opacity: 0.15;
+        filter: blur(100px);
+        z-index: 0;
+      }
+
+      .hero-grid {
+        display: grid;
+        grid-template-columns: 1.1fr 0.9fr;
+        gap: 64px;
+        align-items: center;
+        position: relative;
+        z-index: 1;
+      }
+
+      .hero-content {
+        max-width: 640px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        background: rgba(126, 224, 196, 0.1);
+        border: 1px solid rgba(126, 224, 196, 0.2);
+        color: var(--mint-500);
+        padding: 6px 14px;
+        border-radius: 100px;
+        font-size: 12px;
+        font-weight: 800;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+        margin-bottom: 24px;
+      }
+
+      .eyebrow::before {
+        content: "";
+        width: 6px;
+        height: 6px;
+        background: var(--mint-500);
+        border-radius: 50%;
+        box-shadow: 0 0 10px var(--mint-500);
+      }
+
+      .hero h1 {
+        color: var(--white);
+        font-size: clamp(48px, 6vw, 82px);
+        margin-bottom: 24px;
+        letter-spacing: -0.03em;
+      }
+
+      .hero .lead {
+        font-size: clamp(18px, 2vw, 22px);
+        color: var(--slate-400);
+        margin-bottom: 40px;
+        max-width: 540px;
+      }
+
+      .cta-group {
+        display: flex;
+        gap: 16px;
+        margin-bottom: 48px;
+      }
+
+      .btn {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        padding: 16px 32px;
+        border-radius: 100px;
+        font-weight: 800;
+        font-size: 15px;
+        text-decoration: none;
+        transition: all 0.3s cubic-bezier(0.4, 0, 0.2, 1);
+        cursor: pointer;
+      }
+
+      .btn-primary {
+        background: linear-gradient(135deg, var(--mint-500), var(--lime-500));
+        color: var(--navy-950);
+        box-shadow: 0 10px 30px rgba(126, 224, 196, 0.3);
+      }
+
+      .btn-primary:hover {
+        transform: translateY(-3px);
+        box-shadow: 0 15px 40px rgba(126, 224, 196, 0.4);
+      }
+
+      .btn-secondary {
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.05);
+      }
+
+      .btn-secondary:hover {
+        background: rgba(255, 255, 255, 0.1);
+        transform: translateY(-3px);
+      }
+
+      .hero-stats {
+        display: flex;
+        gap: 32px;
+        border-top: 1px solid rgba(255, 255, 255, 0.1);
+        padding-top: 32px;
+      }
+
+      .stat-item strong {
+        display: block;
+        font-size: 32px;
+        color: var(--white);
+        margin-bottom: 4px;
+      }
+
+      .stat-item span {
+        font-size: 13px;
+        color: var(--slate-400);
+        font-weight: 500;
+        text-transform: uppercase;
+        letter-spacing: 0.05em;
+      }
+
+      .hero-visual {
+        position: relative;
+      }
+
+      .visual-box {
+        background: rgba(255, 255, 255, 0.03);
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: var(--radius-lg);
+        padding: 40px;
+        backdrop-filter: blur(10px);
+        box-shadow: 0 40px 100px rgba(0, 0, 0, 0.4);
+        display: flex;
+        flex-direction: column;
+        gap: 32px;
+      }
+
+      .visual-node {
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        background: rgba(255, 255, 255, 0.05);
+        padding: 16px;
+        border-radius: var(--radius-md);
+        border: 1px solid rgba(255, 255, 255, 0.08);
+      }
+
+      .node-icon {
+        width: 48px;
+        height: 48px;
+        background: rgba(126, 224, 196, 0.15);
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        color: var(--mint-500);
+      }
+
+      .node-text strong {
+        display: block;
+        font-size: 14px;
+        color: var(--white);
+      }
+
+      .node-text span {
+        font-size: 12px;
+        color: var(--slate-400);
+      }
+
+      .visual-center {
+        background: linear-gradient(135deg, var(--navy-800), var(--navy-900));
+        padding: 24px;
+        border-radius: var(--radius-md);
+        border: 2px solid var(--mint-500);
+        text-align: center;
+        position: relative;
+      }
+
+      .visual-center::after {
+        content: "";
+        position: absolute;
+        inset: -10px;
+        border-radius: inherit;
+        background: var(--mint-500);
+        opacity: 0.15;
+        filter: blur(15px);
+      }
+
+      /* Sections General */
+      .section-header {
+        max-width: 800px;
+        margin-bottom: 64px;
+      }
+
+      .section-header h2 {
+        font-size: clamp(32px, 5vw, 54px);
+        margin-top: 16px;
+        margin-bottom: 20px;
+      }
+
+      .section-header p {
+        font-size: 20px;
+        color: var(--slate-600);
+      }
+
+      /* Engine Section */
+      .section-engine {
+        background: var(--slate-50);
+        overflow: hidden;
+      }
+
+      .engine-container {
+        position: relative;
+        padding: 60px 0;
+      }
+
+      .engine-diagram {
+        width: 100%;
+        max-width: 1100px;
+        margin: 0 auto;
+        position: relative;
+        display: grid;
+        grid-template-columns: 240px 1fr 240px;
+        align-items: center;
+        gap: 20px;
+      }
+
+      .flow-column {
+        display: flex;
+        flex-direction: column;
+        gap: 24px;
+      }
+
+      .flow-card {
+        background: var(--white);
+        padding: 20px;
+        border-radius: var(--radius-md);
+        border: 1px solid var(--slate-200);
+        box-shadow: var(--shadow-md);
+        display: flex;
+        align-items: center;
+        gap: 16px;
+        transition: transform 0.2s;
+      }
+
+      .flow-card:hover {
+        transform: scale(1.05);
+      }
+
+      .flow-card .icon {
+        width: 44px;
+        height: 44px;
+        background: var(--slate-100);
+        border-radius: 12px;
+        display: grid;
+        place-items: center;
+        font-size: 20px;
+      }
+
+      .flow-card .text strong {
+        display: block;
+        font-size: 15px;
+        color: var(--slate-900);
+      }
+
+      .flow-card .text span {
+        font-size: 13px;
+        color: var(--slate-600);
+      }
+
+      .engine-core {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .core-card {
+        background: var(--navy-950);
+        color: var(--white);
+        padding: 40px;
+        border-radius: var(--radius-xl);
+        text-align: center;
+        width: 320px;
+        position: relative;
+        z-index: 2;
+        border: 1px solid var(--mint-500);
+        box-shadow: 0 0 50px var(--mint-glow);
+      }
+
+      .core-card h3 {
+        color: var(--white);
+        font-size: 24px;
+        margin-bottom: 8px;
+      }
+
+      .core-card p {
+        color: var(--mint-500);
+        font-weight: 700;
+        font-size: 14px;
+        text-transform: uppercase;
+        letter-spacing: 0.1em;
+      }
+
+      .engine-svg-overlay {
+        position: absolute;
+        top: 0;
+        left: 0;
+        width: 100%;
+        height: 100%;
+        pointer-events: none;
+        z-index: 1;
+      }
+
+      .engine-svg-overlay path {
+        fill: none;
+        stroke: var(--mint-500);
+        stroke-width: 2.5;
+        stroke-dasharray: 8 8;
+        opacity: 0.4;
+        animation: flow 20s linear infinite;
+      }
+
+      @keyframes flow {
+        to { stroke-dashoffset: -200; }
+      }
+
+      /* Process Section */
+      .section-process {
+        background: var(--white);
+      }
+
+      .process-visual {
+        display: flex;
+        justify-content: space-between;
+        gap: 12px;
+        margin-top: 60px;
+      }
+
+      .process-step {
+        flex: 1;
+        position: relative;
+        background: var(--white);
+        border: 1px solid var(--slate-200);
+        padding: 32px 24px;
+        border-radius: var(--radius-lg);
+        transition: all 0.3s;
+      }
+
+      .process-step:hover {
+        background: var(--navy-950);
+        color: var(--white);
+        transform: translateY(-8px);
+        border-color: var(--mint-500);
+      }
+
+      .process-step:hover h3 {
+        color: var(--white);
+      }
+
+      .step-num {
+        font-size: 14px;
+        font-weight: 800;
+        color: var(--mint-500);
+        margin-bottom: 16px;
+        display: block;
+      }
+
+      .process-step h3 {
+        font-size: 18px;
+        margin-bottom: 12px;
+      }
+
+      .process-step p {
+        font-size: 14px;
+        opacity: 0.8;
+      }
+
+      .process-step::after {
+        content: "\2192";
+        position: absolute;
+        right: -24px;
+        top: 50%;
+        transform: translateY(-50%);
+        font-size: 24px;
+        color: var(--slate-200);
+      }
+
+      .process-step:last-child::after {
+        display: none;
+      }
+
+      /* Activation Section */
+      .section-activation {
+        background: var(--slate-50);
+      }
+
+      .activation-grid {
+        display: grid;
+        grid-template-columns: repeat(auto-fit, minmax(260px, 1fr));
+        gap: 24px;
+      }
+
+      .activation-card {
+        background: var(--white);
+        padding: 40px;
+        border-radius: var(--radius-lg);
+        border: 1px solid var(--slate-200);
+        transition: all 0.3s;
+      }
+
+      .activation-card:hover {
+        box-shadow: var(--shadow-lg);
+        transform: translateY(-5px);
+      }
+
+      .activation-card .icon {
+        font-size: 40px;
+        margin-bottom: 24px;
+        display: block;
+      }
+
+      .activation-card h3 {
+        font-size: 20px;
+        margin-bottom: 16px;
+      }
+
+      /* Ecosystem Section */
+      .section-ecosystem {
+        text-align: center;
+        background: var(--navy-950);
+        color: var(--white);
+        overflow: hidden;
+      }
+
+      .section-ecosystem h2 {
+        color: var(--white);
+      }
+
+      .ecosystem-container {
+        position: relative;
+        height: 600px;
+        margin-top: 40px;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .eco-rings {
+        position: absolute;
+        width: 100%;
+        height: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: center;
+      }
+
+      .ring {
+        border: 1px solid rgba(255, 255, 255, 0.1);
+        border-radius: 50%;
+        position: absolute;
+      }
+
+      .ring-1 { width: 300px; height: 300px; }
+      .ring-2 { width: 500px; height: 500px; }
+
+      .eco-center {
+        width: 140px;
+        height: 140px;
+        background: var(--white);
+        border-radius: 50%;
+        display: grid;
+        place-items: center;
+        padding: 20px;
+        z-index: 5;
+        box-shadow: 0 0 40px var(--mint-glow);
+      }
+
+      .eco-node {
+        position: absolute;
+        background: rgba(255, 255, 255, 0.1);
+        backdrop-filter: blur(10px);
+        border: 1px solid rgba(255, 255, 255, 0.2);
+        padding: 10px 20px;
+        border-radius: 100px;
+        font-size: 13px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .eco-node.highlight {
+        background: rgba(126, 224, 196, 0.2);
+        border-color: var(--mint-500);
+        color: var(--mint-500);
+      }
+
+      /* CTA */
+      .section-cta {
+        background: linear-gradient(135deg, var(--navy-900), var(--navy-950));
+        color: var(--white);
+        text-align: center;
+      }
+
+      .section-cta h2 { color: var(--white); font-size: 56px; margin-bottom: 24px; }
+
+      /* Responsive */
+      @media (max-width: 1024px) {
+        .hero-grid, .engine-diagram {
+          grid-template-columns: 1fr;
+          text-align: center;
+        }
+
+        .hero-content, .hero .lead {
+          margin-inline: auto;
+        }
+
+        .cta-group {
+          justify-content: center;
+        }
+
+        .hero-stats {
+          justify-content: center;
+        }
+
+        .engine-diagram {
+          gap: 48px;
+        }
+
+        .process-visual {
+          flex-direction: column;
+          gap: 24px;
+        }
+
+        .process-step::after {
+          content: "\2193";
+          right: 50%;
+          bottom: -24px;
+          top: auto;
+          transform: translateX(50%);
+        }
+
+        .ecosystem-container {
+          height: 800px;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .hero h1 { font-size: 42px; }
+        .hero-stats { flex-direction: column; gap: 24px; }
+        .section-cta h2 { font-size: 36px; }
+      }
+    </style>
+  </head>
+  <body id="top">
+    <!-- Navigation -->
+    <nav class="nav">
+      <div class="nav-inner">
+        <a href="#top" class="brand">
+          <img src="assets/logo-skilland-white.svg" alt="Skilland Logo" />
+          <div class="brand-text">
+            AfricanTech
+            <span data-lang="en">Knowledge Transfer Engine</span>
+            <span data-lang="es">Motor de Transferencia de Conocimiento</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <!-- Desktop navigation links could go here -->
+        </div>
+        <div class="nav-actions">
+          <div class="lang-switch">
+            <button id="btn-en" class="active" onclick="setLang('en')">EN</button>
+            <button id="btn-es" onclick="setLang('es')">ES</button>
+          </div>
+          <a href="#contact" class="btn btn-primary" style="padding: 10px 20px; font-size: 13px;">
+            <span data-lang="en">Join Now</span>
+            <span data-lang="es">Unirse ahora</span>
+          </a>
+        </div>
+      </div>
+    </nav>
+
+    <!-- Hero Section -->
+    <section class="hero">
+      <div class="container hero-grid">
+        <div class="hero-content">
+          <div class="eyebrow" data-lang="en">AfricanTech Mauritania</div>
+          <div class="eyebrow" data-lang="es">AfricanTech Mauritania</div>
+          <h1 data-lang="en">From expert knowledge to practical training</h1>
+          <h1 data-lang="es">Del conocimiento experto a la formación práctica</h1>
+          
+          <p class="lead" data-lang="en">Skilland helps turn distributed expertise into accessible, practical and measurable training assets for the Mauritanian productive sector.</p>
+          <p class="lead" data-lang="es">Skilland ayuda a transformar la experiencia distribuida en activos de formación accesibles, prácticos y medibles para el sector productivo mauritano.</p>
+          
+          <div class="cta-group">
+            <a href="#contact" class="btn btn-primary">
+              <span data-lang="en">Get Started</span>
+              <span data-lang="es">Empezar ahora</span>
+            </a>
+            <a href="#engine" class="btn btn-secondary">
+              <span data-lang="en">How it Works</span>
+              <span data-lang="es">Cómo funciona</span>
+            </a>
+          </div>
+
+          <div class="hero-stats">
+            <div class="stat-item">
+              <strong>100%</strong>
+              <span data-lang="en">Digital</span>
+              <span data-lang="es">Digital</span>
+            </div>
+            <div class="stat-item">
+              <strong>AI-Ready</strong>
+              <span data-lang="en">Infrastructure</span>
+              <span data-lang="es">Infraestructura</span>
+            </div>
+            <div class="stat-item">
+              <strong>Scalable</strong>
+              <span data-lang="en">Growth</span>
+              <span data-lang="es">Crecimiento</span>
+            </div>
+          </div>
+        </div>
+
+        <div class="hero-visual">
+          <div class="visual-box">
+            <div class="visual-node" style="align-self: flex-start;">
+              <div class="node-icon">🏛️</div>
+              <div class="node-text">
+                <strong data-lang="en">Expertise</strong>
+                <strong data-lang="es">Expertos</strong>
+                <span data-lang="en">Raw input</span>
+                <span data-lang="es">Entrada bruta</span>
+              </div>
+            </div>
+            
+            <div class="visual-center">
+              <strong data-lang="en">Skilland Engine</strong>
+              <strong data-lang="es">Motor Skilland</strong>
+              <p data-lang="en">Processing...</p>
+              <p data-lang="es">Procesando...</p>
+            </div>
+
+            <div class="visual-node" style="align-self: flex-end;">
+              <div class="node-icon">🎓</div>
+              <div class="node-text">
+                <strong data-lang="en">Structured Asset</strong>
+                <strong data-lang="es">Activo estructurado</strong>
+                <span data-lang="en">Measurable impact</span>
+                <span data-lang="es">Impacto medible</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Opportunity Section -->
+    <section id="opportunity">
+      <div class="container">
+        <div class="section-header">
+          <div class="eyebrow" style="background: rgba(45, 147, 173, 0.1); color: var(--teal-500); border-color: rgba(45, 147, 173, 0.2);">The Opportunity</div>
+          <h2 data-lang="en">Bridging the gap between knowledge and growth</h2>
+          <h2 data-lang="es">Cerrando la brecha entre el conocimiento y el crecimiento</h2>
+          <p data-lang="en">Traditional training models are slow and disconnected from expert reality. We provide the engine to change that.</p>
+          <p data-lang="es">Los modelos de formación tradicionales son lentos y están desconectados de la realidad de los expertos. Nosotros proporcionamos el motor para cambiar eso.</p>
+        </div>
+
+        <div class="activation-grid">
+           <div class="activation-card">
+             <span class="icon">🚀</span>
+             <h3 data-lang="en">Faster Deployment</h3>
+             <h3 data-lang="es">Despliegue más rápido</h3>
+             <p data-lang="en">From expert interview to structured course in days, not months.</p>
+             <p data-lang="es">De la entrevista con el experto al curso estructurado en días, no meses.</p>
+           </div>
+           <div class="activation-card">
+             <span class="icon">📊</span>
+             <h3 data-lang="en">Measurable Impact</h3>
+             <h3 data-lang="es">Impacto medible</h3>
+             <p data-lang="en">Track every step of the learner's journey with data-driven insights.</p>
+             <p data-lang="es">Siga cada paso del viaje del alumno con información basada en datos.</p>
+           </div>
+           <div class="activation-card">
+             <span class="icon">🤖</span>
+             <h3 data-lang="en">AI-Assisted</h3>
+             <h3 data-lang="es">Asistido por IA</h3>
+             <p data-lang="en">Leverage AI to structure content and support learners 24/7.</p>
+             <p data-lang="es">Aproveche la IA para estructurar el contenido y apoyar a los alumnos 24/7.</p>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Engine Diagram Section -->
+    <section id="engine" class="section-engine">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-inline: auto;">
+          <h2 data-lang="en">Knowledge Transfer Engine</h2>
+          <h2 data-lang="es">Motor de transferencia de conocimientos</h2>
+          <p data-lang="en">The heart of the AfricanTech infrastructure.</p>
+          <p data-lang="es">El corazón de la infraestructura AfricanTech.</p>
+        </div>
+
+        <div class="engine-container">
+          <div class="engine-diagram">
+            <div class="flow-column">
+              <div class="flow-card">
+                <div class="icon">🏛️</div>
+                <div class="text">
+                  <strong data-lang="en">Institutions</strong>
+                  <strong data-lang="es">Instituciones</strong>
+                </div>
+              </div>
+              <div class="flow-card">
+                <div class="icon">👥</div>
+                <div class="text">
+                  <strong data-lang="en">Experts</strong>
+                  <strong data-lang="es">Expertos</strong>
+                </div>
+              </div>
+              <div class="flow-card">
+                <div class="icon">🏢</div>
+                <div class="text">
+                  <strong data-lang="en">Companies</strong>
+                  <strong data-lang="es">Empresas</strong>
+                </div>
+              </div>
+            </div>
+
+            <div class="engine-core">
+              <div class="core-card">
+                <h3 data-lang="en">Skilland Engine</h3>
+                <h3 data-lang="es">Motor Skilland</h3>
+                <p data-lang="en">Practical Training Resources</p>
+                <p data-lang="es">Recursos de formación práctica</p>
+              </div>
+              <svg class="engine-svg-overlay" viewBox="0 0 800 400" preserveAspectRatio="none">
+                <path d="M 50,100 C 200,100 200,200 400,200" />
+                <path d="M 50,200 C 200,200 200,200 400,200" />
+                <path d="M 50,300 C 200,300 200,200 400,200" />
+                
+                <path d="M 400,200 C 600,200 600,100 750,100" />
+                <path d="M 400,200 C 600,200 600,200 750,200" />
+                <path d="M 400,200 C 600,200 600,300 750,300" />
+              </svg>
+            </div>
+
+            <div class="flow-column">
+              <div class="flow-card">
+                <div class="icon">💼</div>
+                <div class="text">
+                  <strong data-lang="en">SMEs</strong>
+                  <strong data-lang="es">Pymes</strong>
+                </div>
+              </div>
+              <div class="flow-card">
+                <div class="icon">💡</div>
+                <div class="text">
+                  <strong data-lang="en">Entrepreneurs</strong>
+                  <strong data-lang="es">Emprendedores</strong>
+                </div>
+              </div>
+              <div class="flow-card">
+                <div class="icon">👨‍💻</div>
+                <div class="text">
+                  <strong data-lang="en">Professionals</strong>
+                  <strong data-lang="es">Profesionales</strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Comparison Section -->
+    <section id="comparison">
+      <div class="container">
+        <div class="section-header">
+           <h2 data-lang="en">Not just another LMS</h2>
+           <h2 data-lang="es">No es solo otro LMS</h2>
+           <p data-lang="en">A standard LMS stores training. Skilland actively helps you create, structure, and measure the real transfer of knowledge.</p>
+           <p data-lang="es">Un LMS estándar almacena la formación. Skilland le ayuda activamente a crear, estructurar y medir la transferencia real de conocimientos.</p>
+        </div>
+        
+        <div class="activation-grid" style="grid-template-columns: 1fr 1fr;">
+          <div class="activation-card" style="border-left: 4px solid var(--slate-200);">
+            <h3 style="color: var(--slate-400); margin-bottom: 24px;">Traditional LMS</h3>
+            <ul style="list-style: none; display: grid; gap: 16px;">
+              <li style="display: flex; gap: 12px; font-size: 15px;">❌ <span data-lang="en">Static content storage</span><span data-lang="es">Almacenamiento de contenido estático</span></li>
+              <li style="display: flex; gap: 12px; font-size: 15px;">❌ <span data-lang="en">Manual course creation</span><span data-lang="es">Creación manual de cursos</span></li>
+              <li style="display: flex; gap: 12px; font-size: 15px;">❌ <span data-lang="en">Basic completion tracking</span><span data-lang="es">Seguimiento básico de finalización</span></li>
+              <li style="display: flex; gap: 12px; font-size: 15px;">❌ <span data-lang="en">Disconnected from experts</span><span data-lang="es">Desconectado de los expertos</span></li>
+            </ul>
+          </div>
+          <div class="activation-card" style="border-left: 4px solid var(--mint-500); background: var(--navy-950); color: var(--white);">
+            <h3 style="color: var(--mint-500); margin-bottom: 24px;">Skilland Engine</h3>
+            <ul style="list-style: none; display: grid; gap: 16px;">
+              <li style="display: flex; gap: 12px; font-size: 15px;">✅ <span data-lang="en">Dynamic knowledge capture</span><span data-lang="es">Captura dinámica de conocimientos</span></li>
+              <li style="display: flex; gap: 12px; font-size: 15px;">✅ <span data-lang="en">AI-assisted structuring</span><span data-lang="es">Estructuración asistida por IA</span></li>
+              <li style="display: flex; gap: 12px; font-size: 15px;">✅ <span data-lang="en">Real-world impact measurement</span><span data-lang="es">Medición del impacto en el mundo real</span></li>
+              <li style="display: flex; gap: 12px; font-size: 15px;">✅ <span data-lang="en">Direct expert-to-learner pipeline</span><span data-lang="es">Canal directo de experto a alumno</span></li>
+            </ul>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- 4-Step Process Section -->
+    <section id="process" class="section-process">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-lang="en">How Knowledge Transfer Works</h2>
+          <h2 data-lang="es">Cómo funciona la transferencia de conocimientos</h2>
+          <p data-lang="en">Skilland reduces the friction between 'knowing' and 'teaching'.</p>
+          <p data-lang="es">Skilland reduce la fricción entre el 'saber' y el 'enseñar'.</p>
+        </div>
+
+        <div class="process-visual">
+          <div class="process-step">
+            <span class="step-num">01</span>
+            <h3 data-lang="en">Capture</h3>
+            <h3 data-lang="es">Captura</h3>
+            <p data-lang="en">We extract the core expertise from your top specialists.</p>
+            <p data-lang="es">Extraemos la experiencia principal de sus mejores especialistas.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">02</span>
+            <h3 data-lang="en">Structure</h3>
+            <h3 data-lang="es">Estructuración</h3>
+            <p data-lang="en">AI-assisted transformation into bite-sized learning content.</p>
+            <p data-lang="es">Transformación asistida por IA en contenido de aprendizaje fragmentado.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">03</span>
+            <h3 data-lang="en">Deploy</h3>
+            <h3 data-lang="es">Despliegue</h3>
+            <p data-lang="en">Publish courses and pathways to your secure project space.</p>
+            <p data-lang="es">Publique cursos e itinerarios en su espacio de proyecto seguro.</p>
+          </div>
+          <div class="process-step">
+            <span class="step-num">04</span>
+            <h3 data-lang="en">Measure</h3>
+            <h3 data-lang="es">Medición</h3>
+            <p data-lang="en">Track progress, participation, and actual business impact.</p>
+            <p data-lang="es">Siga el progreso, la participación y el impacto empresarial real.</p>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- Activation Section -->
+    <section id="activation" class="section-activation">
+      <div class="container">
+        <div class="section-header">
+           <h2 data-lang="en">What you can activate</h2>
+           <h2 data-lang="es">Qué puede activar</h2>
+        </div>
+        <div class="activation-grid">
+           <div class="activation-card">
+             <span class="icon">🌱</span>
+             <h3 data-lang="en">Training for entrepreneurs</h3>
+             <h3 data-lang="es">Formación para emprendedores</h3>
+             <p data-lang="en">Empower new business owners with practical toolkits and mentor knowledge.</p>
+             <p data-lang="es">Empoderar a los nuevos empresarios con kits de herramientas prácticos y conocimientos de mentores.</p>
+           </div>
+           <div class="activation-card">
+             <span class="icon">📱</span>
+             <h3 data-lang="en">Digital skills for SMEs</h3>
+             <h3 data-lang="es">Competencias digitales para pymes</h3>
+             <p data-lang="en">Bridge the digital gap with scalable micro-learning capsules.</p>
+             <p data-lang="es">Cerrar la brecha digital con cápsulas de microaprendizaje escalables.</p>
+           </div>
+           <div class="activation-card">
+             <span class="icon">⚙️</span>
+             <h3 data-lang="en">Productivity tools</h3>
+             <h3 data-lang="es">Herramientas de productividad</h3>
+             <p data-lang="en">Deploy specific training for business and productivity software.</p>
+             <p data-lang="es">Despliegue formación específica para programas de gestión y productividad.</p>
+           </div>
+           <div class="activation-card">
+             <span class="icon">🧠</span>
+             <h3 data-lang="en">AI for business growth</h3>
+             <h3 data-lang="es">IA para el crecimiento</h3>
+             <p data-lang="en">Prepare your sector for the future with advanced AI implementation training.</p>
+             <p data-lang="es">Prepare a su sector para el futuro con formación avanzada en implementación de IA.</p>
+           </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- AfricanTech Proof Section -->
+    <section id="proof" style="background: var(--white);">
+      <div class="container">
+        <div class="section-header" style="text-align: center; margin-inline: auto;">
+          <h2 data-lang="en">Scalable infrastructure for impact</h2>
+          <h2 data-lang="es">Infraestructura escalable para el impacto</h2>
+          <p data-lang="en">AfricanTech is more than a project; it's a foundation for the future of Mauritanian expertise.</p>
+          <p data-lang="es">AfricanTech es más que un proyecto; es una base para el futuro de la experiencia mauritana.</p>
+        </div>
+
+        <div style="display: grid; grid-template-columns: repeat(auto-fit, minmax(200px, 1fr)); gap: 32px; text-align: center;">
+          <div>
+            <strong style="display: block; font-size: 48px; color: var(--navy-950); font-family: var(--font-heading);">24/7</strong>
+            <span style="font-weight: 600; color: var(--slate-400); text-transform: uppercase; font-size: 12px;" data-lang="en">Expert Support</span>
+            <span style="font-weight: 600; color: var(--slate-400); text-transform: uppercase; font-size: 12px;" data-lang="es">Soporte experto</span>
+          </div>
+          <div>
+            <strong style="display: block; font-size: 48px; color: var(--navy-950); font-family: var(--font-heading);">10x</strong>
+            <span style="font-weight: 600; color: var(--slate-400); text-transform: uppercase; font-size: 12px;" data-lang="en">Faster Content creation</span>
+            <span style="font-weight: 600; color: var(--slate-400); text-transform: uppercase; font-size: 12px;" data-lang="es">Creación de contenido 10x más rápida</span>
+          </div>
+          <div>
+            <strong style="display: block; font-size: 48px; color: var(--navy-950); font-family: var(--font-heading);">Multi</strong>
+            <span style="font-weight: 600; color: var(--slate-400); text-transform: uppercase; font-size: 12px;" data-lang="en">Language Adaptation</span>
+            <span style="font-weight: 600; color: var(--slate-400); text-transform: uppercase; font-size: 12px;" data-lang="es">Adaptación multilingüe</span>
+          </div>
+          <div>
+            <strong style="display: block; font-size: 48px; color: var(--navy-950); font-family: var(--font-heading);">AI</strong>
+            <span style="font-weight: 600; color: var(--slate-400); text-transform: uppercase; font-size: 12px;" data-lang="en">Integrated Tutoring</span>
+            <span style="font-weight: 600; color: var(--slate-400); text-transform: uppercase; font-size: 12px;" data-lang="es">Tutoría integrada por IA</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <!-- FAQ Section -->
+    <section id="faq" style="background: var(--slate-50);">
+      <div class="container">
+        <div class="section-header">
+          <h2 data-lang="en">Common Questions</h2>
+          <h2 data-lang="es">Preguntas frecuentes</h2>
+        </div>
+        
+        <div style="display: grid; gap: 16px; max-width: 800px;">
+          <details style="background: var(--white); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--slate-200); cursor: pointer;">
+            <summary style="font-weight: 700; color: var(--slate-900);" data-lang="en">Is this only for digital companies?</summary>
+            <summary style="font-weight: 700; color: var(--slate-900);" data-lang="es">¿Es esto solo para empresas digitales?</summary>
+            <p style="margin-top: 12px; font-size: 15px;" data-lang="en">No. It is designed to modernize any sector by capturing the practical knowledge that already exists within companies and institutions.</p>
+            <p style="margin-top: 12px; font-size: 15px;" data-lang="es">No. Está diseñado para modernizar cualquier sector capturando el conocimiento práctico ya existente en empresas e instituciones.</p>
+          </details>
+          <details style="background: var(--white); padding: 20px; border-radius: var(--radius-md); border: 1px solid var(--slate-200); cursor: pointer;">
+            <summary style="font-weight: 700; color: var(--slate-900);" data-lang="en">How does the AI tutor work?</summary>
+            <summary style="font-weight: 700; color: var(--slate-900);" data-lang="es">¿Cómo funciona el tutor de IA?</summary>
+            <p style="margin-top: 12px; font-size: 15px;" data-lang="en">The AI is trained specifically on the captured expert knowledge, ensuring accurate support without the generic errors of standard AI.</p>
+            <p style="margin-top: 12px; font-size: 15px;" data-lang="es">La IA se entrena específicamente con el conocimiento experto capturado, garantizando un apoyo preciso sin los errores genéricos de las IA estándar.</p>
+          </details>
+        </div>
+      </div>
+    </section>
+
+    <!-- Final CTA -->
+    <section id="contact" class="section-cta">
+      <div class="container">
+         <h2 data-lang="en">Ready to scale your impact?</h2>
+         <h2 data-lang="es">¿Listo para escalar su impacto?</h2>
+         <p style="margin-bottom: 40px; color: var(--slate-400);" data-lang="en">Join AfricanTech and start transforming expertise into structured growth.</p>
+         <p style="margin-bottom: 40px; color: var(--slate-400);" data-lang="es">Únase a AfricanTech y empiece a transformar la experiencia en crecimiento estructurado.</p>
+         <a href="#" class="btn btn-primary" style="padding: 20px 48px; font-size: 18px;">
+           <span data-lang="en">Contact our team</span>
+           <span data-lang="es">Contactar con el equipo</span>
+         </a>
+      </div>
+    </section>
+
+    <!-- Footer -->
+    <footer style="padding: 40px 0; background: var(--navy-950); color: var(--slate-400); border-top: 1px solid rgba(255,255,255,0.1); text-align: center;">
+      <div class="container">
+        <p>&copy; 2026 Skilland. AfricanTech Mauritania Knowledge Transfer Project.</p>
+      </div>
+    </footer>
+
+    <script>
+      function setLang(lang) {
+        document.body.className = lang === 'es' ? 'is-es' : '';
+        document.getElementById('btn-en').className = lang === 'en' ? 'active' : '';
+        document.getElementById('btn-es').className = lang === 'es' ? 'active' : '';
+        localStorage.setItem('preferredLang', lang);
+      }
+
+      // Initialize language
+      const savedLang = localStorage.getItem('preferredLang') || 'en';
+      setLang(savedLang);
+    </script>
+  </body>
+</html>

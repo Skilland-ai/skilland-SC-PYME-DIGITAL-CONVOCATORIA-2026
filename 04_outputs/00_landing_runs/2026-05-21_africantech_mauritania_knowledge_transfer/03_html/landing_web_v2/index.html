@@ -1,0 +1,2901 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skilland Knowledge Transfer Engine</title>
+    <meta
+      name="description"
+      content="From dissemination to real knowledge transfer. Skilland turns project knowledge into reusable, measurable and scalable training systems for European and international cooperation projects."
+    />
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Sora:wght@400;500;600;700;800&display=swap"
+      rel="stylesheet"
+    />
+    <style>
+      :root {
+        --navy-950: #081227;
+        --navy-900: #0f1b35;
+        --navy-800: #14284d;
+        --navy-700: #20478c;
+        --blue-500: #548cbb;
+        --mint-500: #7ee0c4;
+        --mint-400: #98f0d8;
+        --mint-100: #ddfaf1;
+        --lime: #d7f36b;
+        --orange: #f4a261;
+        --paper: #f0f3f8;
+        --paper-2: #f7f9fc;
+        --white: #ffffff;
+        --ink: #17233d;
+        --text: #4a6488;
+        --muted: #7b8ea8;
+        --line: rgba(20, 40, 77, 0.12);
+        --line-strong: rgba(20, 40, 77, 0.18);
+        --line-dark: rgba(255, 255, 255, 0.13);
+        --shadow: 0 28px 90px rgba(8, 18, 39, 0.14);
+        --shadow-soft: 0 18px 48px rgba(8, 18, 39, 0.08);
+        --radius-xl: 36px;
+        --radius-lg: 28px;
+        --radius-md: 20px;
+        --radius-sm: 14px;
+        --container: 1200px;
+        --font: "Sora", "Avenir Next", "Segoe UI", sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+        overflow-x: hidden;
+      }
+
+      body {
+        margin: 0;
+        overflow-x: hidden;
+        background:
+          radial-gradient(circle at 8% 2%, rgba(126, 224, 196, 0.16), transparent 28%),
+          radial-gradient(circle at 95% 12%, rgba(84, 140, 187, 0.14), transparent 30%),
+          var(--paper);
+        color: var(--text);
+        font-family: var(--font);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      [data-lang="es"] {
+        display: none;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 44px));
+        margin-inline: auto;
+      }
+
+      .section {
+        padding: clamp(76px, 9vw, 128px) 0;
+      }
+
+      .section-compact {
+        padding: clamp(62px, 7vw, 96px) 0;
+      }
+
+      .stack-xs > * + * {
+        margin-top: 8px;
+      }
+
+      .stack-sm > * + * {
+        margin-top: 14px;
+      }
+
+      .stack-md > * + * {
+        margin-top: 22px;
+      }
+
+      .stack-lg > * + * {
+        margin-top: 34px;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        width: fit-content;
+        max-width: 100%;
+        min-height: 34px;
+        padding: 0 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(126, 224, 196, 0.28);
+        background: rgba(126, 224, 196, 0.11);
+        color: rgba(255, 255, 255, 0.84);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        line-height: 1.35;
+        text-transform: uppercase;
+      }
+
+      .eyebrow::before {
+        content: "";
+        flex: 0 0 auto;
+        width: 8px;
+        height: 8px;
+        border-radius: 999px;
+        background: var(--mint-500);
+        box-shadow: 0 0 0 5px rgba(126, 224, 196, 0.12);
+      }
+
+      .eyebrow.light {
+        color: var(--navy-700);
+        border-color: rgba(32, 71, 140, 0.14);
+        background: rgba(255, 255, 255, 0.78);
+      }
+
+      h1,
+      h2,
+      h3,
+      p {
+        margin: 0;
+      }
+
+      h1,
+      h2,
+      h3 {
+        color: var(--ink);
+        letter-spacing: -0.035em;
+        text-wrap: balance;
+      }
+
+      .hero h1,
+      .dark h2,
+      .dark h3,
+      .final h2,
+      .final h3 {
+        color: var(--white);
+      }
+
+      .title-xl {
+        max-width: 760px;
+        font-size: clamp(46px, 6.9vw, 86px);
+        font-weight: 800;
+        line-height: 0.98;
+      }
+
+      .title-lg {
+        max-width: 900px;
+        font-size: clamp(34px, 4.7vw, 58px);
+        font-weight: 800;
+        line-height: 1.05;
+      }
+
+      .title-md {
+        font-size: clamp(22px, 2.6vw, 31px);
+        font-weight: 800;
+        line-height: 1.16;
+      }
+
+      .lead {
+        max-width: 690px;
+        color: rgba(255, 255, 255, 0.76);
+        font-size: clamp(18px, 1.75vw, 22px);
+        line-height: 1.58;
+        text-wrap: pretty;
+      }
+
+      .copy {
+        color: var(--text);
+        font-size: 17px;
+        line-height: 1.72;
+        text-wrap: pretty;
+      }
+
+      .copy-lg {
+        color: var(--text);
+        font-size: clamp(18px, 1.6vw, 21px);
+        line-height: 1.65;
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .dark .copy,
+      .dark .copy-lg,
+      .final .copy,
+      .final .copy-lg {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 52px;
+        padding: 0 24px;
+        border: 1px solid transparent;
+        border-radius: 999px;
+        font-size: 15px;
+        font-weight: 800;
+        line-height: 1;
+        cursor: pointer;
+        transition:
+          transform 0.22s ease,
+          border-color 0.22s ease,
+          box-shadow 0.22s ease,
+          background 0.22s ease;
+        white-space: normal;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button-primary {
+        color: var(--navy-950);
+        background: linear-gradient(135deg, var(--mint-500), var(--lime));
+        box-shadow: 0 16px 36px rgba(126, 224, 196, 0.28);
+      }
+
+      .button-secondary {
+        color: var(--white);
+        border-color: rgba(255, 255, 255, 0.2);
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .button-ghost {
+        color: var(--navy-700);
+        border-color: rgba(32, 71, 140, 0.16);
+        background: rgba(32, 71, 140, 0.06);
+      }
+
+      .nav {
+        position: fixed;
+        inset: 18px 0 auto;
+        z-index: 50;
+        pointer-events: none;
+      }
+
+      .nav-shell {
+        width: min(var(--container), calc(100% - 28px));
+        margin: 0 auto;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding: 12px 14px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 999px;
+        background: rgba(8, 18, 39, 0.78);
+        color: var(--white);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 22px 70px rgba(8, 18, 39, 0.24);
+        pointer-events: auto;
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .brand img {
+        width: 34px;
+        height: 44px;
+        object-fit: contain;
+        flex: 0 0 auto;
+      }
+
+      .brand strong {
+        display: block;
+        color: var(--white);
+        font-size: 14px;
+        line-height: 1.1;
+      }
+
+      .brand span {
+        display: block;
+        max-width: 260px;
+        overflow: hidden;
+        color: rgba(255, 255, 255, 0.64);
+        font-size: 12px;
+        line-height: 1.2;
+        text-overflow: ellipsis;
+        white-space: nowrap;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        justify-content: center;
+        gap: 18px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 13px;
+        font-weight: 600;
+      }
+
+      .nav-links a:hover {
+        color: var(--white);
+      }
+
+      .nav-tools {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .lang-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 4px;
+        padding: 4px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .lang-toggle button {
+        min-width: 45px;
+        min-height: 38px;
+        border: 0;
+        border-radius: 999px;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.76);
+        font-weight: 800;
+        cursor: pointer;
+      }
+
+      .lang-toggle button.is-active {
+        background: linear-gradient(135deg, var(--mint-500), var(--lime));
+        color: var(--navy-950);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 142px 0 88px;
+        background:
+          radial-gradient(circle at 74% 18%, rgba(126, 224, 196, 0.24), transparent 25%),
+          radial-gradient(circle at 94% 76%, rgba(215, 243, 107, 0.13), transparent 22%),
+          linear-gradient(145deg, #081227 0%, #111f3e 52%, #20478c 100%);
+        color: var(--white);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 54px 54px;
+        mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+        opacity: 0.66;
+      }
+
+      .hero::after {
+        content: "";
+        position: absolute;
+        inset: auto -15% -40% 45%;
+        height: 460px;
+        border-radius: 999px;
+        background: rgba(126, 224, 196, 0.11);
+        filter: blur(80px);
+        transform: rotate(-10deg);
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 0.96fr) minmax(430px, 1fr);
+        gap: clamp(32px, 5vw, 64px);
+        align-items: center;
+      }
+
+      .hero-actions,
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+        align-items: center;
+      }
+
+      .hero-note {
+        display: flex;
+        align-items: flex-start;
+        gap: 12px;
+        max-width: 660px;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 14px;
+        line-height: 1.6;
+      }
+
+      .hero-note::before {
+        content: "";
+        flex: 0 0 auto;
+        width: 9px;
+        height: 9px;
+        margin-top: 7px;
+        border-radius: 50%;
+        background: var(--mint-500);
+        box-shadow: 0 0 0 7px rgba(126, 224, 196, 0.12);
+      }
+
+      .hero-stats {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 1px;
+        overflow: hidden;
+        max-width: 720px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 24px;
+        background: rgba(255, 255, 255, 0.1);
+      }
+
+      .hero-stat {
+        min-height: 120px;
+        padding: 20px;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(16px);
+      }
+
+      .hero-stat strong {
+        display: block;
+        color: var(--white);
+        font-size: 24px;
+        line-height: 1.1;
+      }
+
+      .hero-stat span {
+        display: block;
+        margin-top: 7px;
+        color: rgba(255, 255, 255, 0.62);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .hero-visual {
+        position: relative;
+        min-height: 650px;
+        padding: 28px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 38px;
+        background:
+          radial-gradient(circle at 50% 42%, rgba(126, 224, 196, 0.19), transparent 34%),
+          linear-gradient(160deg, rgba(255, 255, 255, 0.13), rgba(255, 255, 255, 0.055));
+        backdrop-filter: blur(20px);
+        box-shadow: 0 34px 100px rgba(0, 0, 0, 0.24);
+      }
+
+      .visual-topbar {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        margin-bottom: 24px;
+        color: rgba(255, 255, 255, 0.68);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.12em;
+        text-transform: uppercase;
+      }
+
+      .status-pill {
+        display: inline-flex;
+        align-items: center;
+        gap: 7px;
+        min-height: 28px;
+        padding: 0 10px;
+        border: 1px solid rgba(126, 224, 196, 0.28);
+        border-radius: 999px;
+        color: var(--mint-500);
+        letter-spacing: 0;
+        text-transform: none;
+      }
+
+      .status-pill::before {
+        content: "";
+        width: 7px;
+        height: 7px;
+        border-radius: 999px;
+        background: var(--mint-500);
+        animation: pulse 1.8s ease-in-out infinite;
+      }
+
+      .transfer-map {
+        position: relative;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) 240px minmax(0, 1fr);
+        gap: 22px;
+        align-items: center;
+        min-height: 475px;
+      }
+
+      .map-column {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        gap: 14px;
+      }
+
+      .map-node {
+        position: relative;
+        min-width: 0;
+        padding: 16px 16px 16px 48px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 20px;
+        background: rgba(255, 255, 255, 0.075);
+        box-shadow: inset 0 1px 0 rgba(255, 255, 255, 0.08);
+      }
+
+      .map-node::before {
+        content: attr(data-icon);
+        position: absolute;
+        left: 14px;
+        top: 15px;
+        display: grid;
+        place-items: center;
+        width: 24px;
+        height: 24px;
+        border-radius: 9px;
+        background: rgba(126, 224, 196, 0.16);
+        color: var(--mint-500);
+        font-size: 13px;
+      }
+
+      .map-node strong {
+        display: block;
+        min-width: 0;
+        color: var(--white);
+        font-size: 14px;
+        line-height: 1.25;
+        overflow-wrap: anywhere;
+      }
+
+      .map-node span {
+        display: block;
+        margin-top: 5px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 12px;
+        line-height: 1.45;
+      }
+
+      .engine-orb {
+        position: relative;
+        z-index: 2;
+        display: grid;
+        place-items: center;
+        min-height: 300px;
+      }
+
+      .engine-orb::before,
+      .engine-orb::after {
+        content: "";
+        position: absolute;
+        border-radius: 50%;
+        border: 1px solid rgba(126, 224, 196, 0.2);
+      }
+
+      .engine-orb::before {
+        width: 276px;
+        height: 276px;
+      }
+
+      .engine-orb::after {
+        width: 190px;
+        height: 190px;
+        border-style: dashed;
+        animation: rotate 26s linear infinite;
+      }
+
+      .engine-card {
+        position: relative;
+        z-index: 2;
+        width: min(220px, 100%);
+        padding: 26px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.22);
+        border-radius: 32px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(126, 224, 196, 0.28), transparent 62%),
+          linear-gradient(160deg, rgba(255, 255, 255, 0.18), rgba(255, 255, 255, 0.08));
+        text-align: center;
+        box-shadow:
+          0 0 82px rgba(126, 224, 196, 0.23),
+          0 26px 62px rgba(0, 0, 0, 0.22);
+      }
+
+      .engine-card small {
+        display: inline-flex;
+        margin-bottom: 10px;
+        padding: 5px 9px;
+        border-radius: 999px;
+        background: rgba(126, 224, 196, 0.14);
+        color: var(--mint-500);
+        font-size: 10px;
+        font-weight: 800;
+        letter-spacing: 0.1em;
+        text-transform: uppercase;
+      }
+
+      .engine-card strong {
+        display: block;
+        color: var(--white);
+        font-size: 20px;
+        line-height: 1.12;
+        overflow-wrap: anywhere;
+      }
+
+      .engine-card span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 13px;
+        line-height: 1.46;
+      }
+
+      .hero-visual .line {
+        position: absolute;
+        top: 50%;
+        height: 2px;
+        background: linear-gradient(90deg, transparent, rgba(126, 224, 196, 0.95), transparent);
+        opacity: 0.78;
+      }
+
+      .hero-visual .line.left {
+        left: 25%;
+        width: 22%;
+      }
+
+      .hero-visual .line.right {
+        right: 25%;
+        width: 22%;
+      }
+
+      .visual-footer {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 10px;
+        margin-top: 20px;
+      }
+
+      .mini-metric {
+        padding: 14px;
+        border: 1px solid rgba(255, 255, 255, 0.11);
+        border-radius: 18px;
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .mini-metric strong {
+        display: block;
+        color: var(--mint-500);
+        font-size: 13px;
+      }
+
+      .mini-metric span {
+        display: block;
+        margin-top: 5px;
+        color: rgba(255, 255, 255, 0.6);
+        font-size: 12px;
+        line-height: 1.4;
+      }
+
+      .intro-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: clamp(28px, 4vw, 54px);
+        align-items: center;
+      }
+
+      .section-kicker {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        color: var(--navy-700);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .section-kicker::before {
+        content: "";
+        width: 30px;
+        height: 2px;
+        border-radius: 999px;
+        background: var(--mint-500);
+      }
+
+      .problem-panel {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(26px, 4vw, 40px);
+        border: 1px solid var(--line);
+        border-radius: var(--radius-xl);
+        background:
+          radial-gradient(circle at 100% 0%, rgba(126, 224, 196, 0.2), transparent 30%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(247, 249, 252, 0.98));
+        box-shadow: var(--shadow-soft);
+      }
+
+      .artifact-stream {
+        position: relative;
+        display: grid;
+        gap: 12px;
+        margin-top: 8px;
+      }
+
+      .artifact {
+        display: grid;
+        grid-template-columns: 44px 1fr auto;
+        gap: 14px;
+        align-items: center;
+        min-width: 0;
+        padding: 14px;
+        border: 1px solid var(--line);
+        border-radius: 18px;
+        background: var(--white);
+        box-shadow: 0 14px 34px rgba(8, 18, 39, 0.05);
+      }
+
+      .artifact-icon {
+        display: grid;
+        place-items: center;
+        width: 44px;
+        height: 44px;
+        border-radius: 15px;
+        background: rgba(244, 162, 97, 0.13);
+        color: #b56225;
+        font-weight: 900;
+      }
+
+      .artifact strong {
+        display: block;
+        color: var(--ink);
+        font-size: 15px;
+        overflow-wrap: anywhere;
+      }
+
+      .artifact span {
+        color: var(--muted);
+        font-size: 13px;
+      }
+
+      .artifact-status {
+        display: inline-flex;
+        align-items: center;
+        min-height: 30px;
+        padding: 0 10px;
+        border-radius: 999px;
+        background: rgba(20, 40, 77, 0.06);
+        color: var(--muted);
+        font-size: 12px;
+        font-weight: 700;
+        white-space: nowrap;
+      }
+
+      .opportunity-strip {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 26px;
+      }
+
+      .opportunity-pill {
+        padding: 18px;
+        border: 1px solid rgba(126, 224, 196, 0.24);
+        border-radius: 20px;
+        background: rgba(126, 224, 196, 0.1);
+        color: var(--navy-800);
+        font-weight: 800;
+        line-height: 1.35;
+      }
+
+      .engine-section {
+        background:
+          linear-gradient(180deg, rgba(255, 255, 255, 0.42), rgba(255, 255, 255, 0)),
+          var(--paper);
+      }
+
+      .section-head {
+        display: flex;
+        justify-content: space-between;
+        gap: 28px;
+        align-items: flex-end;
+        margin-bottom: clamp(32px, 5vw, 52px);
+      }
+
+      .section-head .copy-lg {
+        max-width: 560px;
+      }
+
+      .engine-lab {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(22px, 4vw, 38px);
+        border: 1px solid var(--line);
+        border-radius: 42px;
+        background:
+          radial-gradient(circle at 50% 48%, rgba(126, 224, 196, 0.18), transparent 34%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(244, 248, 252, 0.98));
+        box-shadow: var(--shadow);
+      }
+
+      .engine-lab::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(32, 71, 140, 0.06) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(32, 71, 140, 0.06) 1px, transparent 1px);
+        background-size: 46px 46px;
+        mask-image: radial-gradient(circle at 50% 50%, #000, transparent 72%);
+      }
+
+      .engine-flow {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 0.88fr) minmax(260px, 0.72fr) minmax(0, 0.88fr);
+        gap: clamp(22px, 4vw, 42px);
+        align-items: center;
+      }
+
+      .flow-rail {
+        display: grid;
+        gap: 14px;
+      }
+
+      .rail-label {
+        display: inline-flex;
+        width: fit-content;
+        padding: 7px 12px;
+        border-radius: 999px;
+        background: rgba(32, 71, 140, 0.07);
+        color: var(--navy-700);
+        font-size: 12px;
+        font-weight: 800;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .flow-box {
+        position: relative;
+        min-width: 0;
+        padding: 18px;
+        border: 1px solid rgba(32, 71, 140, 0.12);
+        border-radius: 22px;
+        background: rgba(255, 255, 255, 0.86);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .flow-box strong {
+        display: block;
+        color: var(--ink);
+        font-size: 16px;
+        line-height: 1.3;
+        overflow-wrap: anywhere;
+      }
+
+      .flow-box span {
+        display: block;
+        margin-top: 6px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .flow-box::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: clamp(18px, 3vw, 36px);
+        height: 2px;
+        background: linear-gradient(90deg, rgba(84, 140, 187, 0), rgba(84, 140, 187, 0.52));
+      }
+
+      .flow-rail.input .flow-box::after {
+        left: 100%;
+      }
+
+      .flow-rail.output .flow-box::after {
+        right: 100%;
+        background: linear-gradient(90deg, rgba(126, 224, 196, 0.52), rgba(126, 224, 196, 0));
+      }
+
+      .engine-hub {
+        position: relative;
+        display: grid;
+        place-items: center;
+        min-height: 390px;
+      }
+
+      .engine-hub .ring {
+        position: absolute;
+        border: 1px solid rgba(84, 140, 187, 0.18);
+        border-radius: 50%;
+      }
+
+      .engine-hub .ring.one {
+        width: 330px;
+        height: 330px;
+      }
+
+      .engine-hub .ring.two {
+        width: 246px;
+        height: 246px;
+        border-style: dashed;
+        animation: rotate 30s linear infinite;
+      }
+
+      .hub-card {
+        position: relative;
+        z-index: 2;
+        width: min(270px, 100%);
+        padding: 30px 24px;
+        border: 1px solid rgba(126, 224, 196, 0.32);
+        border-radius: 34px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(126, 224, 196, 0.42), transparent 62%),
+          linear-gradient(155deg, var(--navy-900), #1a3768);
+        color: var(--white);
+        text-align: center;
+        box-shadow:
+          0 0 80px rgba(126, 224, 196, 0.25),
+          0 32px 80px rgba(8, 18, 39, 0.25);
+      }
+
+      .hub-card img {
+        width: 30px;
+        height: 38px;
+        margin: 0 auto 14px;
+      }
+
+      .hub-card strong {
+        display: block;
+        font-size: 23px;
+        line-height: 1.12;
+      }
+
+      .hub-card span {
+        display: block;
+        margin-top: 12px;
+        color: rgba(255, 255, 255, 0.72);
+        font-size: 14px;
+        line-height: 1.5;
+      }
+
+      .hub-chips {
+        position: absolute;
+        inset: 0;
+        pointer-events: none;
+      }
+
+      .hub-chip {
+        position: absolute;
+        padding: 8px 10px;
+        border: 1px solid rgba(32, 71, 140, 0.13);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.84);
+        color: var(--navy-700);
+        font-size: 12px;
+        font-weight: 800;
+        box-shadow: 0 10px 26px rgba(8, 18, 39, 0.08);
+        white-space: nowrap;
+      }
+
+      .hub-chip:nth-child(1) {
+        top: 22px;
+        left: 18%;
+      }
+
+      .hub-chip:nth-child(2) {
+        top: 80px;
+        right: 2%;
+      }
+
+      .hub-chip:nth-child(3) {
+        bottom: 70px;
+        right: 5%;
+      }
+
+      .hub-chip:nth-child(4) {
+        bottom: 36px;
+        left: 5%;
+      }
+
+      .comparison {
+        background: var(--white);
+      }
+
+      .lms-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+        gap: 20px;
+      }
+
+      .lms-card {
+        position: relative;
+        overflow: hidden;
+        min-width: 0;
+        padding: clamp(24px, 4vw, 36px);
+        border: 1px solid var(--line);
+        border-radius: 32px;
+        background: var(--paper-2);
+      }
+
+      .lms-card.skilland {
+        background:
+          radial-gradient(circle at 88% 12%, rgba(126, 224, 196, 0.24), transparent 24%),
+          linear-gradient(145deg, var(--navy-900), #1a3768);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .lms-card h3 {
+        margin-bottom: 22px;
+      }
+
+      .lms-card.skilland .copy,
+      .lms-card.skilland .lms-list span {
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .lms-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .lms-item {
+        display: grid;
+        grid-template-columns: 22px 1fr;
+        gap: 12px;
+        padding-top: 14px;
+        border-top: 1px solid var(--line);
+      }
+
+      .lms-card.skilland .lms-item {
+        border-color: rgba(255, 255, 255, 0.12);
+      }
+
+      .lms-item::before {
+        content: "";
+        width: 22px;
+        height: 22px;
+        margin-top: 3px;
+        border-radius: 50%;
+        background: rgba(32, 71, 140, 0.1);
+        box-shadow: inset 0 0 0 7px rgba(32, 71, 140, 0.25);
+      }
+
+      .lms-card.skilland .lms-item::before {
+        background: rgba(126, 224, 196, 0.17);
+        box-shadow: inset 0 0 0 7px var(--mint-500);
+      }
+
+      .lms-item strong {
+        display: block;
+        color: var(--ink);
+        font-size: 15px;
+        overflow-wrap: anywhere;
+      }
+
+      .lms-card.skilland .lms-item strong {
+        color: var(--white);
+      }
+
+      .lms-item span {
+        display: block;
+        margin-top: 3px;
+        color: var(--muted);
+        font-size: 13px;
+        line-height: 1.5;
+      }
+
+      .quote-band {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 24px;
+        margin-top: 22px;
+        padding: 24px;
+        border: 1px solid rgba(126, 224, 196, 0.26);
+        border-radius: 26px;
+        background: rgba(126, 224, 196, 0.11);
+        color: var(--navy-800);
+      }
+
+      .quote-band strong {
+        display: block;
+        font-size: clamp(22px, 2.6vw, 34px);
+        line-height: 1.14;
+        letter-spacing: -0.03em;
+      }
+
+      .consortia {
+        background:
+          radial-gradient(circle at 10% 0%, rgba(126, 224, 196, 0.14), transparent 26%),
+          linear-gradient(180deg, var(--paper), #e9eff6);
+      }
+
+      .consortia-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.95fr) minmax(0, 1.05fr);
+        gap: 22px;
+        align-items: stretch;
+      }
+
+      .big-panel,
+      .activation-card,
+      .proof-card,
+      .faq-item {
+        border: 1px solid var(--line);
+        background: rgba(255, 255, 255, 0.82);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .big-panel {
+        padding: clamp(26px, 4vw, 38px);
+        border-radius: 34px;
+      }
+
+      .fit-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .fit-item {
+        display: flex;
+        align-items: flex-start;
+        gap: 10px;
+        min-width: 0;
+        padding: 15px 16px;
+        border: 1px solid rgba(32, 71, 140, 0.12);
+        border-radius: 18px;
+        background: rgba(32, 71, 140, 0.055);
+        color: var(--navy-800);
+        font-size: 14px;
+        font-weight: 700;
+        line-height: 1.4;
+      }
+
+      .fit-item::before {
+        content: "";
+        flex: 0 0 auto;
+        width: 8px;
+        height: 8px;
+        margin-top: 6px;
+        border-radius: 50%;
+        background: var(--mint-500);
+      }
+
+      .activation-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .activation-card {
+        position: relative;
+        overflow: hidden;
+        min-height: 260px;
+        padding: 24px;
+        border-radius: 28px;
+      }
+
+      .activation-card::before {
+        content: "";
+        position: absolute;
+        inset: auto -24px -24px auto;
+        width: 120px;
+        height: 120px;
+        border-radius: 999px;
+        background: radial-gradient(circle, rgba(244, 162, 97, 0.3), transparent 68%);
+      }
+
+      .activation-icon {
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        margin-bottom: 22px;
+        border-radius: 18px;
+        background: linear-gradient(145deg, rgba(126, 224, 196, 0.24), rgba(84, 140, 187, 0.12));
+        color: var(--navy-700);
+        font-size: 23px;
+        font-weight: 900;
+      }
+
+      .activation-card strong {
+        display: block;
+        color: var(--ink);
+        font-size: 19px;
+        line-height: 1.22;
+        overflow-wrap: anywhere;
+      }
+
+      .activation-card p {
+        margin-top: 12px;
+        color: var(--muted);
+        font-size: 14px;
+        line-height: 1.58;
+      }
+
+      .dark {
+        position: relative;
+        overflow: hidden;
+        background:
+          radial-gradient(circle at 15% 10%, rgba(126, 224, 196, 0.17), transparent 26%),
+          radial-gradient(circle at 92% 80%, rgba(84, 140, 187, 0.18), transparent 28%),
+          linear-gradient(145deg, var(--navy-950), var(--navy-900) 48%, #18386e);
+        color: var(--white);
+      }
+
+      .dark::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 56px 56px;
+        mask-image: linear-gradient(90deg, transparent, #000 20%, #000 80%, transparent);
+      }
+
+      .dark > .container {
+        position: relative;
+        z-index: 1;
+      }
+
+      .process-board {
+        padding: clamp(22px, 4vw, 36px);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 40px;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 32px 90px rgba(0, 0, 0, 0.2);
+      }
+
+      .process-map {
+        position: relative;
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        padding: 46px 0 72px;
+      }
+
+      .process-map::before {
+        content: "";
+        position: absolute;
+        left: 7%;
+        right: 7%;
+        top: 86px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(126, 224, 196, 0.1), rgba(126, 224, 196, 0.9), rgba(126, 224, 196, 0.1));
+      }
+
+      .process-step {
+        position: relative;
+        z-index: 1;
+        min-width: 0;
+        padding: 22px;
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 28px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.12), rgba(255, 255, 255, 0.07));
+        box-shadow: 0 18px 52px rgba(0, 0, 0, 0.14);
+      }
+
+      .process-step::before {
+        content: attr(data-step);
+        display: grid;
+        place-items: center;
+        width: 48px;
+        height: 48px;
+        margin-bottom: 22px;
+        border-radius: 18px;
+        background: linear-gradient(135deg, var(--mint-500), var(--lime));
+        color: var(--navy-950);
+        font-weight: 900;
+      }
+
+      .process-step h3 {
+        font-size: 20px;
+        line-height: 1.2;
+        overflow-wrap: anywhere;
+      }
+
+      .process-step p {
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.66);
+        font-size: 14px;
+        line-height: 1.58;
+      }
+
+      .process-labels {
+        position: absolute;
+        inset: auto 0 0;
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: center;
+        gap: 10px;
+      }
+
+      .process-tag {
+        display: inline-flex;
+        align-items: center;
+        min-height: 34px;
+        padding: 0 13px;
+        border: 1px solid rgba(126, 224, 196, 0.22);
+        border-radius: 999px;
+        background: rgba(126, 224, 196, 0.1);
+        color: rgba(255, 255, 255, 0.82);
+        font-size: 13px;
+        font-weight: 700;
+      }
+
+      .process-side-note {
+        display: grid;
+        grid-template-columns: 52px 1fr;
+        gap: 18px;
+        align-items: start;
+        margin-top: 24px;
+        padding: 24px;
+        border: 1px solid rgba(126, 224, 196, 0.24);
+        border-radius: 28px;
+        background: rgba(126, 224, 196, 0.1);
+      }
+
+      .process-side-note .mark {
+        display: grid;
+        place-items: center;
+        width: 52px;
+        height: 52px;
+        border-radius: 18px;
+        background: rgba(126, 224, 196, 0.18);
+        color: var(--mint-500);
+        font-weight: 900;
+      }
+
+      .ecosystem-section {
+        background: linear-gradient(180deg, var(--paper), var(--white));
+      }
+
+      .ecosystem-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 0.82fr) minmax(560px, 1fr);
+        gap: clamp(28px, 5vw, 62px);
+        align-items: center;
+      }
+
+      .ecosystem-board {
+        position: relative;
+        overflow: hidden;
+        min-height: 650px;
+        border: 1px solid var(--line);
+        border-radius: 42px;
+        background:
+          radial-gradient(circle at center, rgba(126, 224, 196, 0.18), transparent 29%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 245, 252, 1));
+        box-shadow: var(--shadow);
+      }
+
+      .ecosystem-board::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(32, 71, 140, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(32, 71, 140, 0.045) 1px, transparent 1px);
+        background-size: 44px 44px;
+        mask-image: radial-gradient(circle at 50% 50%, #000, transparent 78%);
+      }
+
+      .ecosystem-ring {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        border: 1px dashed rgba(84, 140, 187, 0.22);
+        border-radius: 50%;
+        transform: translate(-50%, -50%);
+      }
+
+      .ecosystem-ring.r1 {
+        width: 278px;
+        height: 278px;
+      }
+
+      .ecosystem-ring.r2 {
+        width: 444px;
+        height: 444px;
+      }
+
+      .ecosystem-ring.r3 {
+        width: 588px;
+        height: 588px;
+      }
+
+      .ecosystem-core {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        z-index: 2;
+        width: min(280px, calc(100% - 48px));
+        padding: 28px 24px;
+        border: 1px solid rgba(126, 224, 196, 0.28);
+        border-radius: 34px;
+        background:
+          radial-gradient(circle at 50% 0%, rgba(126, 224, 196, 0.28), transparent 62%),
+          linear-gradient(145deg, var(--navy-900), #20478c);
+        color: var(--white);
+        text-align: center;
+        box-shadow: 0 30px 80px rgba(8, 18, 39, 0.24);
+        transform: translate(-50%, -50%);
+      }
+
+      .ecosystem-core strong {
+        display: block;
+        font-size: 21px;
+        line-height: 1.15;
+        overflow-wrap: anywhere;
+      }
+
+      .ecosystem-core span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 13px;
+        line-height: 1.48;
+      }
+
+      .orbit-node {
+        position: absolute;
+        z-index: 3;
+        width: max-content;
+        max-width: 178px;
+        padding: 11px 13px;
+        border: 1px solid rgba(84, 140, 187, 0.16);
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.92);
+        box-shadow: 0 14px 36px rgba(8, 18, 39, 0.08);
+        color: var(--navy-800);
+        font-size: 13px;
+        font-weight: 800;
+        line-height: 1.25;
+        text-align: center;
+        overflow-wrap: anywhere;
+      }
+
+      .orbit-node.primary {
+        border-color: rgba(126, 224, 196, 0.35);
+        background: rgba(221, 250, 241, 0.94);
+      }
+
+      .orbit-node.n1 {
+        left: 50%;
+        top: 40px;
+        transform: translateX(-50%);
+      }
+
+      .orbit-node.n2 {
+        left: 52px;
+        top: 118px;
+      }
+
+      .orbit-node.n3 {
+        right: 56px;
+        top: 116px;
+      }
+
+      .orbit-node.n4 {
+        left: 26px;
+        top: 285px;
+      }
+
+      .orbit-node.n5 {
+        right: 26px;
+        top: 285px;
+      }
+
+      .orbit-node.n6 {
+        left: 76px;
+        bottom: 112px;
+      }
+
+      .orbit-node.n7 {
+        right: 76px;
+        bottom: 112px;
+      }
+
+      .orbit-node.n8 {
+        left: 50%;
+        bottom: 40px;
+        transform: translateX(-50%);
+      }
+
+      .orbit-node.n9 {
+        left: 50%;
+        top: 132px;
+        transform: translateX(-50%);
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+        gap: 20px;
+      }
+
+      .proof-card {
+        min-width: 0;
+        padding: clamp(24px, 4vw, 34px);
+        border-radius: 32px;
+      }
+
+      .proof-flow {
+        display: grid;
+        gap: 12px;
+      }
+
+      .proof-flow .flow-box {
+        box-shadow: none;
+      }
+
+      .proof-arrow {
+        display: grid;
+        place-items: center;
+        color: var(--mint-500);
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .faq-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .faq-item {
+        overflow: hidden;
+        border-radius: 22px;
+      }
+
+      .faq-question {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        padding: 20px 22px;
+        border: 0;
+        background: transparent;
+        color: var(--ink);
+        font-weight: 800;
+        text-align: left;
+        cursor: pointer;
+      }
+
+      .faq-question span:first-child {
+        min-width: 0;
+        overflow-wrap: anywhere;
+      }
+
+      .faq-question span:last-child {
+        flex: 0 0 auto;
+        color: var(--navy-700);
+        font-size: 24px;
+        line-height: 1;
+        transition: transform 0.22s ease;
+      }
+
+      .faq-question[aria-expanded="true"] span:last-child {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        padding: 0 22px 22px;
+      }
+
+      .final {
+        position: relative;
+        overflow: hidden;
+        padding: clamp(86px, 10vw, 132px) 0 48px;
+        background:
+          radial-gradient(circle at 16% 10%, rgba(126, 224, 196, 0.2), transparent 28%),
+          radial-gradient(circle at 88% 22%, rgba(215, 243, 107, 0.11), transparent 24%),
+          linear-gradient(145deg, var(--navy-950), #132c5b);
+        color: var(--white);
+      }
+
+      .final::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 54px 54px;
+        mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+      }
+
+      .final-card {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(280px, 360px);
+        gap: clamp(28px, 5vw, 62px);
+        align-items: end;
+        padding: clamp(28px, 5vw, 52px);
+        border: 1px solid rgba(255, 255, 255, 0.13);
+        border-radius: 42px;
+        background: rgba(255, 255, 255, 0.07);
+        backdrop-filter: blur(20px);
+        box-shadow: 0 34px 100px rgba(0, 0, 0, 0.18);
+      }
+
+      .contact-card {
+        padding: 24px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: 28px;
+        background: rgba(255, 255, 255, 0.08);
+      }
+
+      .contact-card strong {
+        display: block;
+        color: var(--white);
+        font-size: 18px;
+        line-height: 1.25;
+      }
+
+      .contact-card span {
+        display: block;
+        margin-top: 10px;
+        color: rgba(255, 255, 255, 0.64);
+        font-size: 14px;
+        line-height: 1.55;
+      }
+
+      .footer {
+        position: relative;
+        z-index: 1;
+        padding-top: 28px;
+        color: rgba(255, 255, 255, 0.58);
+        font-size: 13px;
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 16px;
+        padding-top: 24px;
+        border-top: 1px solid rgba(255, 255, 255, 0.11);
+      }
+
+      .footer-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-brand img {
+        width: 26px;
+        height: 34px;
+      }
+
+      .reveal {
+        animation: fadeUp 0.75s ease both;
+      }
+
+      @keyframes fadeUp {
+        from {
+          opacity: 0;
+          transform: translateY(18px);
+        }
+        to {
+          opacity: 1;
+          transform: translateY(0);
+        }
+      }
+
+      @keyframes pulse {
+        0%,
+        100% {
+          opacity: 1;
+        }
+        50% {
+          opacity: 0.42;
+        }
+      }
+
+      @keyframes rotate {
+        from {
+          transform: rotate(0deg);
+        }
+        to {
+          transform: rotate(360deg);
+        }
+      }
+
+      @media (max-width: 1180px) {
+        .hero-grid,
+        .intro-grid,
+        .engine-flow,
+        .consortia-grid,
+        .ecosystem-grid,
+        .proof-grid,
+        .final-card {
+          grid-template-columns: 1fr;
+        }
+
+        .hero-visual {
+          min-height: auto;
+        }
+
+        .transfer-map {
+          grid-template-columns: 1fr;
+          min-height: auto;
+        }
+
+        .hero-visual .line,
+        .flow-box::after {
+          display: none;
+        }
+
+        .engine-hub {
+          min-height: 340px;
+          order: -1;
+        }
+
+        .ecosystem-grid {
+          gap: 36px;
+        }
+
+        .activation-grid,
+        .process-map {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .process-map::before {
+          display: none;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          position: absolute;
+          top: 10px;
+        }
+
+        .nav-shell {
+          align-items: stretch;
+          border-radius: 28px;
+          flex-wrap: wrap;
+        }
+
+        .brand {
+          flex: 1 1 auto;
+        }
+
+        .brand span {
+          max-width: 190px;
+        }
+
+        .nav-links {
+          order: 3;
+          width: 100%;
+          justify-content: flex-start;
+          overflow-x: auto;
+          padding: 2px 2px 4px;
+          scrollbar-width: none;
+        }
+
+        .nav-links::-webkit-scrollbar {
+          display: none;
+        }
+
+        .hero {
+          padding-top: 178px;
+        }
+
+        .hero-stats,
+        .opportunity-strip,
+        .lms-grid,
+        .fit-list,
+        .activation-grid,
+        .process-map,
+        .visual-footer {
+          grid-template-columns: 1fr;
+        }
+
+        .section-head {
+          display: grid;
+          align-items: start;
+        }
+
+        .quote-band {
+          display: grid;
+        }
+
+        .ecosystem-board {
+          min-height: auto;
+          padding: 20px;
+        }
+
+        .ecosystem-board::before,
+        .ecosystem-ring {
+          display: none;
+        }
+
+        .ecosystem-core,
+        .orbit-node {
+          position: static;
+          width: auto;
+          max-width: none;
+          transform: none;
+        }
+
+        .ecosystem-core {
+          margin-bottom: 14px;
+        }
+
+        .orbit-list {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .process-map {
+          padding: 0;
+        }
+
+        .process-labels {
+          position: static;
+          margin-top: 18px;
+        }
+      }
+
+      @media (max-width: 620px) {
+        .container {
+          width: min(var(--container), calc(100% - 28px));
+        }
+
+        .nav-shell {
+          width: calc(100% - 20px);
+          padding: 10px;
+        }
+
+        .brand img {
+          width: 30px;
+          height: 39px;
+        }
+
+        .brand span {
+          max-width: 150px;
+        }
+
+        .lang-toggle button {
+          min-width: 40px;
+        }
+
+        .hero {
+          padding: 172px 0 66px;
+        }
+
+        .title-xl {
+          font-size: clamp(38px, 12vw, 52px);
+        }
+
+        .hero-actions,
+        .cta-actions {
+          align-items: stretch;
+          flex-direction: column;
+        }
+
+        .button {
+          width: 100%;
+          min-height: 54px;
+          padding-inline: 18px;
+          text-align: center;
+        }
+
+        .hero-visual,
+        .engine-lab,
+        .process-board,
+        .final-card,
+        .ecosystem-board {
+          border-radius: 28px;
+        }
+
+        .hero-visual,
+        .engine-lab,
+        .process-board,
+        .final-card,
+        .big-panel,
+        .problem-panel,
+        .proof-card {
+          padding: 20px;
+        }
+
+        .map-node,
+        .artifact {
+          grid-template-columns: 1fr;
+          padding-left: 16px;
+        }
+
+        .map-node::before {
+          position: static;
+          margin-bottom: 10px;
+        }
+
+        .artifact-status {
+          width: fit-content;
+        }
+
+        .engine-hub .ring.one {
+          width: 280px;
+          height: 280px;
+        }
+
+        .engine-hub .ring.two {
+          width: 210px;
+          height: 210px;
+        }
+
+        .hub-chip {
+          position: static;
+          white-space: normal;
+        }
+
+        .hub-chips {
+          position: static;
+          display: flex;
+          flex-wrap: wrap;
+          justify-content: center;
+          gap: 8px;
+          margin-top: 14px;
+          pointer-events: auto;
+        }
+
+        .orbit-list {
+          grid-template-columns: 1fr;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (prefers-reduced-motion: reduce) {
+        *,
+        *::before,
+        *::after {
+          animation-duration: 0.01ms !important;
+          animation-iteration-count: 1 !important;
+          scroll-behavior: auto !important;
+          transition-duration: 0.01ms !important;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <header class="nav" aria-label="Primary navigation">
+      <div class="nav-shell">
+        <a class="brand" href="#top" aria-label="Skilland">
+          <img src="assets/skilland.svg" alt="" />
+          <span>
+            <strong>Skilland</strong>
+            <span data-lang="en">Knowledge Transfer Engine</span>
+            <span data-lang="es">Motor de Transferencia de Conocimiento</span>
+          </span>
+        </a>
+        <nav class="nav-links" aria-label="Sections">
+          <a href="#system" data-lang="en">System</a>
+          <a href="#system" data-lang="es">Sistema</a>
+          <a href="#lms" data-lang="en">Not LMS</a>
+          <a href="#lms" data-lang="es">No LMS</a>
+          <a href="#how-it-works" data-lang="en">How it works</a>
+          <a href="#how-it-works" data-lang="es">Cómo funciona</a>
+          <a href="#ecosystem" data-lang="en">Ecosystem</a>
+          <a href="#ecosystem" data-lang="es">Ecosistema</a>
+          <a href="#faq">FAQ</a>
+        </nav>
+        <div class="nav-tools">
+          <div class="lang-toggle" aria-label="Language selector">
+            <button class="is-active" type="button" data-toggle-lang="en" aria-pressed="true">EN</button>
+            <button type="button" data-toggle-lang="es" aria-pressed="false">ES</button>
+          </div>
+        </div>
+      </div>
+    </header>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="stack-lg reveal">
+            <div class="eyebrow">
+              <span data-lang="en">Knowledge Transfer System for European and international cooperation projects</span>
+              <span data-lang="es">Sistema de transferencia de conocimiento para proyectos europeos y de cooperación internacional</span>
+            </div>
+            <div class="stack-md">
+              <h1 class="title-xl" data-lang="en">From dissemination to real knowledge transfer</h1>
+              <h1 class="title-xl" data-lang="es">De la difusión a la transferencia real de conocimiento</h1>
+              <p class="lead" data-lang="en">
+                Skilland helps consortia transform expert knowledge, project results and field experience into training systems that are reusable, measurable and ready to scale.
+              </p>
+              <p class="lead" data-lang="es">
+                Skilland ayuda a los consorcios a transformar conocimiento experto, resultados de proyecto y experiencia de campo en sistemas formativos reutilizables, medibles y escalables.
+              </p>
+            </div>
+            <!-- TODO: replace CTA href with final booking/contact URL -->
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact" data-lang="en">Book a project fit session</a>
+              <a class="button button-primary" href="#contact" data-lang="es">Agendar sesión de encaje</a>
+              <a class="button button-secondary" href="#how-it-works" data-lang="en">See how it works</a>
+              <a class="button button-secondary" href="#how-it-works" data-lang="es">Ver cómo funciona</a>
+            </div>
+            <p class="hero-note" data-lang="en">
+              Build a living training infrastructure that turns what the project learns into real capabilities for companies, entrepreneurs, professionals and beneficiaries.
+            </p>
+            <p class="hero-note" data-lang="es">
+              Construye una infraestructura formativa viva que convierta lo que aprende el proyecto en capacidades reales para empresas, emprendedores, profesionales y beneficiarios.
+            </p>
+            <div class="hero-stats" aria-label="Strategic benefits">
+              <div class="hero-stat">
+                <strong data-lang="en">Defensible</strong>
+                <strong data-lang="es">Defendible</strong>
+                <span data-lang="en">Clearer capacity-building logic for project narratives and reporting.</span>
+                <span data-lang="es">Lógica más clara de desarrollo de capacidades para narrativa y reporting.</span>
+              </div>
+              <div class="hero-stat">
+                <strong data-lang="en">Reusable</strong>
+                <strong data-lang="es">Reutilizable</strong>
+                <span data-lang="en">Learning assets that can be activated across partners and editions.</span>
+                <span data-lang="es">Activos formativos activables entre partners y nuevas ediciones.</span>
+              </div>
+              <div class="hero-stat">
+                <strong data-lang="en">Measurable</strong>
+                <strong data-lang="es">Medible</strong>
+                <span data-lang="en">Participation, progress, completion and feedback as useful evidence.</span>
+                <span data-lang="es">Participación, progreso, finalización y feedback como evidencia útil.</span>
+              </div>
+            </div>
+          </div>
+
+          <aside class="hero-visual reveal" aria-label="Skilland Knowledge Transfer Engine diagram">
+            <div class="visual-topbar">
+              <span data-lang="en">Project knowledge flow</span>
+              <span data-lang="es">Flujo de conocimiento del proyecto</span>
+              <span class="status-pill" data-lang="en">live system</span>
+              <span class="status-pill" data-lang="es">sistema vivo</span>
+            </div>
+            <div class="transfer-map">
+              <span class="line left" aria-hidden="true"></span>
+              <span class="line right" aria-hidden="true"></span>
+
+              <div class="map-column">
+                <div class="map-node" data-icon="01">
+                  <strong data-lang="en">Institutions</strong>
+                  <strong data-lang="es">Instituciones</strong>
+                  <span data-lang="en">Coordination, work packages and public-sector goals.</span>
+                  <span data-lang="es">Coordinación, work packages y objetivos públicos.</span>
+                </div>
+                <div class="map-node" data-icon="02">
+                  <strong data-lang="en">Experts</strong>
+                  <strong data-lang="es">Expertos</strong>
+                  <span data-lang="en">Methodologies, field insight and sector know-how.</span>
+                  <span data-lang="es">Metodologías, experiencia de campo y know-how sectorial.</span>
+                </div>
+                <div class="map-node" data-icon="03">
+                  <strong data-lang="en">Companies</strong>
+                  <strong data-lang="es">Empresas</strong>
+                  <span data-lang="en">Pilots, use cases, needs and operational evidence.</span>
+                  <span data-lang="es">Pilotos, casos de uso, necesidades y evidencia operativa.</span>
+                </div>
+              </div>
+
+              <div class="engine-orb">
+                <div class="engine-card">
+                  <small data-lang="en">engine</small>
+                  <small data-lang="es">motor</small>
+                  <strong data-lang="en">Skilland Knowledge Transfer Engine</strong>
+                  <strong data-lang="es">Motor de Transferencia de Conocimiento Skilland</strong>
+                  <span data-lang="en">Capture. Structure. Deploy. Measure.</span>
+                  <span data-lang="es">Captura. Estructura. Despliega. Mide.</span>
+                </div>
+              </div>
+
+              <div class="map-column">
+                <div class="map-node" data-icon="A">
+                  <strong data-lang="en">Training assets</strong>
+                  <strong data-lang="es">Activos formativos</strong>
+                  <span data-lang="en">Courses, capsules, pathways and practical resources.</span>
+                  <span data-lang="es">Cursos, cápsulas, itinerarios y recursos prácticos.</span>
+                </div>
+                <div class="map-node" data-icon="B">
+                  <strong data-lang="en">AI tutor and support</strong>
+                  <strong data-lang="es">Tutor IA y soporte</strong>
+                  <span data-lang="en">Study guidance, adaptation and learner support.</span>
+                  <span data-lang="es">Guía de estudio, adaptación y apoyo al participante.</span>
+                </div>
+                <div class="map-node" data-icon="C">
+                  <strong data-lang="en">Reporting evidence</strong>
+                  <strong data-lang="es">Evidencia para reporting</strong>
+                  <span data-lang="en">Progress, completion, participation and feedback data.</span>
+                  <span data-lang="es">Datos de progreso, finalización, participación y feedback.</span>
+                </div>
+              </div>
+            </div>
+
+            <div class="visual-footer">
+              <div class="mini-metric">
+                <strong data-lang="en">Shared environment</strong>
+                <strong data-lang="es">Entorno compartido</strong>
+                <span data-lang="en">One project training layer.</span>
+                <span data-lang="es">Una capa formativa del proyecto.</span>
+              </div>
+              <div class="mini-metric">
+                <strong data-lang="en">Partner spaces</strong>
+                <strong data-lang="es">Espacios por partner</strong>
+                <span data-lang="en">Distributed teams, coherent system.</span>
+                <span data-lang="es">Equipos distribuidos, sistema coherente.</span>
+              </div>
+              <div class="mini-metric">
+                <strong data-lang="en">Beneficiaries</strong>
+                <strong data-lang="es">Beneficiarios</strong>
+                <span data-lang="en">Companies, entrepreneurs and professionals.</span>
+                <span data-lang="es">Empresas, emprendedores y profesionales.</span>
+              </div>
+            </div>
+          </aside>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container intro-grid">
+          <div class="stack-md">
+            <span class="section-kicker" data-lang="en">Problem / opportunity</span>
+            <span class="section-kicker" data-lang="es">Problema / oportunidad</span>
+            <h2 class="title-lg" data-lang="en">Projects create valuable knowledge. Too often, it stays trapped.</h2>
+            <h2 class="title-lg" data-lang="es">Los proyectos generan conocimiento valioso. Con demasiada frecuencia, se queda atrapado.</h2>
+            <p class="copy-lg" data-lang="en">
+              Expert sessions, reports, pilots and methodologies are useful, but they are not automatically transferable. Skilland turns those materials into a practical training layer that can be reused across partners, countries, sectors and editions.
+            </p>
+            <p class="copy-lg" data-lang="es">
+              Sesiones expertas, informes, pilotos y metodologías son útiles, pero no se transfieren por sí solos. Skilland los convierte en una capa formativa práctica reutilizable entre partners, países, sectores y ediciones.
+            </p>
+            <div class="opportunity-strip">
+              <div class="opportunity-pill" data-lang="en">Valuable, but hard to reuse.</div>
+              <div class="opportunity-pill" data-lang="es">Valioso, pero difícil de reutilizar.</div>
+              <div class="opportunity-pill" data-lang="en">Visible, but not always transferable.</div>
+              <div class="opportunity-pill" data-lang="es">Visible, pero no siempre transferible.</div>
+              <div class="opportunity-pill" data-lang="en">Documented, but not always converted into capability.</div>
+              <div class="opportunity-pill" data-lang="es">Documentado, pero no siempre convertido en capacidad.</div>
+            </div>
+          </div>
+
+          <div class="problem-panel">
+            <div class="artifact-stream">
+              <div class="artifact">
+                <div class="artifact-icon">PDF</div>
+                <div>
+                  <strong data-lang="en">Reports and deliverables</strong>
+                  <strong data-lang="es">Informes y entregables</strong>
+                  <span data-lang="en">Documented outputs with weak reuse after publication.</span>
+                  <span data-lang="es">Outputs documentados con baja reutilización tras publicarse.</span>
+                </div>
+                <span class="artifact-status" data-lang="en">static</span>
+                <span class="artifact-status" data-lang="es">estático</span>
+              </div>
+              <div class="artifact">
+                <div class="artifact-icon">EV</div>
+                <div>
+                  <strong data-lang="en">Events and workshops</strong>
+                  <strong data-lang="es">Eventos y talleres</strong>
+                  <span data-lang="en">High visibility, but often short-lived learning continuity.</span>
+                  <span data-lang="es">Alta visibilidad, pero continuidad formativa limitada.</span>
+                </div>
+                <span class="artifact-status" data-lang="en">one-off</span>
+                <span class="artifact-status" data-lang="es">puntual</span>
+              </div>
+              <div class="artifact">
+                <div class="artifact-icon">XP</div>
+                <div>
+                  <strong data-lang="en">Expert knowledge</strong>
+                  <strong data-lang="es">Conocimiento experto</strong>
+                  <span data-lang="en">Too much value stays tacit or tied to live delivery.</span>
+                  <span data-lang="es">Demasiado valor queda tácito o ligado a sesiones en directo.</span>
+                </div>
+                <span class="artifact-status" data-lang="en">scarce</span>
+                <span class="artifact-status" data-lang="es">escaso</span>
+              </div>
+              <div class="artifact">
+                <div class="artifact-icon">→</div>
+                <div>
+                  <strong data-lang="en">Living learning infrastructure</strong>
+                  <strong data-lang="es">Infraestructura formativa viva</strong>
+                  <span data-lang="en">Structured assets, shared delivery and measurable participation.</span>
+                  <span data-lang="es">Activos estructurados, despliegue compartido y participación medible.</span>
+                </div>
+                <span class="artifact-status" data-lang="en">transferable</span>
+                <span class="artifact-status" data-lang="es">transferible</span>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section engine-section" id="system">
+        <div class="container">
+          <div class="section-head">
+            <div class="stack-sm">
+              <div class="eyebrow light">
+                <span data-lang="en">Knowledge transfer engine</span>
+                <span data-lang="es">Motor de transferencia de conocimiento</span>
+              </div>
+              <h2 class="title-lg" data-lang="en">A system to capture, structure, deliver and measure knowledge</h2>
+              <h2 class="title-lg" data-lang="es">Un sistema para capturar, estructurar, desplegar y medir conocimiento</h2>
+            </div>
+            <p class="copy-lg" data-lang="en">
+              Skilland reduces the friction between knowing and teaching. Experts bring the knowledge; the system turns it into learning assets that people can actually use.
+            </p>
+            <p class="copy-lg" data-lang="es">
+              Skilland reduce la fricción entre saber y enseñar. Los expertos aportan conocimiento; el sistema lo convierte en activos formativos que la gente puede usar.
+            </p>
+          </div>
+
+          <div class="engine-lab">
+            <div class="engine-flow">
+              <div class="flow-rail input">
+                <span class="rail-label" data-lang="en">Inputs</span>
+                <span class="rail-label" data-lang="es">Inputs</span>
+                <div class="flow-box">
+                  <strong data-lang="en">Project outputs</strong>
+                  <strong data-lang="es">Outputs del proyecto</strong>
+                  <span data-lang="en">Reports, work packages, guides and dissemination assets.</span>
+                  <span data-lang="es">Informes, work packages, guías y activos de difusión.</span>
+                </div>
+                <div class="flow-box">
+                  <strong data-lang="en">Expert insight</strong>
+                  <strong data-lang="es">Visión experta</strong>
+                  <span data-lang="en">Methodologies, sector practice and field experience.</span>
+                  <span data-lang="es">Metodologías, práctica sectorial y experiencia de campo.</span>
+                </div>
+                <div class="flow-box">
+                  <strong data-lang="en">Pilot learnings</strong>
+                  <strong data-lang="es">Aprendizajes de pilotos</strong>
+                  <span data-lang="en">Use cases, operational evidence and beneficiary needs.</span>
+                  <span data-lang="es">Casos de uso, evidencia operativa y necesidades de beneficiarios.</span>
+                </div>
+              </div>
+
+              <div class="engine-hub">
+                <div class="ring one"></div>
+                <div class="ring two"></div>
+                <div class="hub-card">
+                  <img src="assets/skilland.svg" alt="" />
+                  <strong data-lang="en">Skilland Knowledge Transfer System</strong>
+                  <strong data-lang="es">Sistema de Transferencia de Conocimiento Skilland</strong>
+                  <span data-lang="en">AI-assisted structuring, expert review, shared deployment and analytics.</span>
+                  <span data-lang="es">Estructuración asistida por IA, revisión experta, despliegue compartido y analítica.</span>
+                </div>
+                <div class="hub-chips" aria-hidden="true">
+                  <span class="hub-chip">AI tutor</span>
+                  <span class="hub-chip">Pathways</span>
+                  <span class="hub-chip">Dashboards</span>
+                  <span class="hub-chip">Partner spaces</span>
+                </div>
+              </div>
+
+              <div class="flow-rail output">
+                <span class="rail-label" data-lang="en">Outputs</span>
+                <span class="rail-label" data-lang="es">Outputs</span>
+                <div class="flow-box">
+                  <strong data-lang="en">Reusable training pathways</strong>
+                  <strong data-lang="es">Itinerarios formativos reutilizables</strong>
+                  <span data-lang="en">Courses, capsules, microlearning and practical resources.</span>
+                  <span data-lang="es">Cursos, cápsulas, microlearning y recursos prácticos.</span>
+                </div>
+                <div class="flow-box">
+                  <strong data-lang="en">Shared project environment</strong>
+                  <strong data-lang="es">Entorno compartido del proyecto</strong>
+                  <span data-lang="en">Branded, accessible, asynchronous and scalable.</span>
+                  <span data-lang="es">Con marca, accesible, asíncrono y escalable.</span>
+                </div>
+                <div class="flow-box">
+                  <strong data-lang="en">Evidence for reporting</strong>
+                  <strong data-lang="es">Evidencia para reporting</strong>
+                  <span data-lang="en">Participation, progress, completion, usage and feedback.</span>
+                  <span data-lang="es">Participación, progreso, finalización, uso y feedback.</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section comparison" id="lms">
+        <div class="container">
+          <div class="section-head">
+            <div class="stack-sm">
+              <span class="section-kicker" data-lang="en">Not just another LMS</span>
+              <span class="section-kicker" data-lang="es">No es otro LMS</span>
+              <h2 class="title-lg" data-lang="en">An LMS stores training. Skilland helps create, structure, deploy and measure it.</h2>
+              <h2 class="title-lg" data-lang="es">Un LMS almacena formación. Skilland ayuda a crearla, estructurarla, desplegarla y medirla.</h2>
+            </div>
+            <p class="copy-lg" data-lang="en">
+              The gap in cooperation projects is usually not hosting content. The gap is transforming scattered knowledge into usable capability.
+            </p>
+            <p class="copy-lg" data-lang="es">
+              El cuello de botella en proyectos de cooperación no suele ser alojar contenido. Es transformar conocimiento disperso en capacidad usable.
+            </p>
+          </div>
+
+          <div class="lms-grid">
+            <article class="lms-card">
+              <h3 class="title-md" data-lang="en">Traditional LMS</h3>
+              <h3 class="title-md" data-lang="es">LMS tradicional</h3>
+              <div class="lms-list">
+                <div class="lms-item">
+                  <div>
+                    <strong data-lang="en">Hosts content once it exists</strong>
+                    <strong data-lang="es">Aloja contenido cuando ya existe</strong>
+                    <span data-lang="en">Useful, but upstream transformation remains unsolved.</span>
+                    <span data-lang="es">Útil, pero no resuelve la transformación previa.</span>
+                  </div>
+                </div>
+                <div class="lms-item">
+                  <div>
+                    <strong data-lang="en">Often becomes a repository</strong>
+                    <strong data-lang="es">A menudo se convierte en repositorio</strong>
+                    <span data-lang="en">Storage does not automatically create transfer.</span>
+                    <span data-lang="es">Almacenar no genera transferencia por sí solo.</span>
+                  </div>
+                </div>
+                <div class="lms-item">
+                  <div>
+                    <strong data-lang="en">Depends on manual course production</strong>
+                    <strong data-lang="es">Depende de producción manual de cursos</strong>
+                    <span data-lang="en">Experts carry the instructional-design burden.</span>
+                    <span data-lang="es">Los expertos cargan con la producción didáctica.</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+
+            <article class="lms-card skilland">
+              <h3 class="title-md" data-lang="en">Skilland Knowledge Transfer System</h3>
+              <h3 class="title-md" data-lang="es">Sistema de Transferencia de Conocimiento Skilland</h3>
+              <div class="lms-list">
+                <div class="lms-item">
+                  <div>
+                    <strong data-lang="en">Transforms expert knowledge into training</strong>
+                    <strong data-lang="es">Transforma conocimiento experto en formación</strong>
+                    <span data-lang="en">Reports, workshops and methodologies become learning assets.</span>
+                    <span data-lang="es">Informes, talleres y metodologías se convierten en activos formativos.</span>
+                  </div>
+                </div>
+                <div class="lms-item">
+                  <div>
+                    <strong data-lang="en">Supports AI-assisted content generation</strong>
+                    <strong data-lang="es">Soporta generación de contenido asistida por IA</strong>
+                    <span data-lang="en">With expert validation, multilingual adaptation and structured pathways.</span>
+                    <span data-lang="es">Con validación experta, adaptación multilingüe e itinerarios estructurados.</span>
+                  </div>
+                </div>
+                <div class="lms-item">
+                  <div>
+                    <strong data-lang="en">Gives project teams evidence</strong>
+                    <strong data-lang="es">Aporta evidencia al equipo de proyecto</strong>
+                    <span data-lang="en">Tracking and participation data support dissemination, exploitation and reporting.</span>
+                    <span data-lang="es">Trazabilidad y datos de participación apoyan difusión, explotación y reporting.</span>
+                  </div>
+                </div>
+              </div>
+            </article>
+          </div>
+
+          <div class="quote-band">
+            <strong data-lang="en">Not a content warehouse. A transfer system.</strong>
+            <strong data-lang="es">No es un almacén de contenido. Es un sistema de transferencia.</strong>
+            <a class="button button-ghost" href="#system" data-lang="en">Explore the system</a>
+            <a class="button button-ghost" href="#system" data-lang="es">Explorar el sistema</a>
+          </div>
+        </div>
+      </section>
+
+      <section class="section consortia">
+        <div class="container stack-lg">
+          <div class="consortia-grid">
+            <div class="big-panel stack-md">
+              <span class="section-kicker" data-lang="en">Built for consortia</span>
+              <span class="section-kicker" data-lang="es">Diseñado para consorcios</span>
+              <h2 class="title-lg" data-lang="en">Designed for multi-partner European and cooperation projects</h2>
+              <h2 class="title-lg" data-lang="es">Diseñado para proyectos europeos y de cooperación con múltiples partners</h2>
+              <p class="copy-lg" data-lang="en">
+                When many partners generate knowledge, the challenge is not only communication. The challenge is turning distributed expertise into a shared, reusable and measurable learning system.
+              </p>
+              <p class="copy-lg" data-lang="es">
+                Cuando muchos partners generan conocimiento, el reto no es solo comunicar. Es convertir experiencia distribuida en un sistema formativo compartido, reutilizable y medible.
+              </p>
+            </div>
+
+            <div class="big-panel stack-md">
+              <h3 class="title-md" data-lang="en">Where it fits</h3>
+              <h3 class="title-md" data-lang="es">Dónde encaja</h3>
+              <div class="fit-list">
+                <div class="fit-item" data-lang="en">Capacity building</div>
+                <div class="fit-item" data-lang="es">Desarrollo de capacidades</div>
+                <div class="fit-item" data-lang="en">Dissemination and communication</div>
+                <div class="fit-item" data-lang="es">Difusión y comunicación</div>
+                <div class="fit-item" data-lang="en">Exploitation of results</div>
+                <div class="fit-item" data-lang="es">Explotación de resultados</div>
+                <div class="fit-item" data-lang="en">Training and upskilling</div>
+                <div class="fit-item" data-lang="es">Formación y upskilling</div>
+                <div class="fit-item" data-lang="en">Stakeholder engagement</div>
+                <div class="fit-item" data-lang="es">Implicación de stakeholders</div>
+                <div class="fit-item" data-lang="en">Business support programmes</div>
+                <div class="fit-item" data-lang="es">Programas de apoyo empresarial</div>
+                <div class="fit-item" data-lang="en">International cooperation projects</div>
+                <div class="fit-item" data-lang="es">Proyectos de cooperación internacional</div>
+                <div class="fit-item" data-lang="en">Sectoral transformation initiatives</div>
+                <div class="fit-item" data-lang="es">Iniciativas de transformación sectorial</div>
+              </div>
+            </div>
+          </div>
+
+          <div>
+            <div class="section-head">
+              <div class="stack-sm">
+                <div class="eyebrow light">
+                  <span data-lang="en">What you can activate</span>
+                  <span data-lang="es">Qué puedes activar</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">A practical training layer for companies, entrepreneurs and professionals</h2>
+                <h2 class="title-lg" data-lang="es">Una capa formativa práctica para empresas, emprendedores y profesionales</h2>
+              </div>
+              <p class="copy-lg" data-lang="en">
+                The project can activate reusable content, shared learning spaces and measurable participation without forcing experts to become instructional designers.
+              </p>
+              <p class="copy-lg" data-lang="es">
+                El proyecto puede activar contenido reutilizable, espacios formativos compartidos y participación medible sin convertir a los expertos en diseñadores instruccionales.
+              </p>
+            </div>
+
+            <div class="activation-grid">
+              <article class="activation-card">
+                <div class="activation-icon">01</div>
+                <strong data-lang="en">Training for entrepreneurs</strong>
+                <strong data-lang="es">Formación para emprendedores</strong>
+                <p data-lang="en">Practical pathways for business skills, market access and applied digitalisation.</p>
+                <p data-lang="es">Itinerarios prácticos de negocio, acceso a mercado y digitalización aplicada.</p>
+              </article>
+              <article class="activation-card">
+                <div class="activation-icon">02</div>
+                <strong data-lang="en">Digital skills for SMEs</strong>
+                <strong data-lang="es">Competencias digitales para pymes</strong>
+                <p data-lang="en">Accessible capsules and resources for companies that need applicable learning.</p>
+                <p data-lang="es">Cápsulas y recursos accesibles para empresas que necesitan aprendizaje aplicable.</p>
+              </article>
+              <article class="activation-card">
+                <div class="activation-icon">03</div>
+                <strong data-lang="en">Business and productivity tools</strong>
+                <strong data-lang="es">Herramientas de negocio y productividad</strong>
+                <p data-lang="en">Reusable modules for operations, processes, sales, coordination and reporting.</p>
+                <p data-lang="es">Módulos reutilizables para operaciones, procesos, ventas, coordinación y reporting.</p>
+              </article>
+              <article class="activation-card">
+                <div class="activation-icon">04</div>
+                <strong data-lang="en">AI applied to business growth</strong>
+                <strong data-lang="es">IA aplicada al crecimiento empresarial</strong>
+                <p data-lang="en">Guided learning on AI use cases, adoption, productivity and sector transformation.</p>
+                <p data-lang="es">Aprendizaje guiado sobre casos de uso de IA, adopción, productividad y transformación sectorial.</p>
+              </article>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section dark" id="how-it-works">
+        <div class="container">
+          <div class="section-head">
+            <div class="stack-sm">
+              <div class="eyebrow">
+                <span data-lang="en">How knowledge transfer works</span>
+                <span data-lang="es">Cómo funciona la transferencia</span>
+              </div>
+              <h2 class="title-lg" data-lang="en">From expert knowledge to measurable learning, in four moves</h2>
+              <h2 class="title-lg" data-lang="es">Del conocimiento experto al aprendizaje medible, en cuatro movimientos</h2>
+            </div>
+            <p class="copy-lg" data-lang="en">
+              A clear operating model for project managers: less friction, more structure, more evidence.
+            </p>
+            <p class="copy-lg" data-lang="es">
+              Un modelo operativo claro para project managers: menos fricción, más estructura y más evidencia.
+            </p>
+          </div>
+
+          <div class="process-board">
+            <div class="process-map">
+              <article class="process-step" data-step="01">
+                <h3 data-lang="en">Capture expert knowledge</h3>
+                <h3 data-lang="es">Capturar conocimiento experto</h3>
+                <p data-lang="en">From partners, experts, pilots, reports, methodologies and field experience.</p>
+                <p data-lang="es">Desde partners, expertos, pilotos, informes, metodologías y experiencia de campo.</p>
+              </article>
+              <article class="process-step" data-step="02">
+                <h3 data-lang="en">Structure it into learning assets</h3>
+                <h3 data-lang="es">Estructurarlo como activos de aprendizaje</h3>
+                <p data-lang="en">Courses, capsules, pathways, microlearning units and practical resources.</p>
+                <p data-lang="es">Cursos, cápsulas, itinerarios, unidades de microlearning y recursos prácticos.</p>
+              </article>
+              <article class="process-step" data-step="03">
+                <h3 data-lang="en">Deliver through a shared environment</h3>
+                <h3 data-lang="es">Desplegar en un entorno compartido</h3>
+                <p data-lang="en">Branded, accessible, asynchronous and scalable across partners and audiences.</p>
+                <p data-lang="es">Con marca, accesible, asíncrono y escalable entre partners y audiencias.</p>
+              </article>
+              <article class="process-step" data-step="04">
+                <h3 data-lang="en">Measure participation and impact</h3>
+                <h3 data-lang="es">Medir participación e impacto</h3>
+                <p data-lang="en">Progress, completion, usage, feedback and reporting evidence.</p>
+                <p data-lang="es">Progreso, finalización, uso, feedback y evidencia para reporting.</p>
+              </article>
+              <div class="process-labels" aria-label="Supporting capabilities">
+                <span class="process-tag" data-lang="en">Asynchronous learning</span>
+                <span class="process-tag" data-lang="es">Aprendizaje asíncrono</span>
+                <span class="process-tag" data-lang="en">Personalised content generation</span>
+                <span class="process-tag" data-lang="es">Generación personalizada de contenido</span>
+                <span class="process-tag" data-lang="en">AI tutor</span>
+                <span class="process-tag" data-lang="es">Tutor IA</span>
+                <span class="process-tag" data-lang="en">Progress tracking</span>
+                <span class="process-tag" data-lang="es">Seguimiento de progreso</span>
+                <span class="process-tag" data-lang="en">Expert support</span>
+                <span class="process-tag" data-lang="es">Soporte experto</span>
+              </div>
+            </div>
+
+            <div class="process-side-note">
+              <div class="mark">!</div>
+              <div>
+                <h3 data-lang="en">Experts do not need to become instructional designers.</h3>
+                <h3 data-lang="es">Los expertos no tienen que convertirse en instructional designers.</h3>
+                <p class="copy" data-lang="en">
+                  Skilland helps capture, structure and activate their knowledge without demanding full course-production effort from the people who hold the expertise.
+                </p>
+                <p class="copy" data-lang="es">
+                  Skilland ayuda a capturar, estructurar y activar su conocimiento sin exigir un esfuerzo completo de producción de cursos a quienes tienen la experiencia.
+                </p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section ecosystem-section" id="ecosystem">
+        <div class="container ecosystem-grid">
+          <div class="stack-md">
+            <span class="section-kicker" data-lang="en">Ecosystem model</span>
+            <span class="section-kicker" data-lang="es">Modelo de ecosistema</span>
+            <h2 class="title-lg" data-lang="en">One ecosystem. Multiple knowledge sources. Shared learning infrastructure.</h2>
+            <h2 class="title-lg" data-lang="es">Un ecosistema. Múltiples fuentes de conocimiento. Infraestructura formativa compartida.</h2>
+            <p class="copy-lg" data-lang="en">
+              Multiple institutions and experts can contribute knowledge through a common training infrastructure, while companies and professionals access practical learning in a shared Skilland environment.
+            </p>
+            <p class="copy-lg" data-lang="es">
+              Múltiples instituciones y expertos pueden aportar conocimiento a través de una infraestructura común, mientras empresas y profesionales acceden a aprendizaje práctico en un entorno Skilland compartido.
+            </p>
+            <p class="copy" data-lang="en">
+              For project teams, this creates a more visible, scalable and sustainable model: the project does not only communicate what it does; it converts what it learns into capability.
+            </p>
+            <p class="copy" data-lang="es">
+              Para los equipos de proyecto, esto crea un modelo más visible, escalable y sostenible: el proyecto no solo comunica lo que hace; convierte lo que aprende en capacidad.
+            </p>
+          </div>
+
+          <div class="ecosystem-board" aria-label="AfricanTech and Skilland ecosystem diagram">
+            <div class="ecosystem-ring r1"></div>
+            <div class="ecosystem-ring r2"></div>
+            <div class="ecosystem-ring r3"></div>
+            <div class="ecosystem-core">
+              <strong data-lang="en">AfricanTech / Skilland shared training infrastructure</strong>
+              <strong data-lang="es">Infraestructura formativa compartida AfricanTech / Skilland</strong>
+              <span data-lang="en">A common system for partners, experts and beneficiaries.</span>
+              <span data-lang="es">Un sistema común para partners, expertos y beneficiarios.</span>
+            </div>
+            <div class="orbit-list">
+              <div class="orbit-node primary n1">Casa África</div>
+              <div class="orbit-node primary n2" data-lang="en">Chamber of Commerce</div>
+              <div class="orbit-node primary n2" data-lang="es">Cámara de Comercio</div>
+              <div class="orbit-node n3">FEMEPA / FEMETE</div>
+              <div class="orbit-node n4" data-lang="en">Institutions and partners</div>
+              <div class="orbit-node n4" data-lang="es">Instituciones y partners</div>
+              <div class="orbit-node n5" data-lang="en">Sector experts</div>
+              <div class="orbit-node n5" data-lang="es">Expertos sectoriales</div>
+              <div class="orbit-node n6" data-lang="en">Companies</div>
+              <div class="orbit-node n6" data-lang="es">Empresas</div>
+              <div class="orbit-node n7" data-lang="en">Entrepreneurs and professionals</div>
+              <div class="orbit-node n7" data-lang="es">Emprendedores y profesionales</div>
+              <div class="orbit-node n8" data-lang="en">Productive sector</div>
+              <div class="orbit-node n8" data-lang="es">Tejido productivo</div>
+              <div class="orbit-node n9" data-lang="en">Young talent</div>
+              <div class="orbit-node n9" data-lang="es">Talento joven</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-compact">
+        <div class="container stack-lg">
+          <div class="section-head">
+            <div class="stack-sm">
+              <div class="eyebrow light">
+                <span data-lang="en">AfricanTech framing</span>
+                <span data-lang="es">Marco AfricanTech</span>
+              </div>
+              <h2 class="title-lg" data-lang="en">Built from real cooperation-project needs</h2>
+              <h2 class="title-lg" data-lang="es">Construido desde necesidades reales de proyectos de cooperación</h2>
+            </div>
+            <p class="copy-lg" data-lang="en">
+              The model is shaped by AfricanTech conditions: multi-entity cooperation, institutional partners, expert knowledge, productive-sector beneficiaries and the need to scale capacity building beyond events.
+            </p>
+            <p class="copy-lg" data-lang="es">
+              El modelo nace de condiciones tipo AfricanTech: cooperación multi-entidad, partners institucionales, conocimiento experto, beneficiarios del tejido productivo y necesidad de escalar capacidades más allá de eventos.
+            </p>
+          </div>
+
+          <div class="proof-grid">
+            <article class="proof-card stack-sm">
+              <span class="section-kicker" data-lang="en">Project-manager layer</span>
+              <span class="section-kicker" data-lang="es">Capa para project managers</span>
+              <h3 class="title-md" data-lang="en">Reduce operational friction while improving reporting evidence</h3>
+              <h3 class="title-md" data-lang="es">Reduce fricción operativa y mejora la evidencia para reporting</h3>
+              <p class="copy" data-lang="en">
+                Structure training, coordinate partners, reuse content, support learners and produce evidence for dissemination, exploitation, capacity building and impact reporting.
+              </p>
+              <p class="copy" data-lang="es">
+                Estructura formación, coordina partners, reutiliza contenido, apoya a participantes y produce evidencia para difusión, explotación, desarrollo de capacidades y reporting de impacto.
+              </p>
+            </article>
+
+            <article class="proof-card">
+              <div class="proof-flow">
+                <div class="flow-box">
+                  <strong data-lang="en">Consortium expertise</strong>
+                  <strong data-lang="es">Conocimiento experto del consorcio</strong>
+                  <span data-lang="en">Methodologies, pilots, field lessons and partner know-how.</span>
+                  <span data-lang="es">Metodologías, pilotos, aprendizajes de campo y know-how de partners.</span>
+                </div>
+                <div class="proof-arrow">↓</div>
+                <div class="flow-box">
+                  <strong data-lang="en">Shared training infrastructure</strong>
+                  <strong data-lang="es">Infraestructura formativa compartida</strong>
+                  <span data-lang="en">Reusable learning assets, AI tutor and partner spaces.</span>
+                  <span data-lang="es">Activos formativos reutilizables, tutor IA y espacios por partner.</span>
+                </div>
+                <div class="proof-arrow">↓</div>
+                <div class="flow-box">
+                  <strong data-lang="en">Business capacity building</strong>
+                  <strong data-lang="es">Desarrollo de capacidades empresariales</strong>
+                  <span data-lang="en">Practical learning for companies, entrepreneurs and professionals.</span>
+                  <span data-lang="es">Aprendizaje práctico para empresas, emprendedores y profesionales.</span>
+                </div>
+              </div>
+            </article>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-compact" id="faq">
+        <div class="container">
+          <div class="section-head">
+            <div class="stack-sm">
+              <span class="section-kicker" data-lang="en">FAQ</span>
+              <span class="section-kicker" data-lang="es">FAQ</span>
+              <h2 class="title-lg" data-lang="en">Questions project teams ask before they move</h2>
+              <h2 class="title-lg" data-lang="es">Preguntas que aparecen antes de avanzar</h2>
+            </div>
+            <p class="copy-lg" data-lang="en">The category only works if the objections are answered directly.</p>
+            <p class="copy-lg" data-lang="es">La categoría solo funciona si las objeciones se responden de forma directa.</p>
+          </div>
+
+          <div class="faq-grid">
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span data-lang="en">Is this just an LMS?</span>
+                <span data-lang="es">¿Es esto solo un LMS?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer" hidden>
+                <p class="copy" data-lang="en">No. An LMS hosts learning content. Skilland helps transform expert knowledge and project outputs into structured, reusable and measurable training experiences.</p>
+                <p class="copy" data-lang="es">No. Un LMS aloja contenido formativo. Skilland ayuda a transformar conocimiento experto y outputs de proyecto en experiencias formativas estructuradas, reutilizables y medibles.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span data-lang="en">We already have Moodle or another platform. Why would we need this?</span>
+                <span data-lang="es">Ya tenemos Moodle u otra plataforma. ¿Por qué necesitaríamos esto?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer" hidden>
+                <p class="copy" data-lang="en">Because the bottleneck is often not hosting content. The bottleneck is turning fragmented knowledge, expert insight and project outputs into high-quality learning assets that people can actually use.</p>
+                <p class="copy" data-lang="es">Porque el cuello de botella muchas veces no está en alojar contenido. El cuello de botella está en convertir conocimiento fragmentado, visión experta y outputs de proyecto en activos formativos de calidad que la gente pueda usar.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span data-lang="en">Our experts do not have time to create courses.</span>
+                <span data-lang="es">Nuestros expertos no tienen tiempo para crear cursos.</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer" hidden>
+                <p class="copy" data-lang="en">That is the point. Skilland reduces friction by helping capture, structure and transform their knowledge without asking them to become instructional designers.</p>
+                <p class="copy" data-lang="es">Ese es el punto. Skilland reduce fricción ayudando a capturar, estructurar y transformar su conocimiento sin pedirles que se conviertan en diseñadores instruccionales.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span data-lang="en">Can each partner manage its own content?</span>
+                <span data-lang="es">¿Puede cada partner gestionar su propio contenido?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer" hidden>
+                <p class="copy" data-lang="en">Yes. The system can support a shared project environment while allowing different partners or entities to manage their own spaces, experts and audiences.</p>
+                <p class="copy" data-lang="es">Sí. El sistema puede soportar un entorno compartido de proyecto y al mismo tiempo permitir que distintos partners o entidades gestionen sus espacios, expertos y audiencias.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span data-lang="en">Can it support dissemination and reporting?</span>
+                <span data-lang="es">¿Puede servir para difusión y reporting?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer" hidden>
+                <p class="copy" data-lang="en">Yes. Training participation, progress, completion and feedback can become useful evidence for communication, dissemination, exploitation and impact reporting.</p>
+                <p class="copy" data-lang="es">Sí. Participación, progreso, finalización y feedback pueden convertirse en evidencia útil para comunicación, difusión, explotación y reporting de impacto.</p>
+              </div>
+            </div>
+            <div class="faq-item">
+              <button class="faq-question" type="button" aria-expanded="false">
+                <span data-lang="en">Can content be reused after the project ends?</span>
+                <span data-lang="es">¿Puede reutilizarse el contenido después de que termine el proyecto?</span>
+                <span>+</span>
+              </button>
+              <div class="faq-answer" hidden>
+                <p class="copy" data-lang="en">That is one of the main advantages. The goal is to turn project knowledge into reusable assets that remain useful beyond isolated events or deliverables.</p>
+                <p class="copy" data-lang="es">Esa es una de las ventajas principales. El objetivo es convertir el conocimiento del proyecto en activos reutilizables que sigan siendo útiles más allá de eventos o entregables aislados.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="final" id="contact">
+        <div class="container">
+          <div class="final-card">
+            <div class="stack-md">
+              <div class="eyebrow">
+                <span data-lang="en">Final CTA</span>
+                <span data-lang="es">CTA final</span>
+              </div>
+              <h2 class="title-lg" data-lang="en">Make your project knowledge reusable, measurable and scalable</h2>
+              <h2 class="title-lg" data-lang="es">Haz que el conocimiento de tu proyecto sea reutilizable, medible y escalable</h2>
+              <p class="copy-lg" data-lang="en">
+                Bring us your work packages, expert material and target groups. We’ll show you what can become structured training, AI-assisted support and reporting evidence.
+              </p>
+              <p class="copy-lg" data-lang="es">
+                Traed vuestros work packages, material experto y grupos objetivo. Os mostraremos qué puede convertirse en formación estructurada, soporte asistido por IA y evidencia para reporting.
+              </p>
+              <!-- TODO: replace CTA href with final booking/contact URL -->
+              <div class="cta-actions">
+                <a class="button button-primary" href="#contact" data-lang="en">Book a project fit session</a>
+                <a class="button button-primary" href="#contact" data-lang="es">Agendar sesión de encaje</a>
+                <a class="button button-secondary" href="#how-it-works" data-lang="en">See how it works</a>
+                <a class="button button-secondary" href="#how-it-works" data-lang="es">Ver cómo funciona</a>
+              </div>
+            </div>
+            <aside class="contact-card">
+              <strong data-lang="en">Built for serious project-fit conversations</strong>
+              <strong data-lang="es">Pensado para conversaciones serias de encaje</strong>
+              <span data-lang="en">Useful for dissemination, exploitation, capacity building and impact reporting. No guaranteed impact claims. No official endorsement implied.</span>
+              <span data-lang="es">Útil para difusión, explotación, desarrollo de capacidades y reporting de impacto. Sin promesas garantizadas ni respaldo oficial implícito.</span>
+            </aside>
+          </div>
+          <footer class="footer">
+            <div class="footer-inner">
+              <div class="footer-brand">
+                <img src="assets/skilland.svg" alt="" />
+                <span data-lang="en">Skilland Knowledge Transfer Engine</span>
+                <span data-lang="es">Motor de Transferencia de Conocimiento Skilland</span>
+              </div>
+              <div>
+                <span data-lang="en">Static bilingual landing for project-fit conversations.</span>
+                <span data-lang="es">Landing bilingüe estática para conversaciones de encaje.</span>
+              </div>
+            </div>
+          </footer>
+        </div>
+      </section>
+    </main>
+
+    <script>
+      (function () {
+        const html = document.documentElement;
+        const langButtons = Array.from(document.querySelectorAll("[data-toggle-lang]"));
+        const langNodes = Array.from(document.querySelectorAll("[data-lang]"));
+        const faqButtons = Array.from(document.querySelectorAll(".faq-question"));
+
+        function visibleDisplay(node) {
+          if (node.matches(".button, .section-kicker, .status-pill, .artifact-status, .rail-label, .process-tag")) {
+            return "inline-flex";
+          }
+
+          if (node.matches(".fit-item")) {
+            return "flex";
+          }
+
+          if (node.matches(".orbit-node, .opportunity-pill")) {
+            return "block";
+          }
+
+          if (["H1", "H2", "H3", "P", "DIV", "SPAN", "STRONG", "SMALL"].includes(node.tagName)) {
+            return "block";
+          }
+
+          return "inline";
+        }
+
+        function setLanguage(lang) {
+          html.lang = lang;
+
+          langNodes.forEach((node) => {
+            node.style.display = node.getAttribute("data-lang") === lang ? visibleDisplay(node) : "none";
+          });
+
+          langButtons.forEach((button) => {
+            const isActive = button.getAttribute("data-toggle-lang") === lang;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", isActive ? "true" : "false");
+          });
+        }
+
+        langButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setLanguage(button.getAttribute("data-toggle-lang"));
+          });
+        });
+
+        faqButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const answer = button.nextElementSibling;
+            const expanded = button.getAttribute("aria-expanded") === "true";
+            button.setAttribute("aria-expanded", expanded ? "false" : "true");
+            answer.hidden = expanded;
+          });
+        });
+
+        const initialLang = new URLSearchParams(window.location.search).get("lang") === "es" ? "es" : "en";
+        setLanguage(initialLang);
+      })();
+    </script>
+  </body>
+</html>

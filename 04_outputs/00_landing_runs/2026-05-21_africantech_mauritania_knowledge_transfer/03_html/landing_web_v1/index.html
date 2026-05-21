@@ -1,0 +1,2094 @@
+<!doctype html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Skilland Knowledge Transfer Engine</title>
+    <meta
+      name="description"
+      content="From dissemination to real knowledge transfer. Skilland helps European consortia transform project knowledge into reusable, measurable, and scalable training systems."
+    />
+    <style>
+      :root {
+        --bg: #f0f3f8;
+        --bg-soft: #e4edf5;
+        --paper: #ffffff;
+        --paper-2: #f8fbfe;
+        --navy: #111d35;
+        --navy-2: #20478c;
+        --ink: #365171;
+        --muted: #6a7f98;
+        --line: rgba(32, 71, 140, 0.12);
+        --line-strong: rgba(17, 29, 53, 0.18);
+        --teal: #548cbb;
+        --mint: #7ee0c4;
+        --mint-soft: #ddfaf1;
+        --orange: #f4a261;
+        --white: #ffffff;
+        --shadow: 0 28px 90px rgba(17, 29, 53, 0.14);
+        --shadow-soft: 0 18px 48px rgba(17, 29, 53, 0.08);
+        --radius: 28px;
+        --radius-md: 20px;
+        --radius-sm: 14px;
+        --container: 1200px;
+        --font-sans: "Sora", "Avenir Next", "Segoe UI", Arial, sans-serif;
+      }
+
+      * {
+        box-sizing: border-box;
+      }
+
+      html {
+        scroll-behavior: smooth;
+      }
+
+      body {
+        margin: 0;
+        font-family: var(--font-sans);
+        color: var(--ink);
+        background:
+          radial-gradient(circle at 10% 0%, rgba(126, 224, 196, 0.16), transparent 30%),
+          radial-gradient(circle at 100% 20%, rgba(84, 140, 187, 0.12), transparent 28%),
+          var(--bg);
+        line-height: 1.6;
+        -webkit-font-smoothing: antialiased;
+        text-rendering: optimizeLegibility;
+      }
+
+      a {
+        color: inherit;
+        text-decoration: none;
+      }
+
+      img {
+        display: block;
+        max-width: 100%;
+      }
+
+      button {
+        font: inherit;
+      }
+
+      [data-lang="es"] {
+        display: none;
+      }
+
+      .container {
+        width: min(var(--container), calc(100% - 40px));
+        margin: 0 auto;
+      }
+
+      .section {
+        padding: 88px 0;
+      }
+
+      .section-tight {
+        padding: 72px 0;
+      }
+
+      .eyebrow {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+        padding: 8px 14px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.16);
+        background: rgba(255, 255, 255, 0.08);
+        font-size: 12px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+      }
+
+      .eyebrow-light {
+        border-color: rgba(32, 71, 140, 0.12);
+        background: rgba(255, 255, 255, 0.85);
+        color: var(--navy-2);
+      }
+
+      .title-xl {
+        margin: 0;
+        font-size: clamp(38px, 7vw, 78px);
+        line-height: 1.02;
+        letter-spacing: -0.03em;
+        font-weight: 700;
+      }
+
+      .title-lg {
+        margin: 0 0 18px;
+        font-size: clamp(30px, 4.6vw, 54px);
+        line-height: 1.08;
+        letter-spacing: -0.03em;
+        font-weight: 700;
+        color: var(--navy);
+      }
+
+      .title-md {
+        margin: 0 0 12px;
+        font-size: clamp(21px, 2.6vw, 28px);
+        line-height: 1.18;
+        font-weight: 700;
+        color: var(--navy);
+      }
+
+      .lead {
+        margin: 0;
+        font-size: clamp(17px, 1.8vw, 21px);
+        color: rgba(255, 255, 255, 0.78);
+        max-width: 660px;
+      }
+
+      .copy {
+        margin: 0;
+        font-size: 17px;
+        color: var(--ink);
+      }
+
+      .muted {
+        color: var(--muted);
+      }
+
+      .stack-sm > * + * {
+        margin-top: 14px;
+      }
+
+      .stack-md > * + * {
+        margin-top: 20px;
+      }
+
+      .stack-lg > * + * {
+        margin-top: 30px;
+      }
+
+      .nav {
+        position: sticky;
+        top: 16px;
+        z-index: 40;
+        padding-top: 16px;
+      }
+
+      .nav-shell {
+        width: min(var(--container), calc(100% - 24px));
+        margin: 0 auto;
+        padding: 12px 14px;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 18px;
+        border-radius: 999px;
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        background: rgba(17, 29, 53, 0.84);
+        color: var(--white);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 22px 60px rgba(17, 29, 53, 0.25);
+      }
+
+      .brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 12px;
+        min-width: 0;
+      }
+
+      .brand img {
+        width: 34px;
+        height: 44px;
+        object-fit: contain;
+      }
+
+      .brand-copy {
+        min-width: 0;
+      }
+
+      .brand-copy strong {
+        display: block;
+        font-size: 14px;
+        line-height: 1.2;
+      }
+
+      .brand-copy span {
+        display: block;
+        font-size: 12px;
+        color: rgba(255, 255, 255, 0.7);
+        white-space: nowrap;
+        overflow: hidden;
+        text-overflow: ellipsis;
+      }
+
+      .nav-links {
+        display: flex;
+        align-items: center;
+        gap: 18px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.72);
+      }
+
+      .nav-links a:hover {
+        color: var(--white);
+      }
+
+      .nav-tools {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .lang-toggle {
+        display: inline-flex;
+        align-items: center;
+        gap: 6px;
+        padding: 4px;
+        border-radius: 999px;
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+      }
+
+      .lang-toggle button {
+        border: 0;
+        background: transparent;
+        color: rgba(255, 255, 255, 0.76);
+        min-width: 48px;
+        min-height: 38px;
+        border-radius: 999px;
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .lang-toggle button.is-active {
+        background: linear-gradient(135deg, var(--teal), var(--mint));
+        color: var(--navy);
+      }
+
+      .button {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        gap: 10px;
+        min-height: 50px;
+        padding: 0 22px;
+        border-radius: 999px;
+        font-weight: 700;
+        font-size: 15px;
+        border: 1px solid transparent;
+        transition: transform 0.24s ease, box-shadow 0.24s ease, border-color 0.24s ease;
+      }
+
+      .button:hover {
+        transform: translateY(-2px);
+      }
+
+      .button-primary {
+        color: var(--navy);
+        background: linear-gradient(135deg, var(--mint), #b2f1df);
+        box-shadow: 0 14px 32px rgba(126, 224, 196, 0.3);
+      }
+
+      .button-secondary {
+        color: var(--white);
+        background: rgba(255, 255, 255, 0.08);
+        border-color: rgba(255, 255, 255, 0.18);
+      }
+
+      .button-ghost {
+        color: var(--navy-2);
+        background: rgba(32, 71, 140, 0.06);
+        border-color: rgba(32, 71, 140, 0.12);
+      }
+
+      .hero {
+        position: relative;
+        overflow: hidden;
+        padding: 136px 0 92px;
+        background:
+          radial-gradient(circle at 20% 0%, rgba(126, 224, 196, 0.22), transparent 32%),
+          radial-gradient(circle at 100% 18%, rgba(84, 140, 187, 0.22), transparent 28%),
+          linear-gradient(145deg, #0d1730 0%, #15284b 56%, #20478c 100%);
+        color: var(--white);
+      }
+
+      .hero::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.045) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.045) 1px, transparent 1px);
+        background-size: 48px 48px;
+        mask-image: linear-gradient(90deg, transparent, #000 18%, #000 82%, transparent);
+        opacity: 0.5;
+      }
+
+      .hero-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1.05fr) minmax(0, 0.95fr);
+        gap: 40px;
+        align-items: center;
+      }
+
+      .hero-copy {
+        max-width: 680px;
+      }
+
+      .hero-actions {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 14px;
+      }
+
+      .hero-note {
+        margin: 0;
+        color: rgba(255, 255, 255, 0.7);
+        font-size: 15px;
+        max-width: 620px;
+      }
+
+      .glass-card {
+        background: rgba(255, 255, 255, 0.08);
+        border: 1px solid rgba(255, 255, 255, 0.12);
+        border-radius: var(--radius);
+        backdrop-filter: blur(18px);
+        box-shadow: 0 26px 80px rgba(0, 0, 0, 0.18);
+      }
+
+      .hero-visual {
+        padding: 28px;
+      }
+
+      .visual-label {
+        font-size: 13px;
+        font-weight: 700;
+        letter-spacing: 0.08em;
+        text-transform: uppercase;
+        color: rgba(255, 255, 255, 0.66);
+      }
+
+      .flow-diagram {
+        margin-top: 20px;
+        display: grid;
+        grid-template-columns: 1fr auto 1fr;
+        gap: 18px;
+        align-items: center;
+      }
+
+      .flow-column {
+        display: grid;
+        gap: 12px;
+      }
+
+      .flow-card,
+      .flow-pill,
+      .soft-pill,
+      .orbit-pill,
+      .mini-card,
+      .feature-item {
+        border-radius: var(--radius-md);
+      }
+
+      .flow-card {
+        padding: 16px 18px;
+        border: 1px solid rgba(255, 255, 255, 0.14);
+        background: rgba(255, 255, 255, 0.07);
+      }
+
+      .flow-card strong {
+        display: block;
+        font-size: 15px;
+        color: var(--white);
+      }
+
+      .flow-card span {
+        display: block;
+        margin-top: 6px;
+        font-size: 13px;
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .engine-core {
+        position: relative;
+        min-width: 250px;
+        padding: 26px 22px;
+        text-align: center;
+        border-radius: 32px;
+        background:
+          radial-gradient(circle at 50% 50%, rgba(126, 224, 196, 0.28), transparent 55%),
+          linear-gradient(145deg, rgba(255, 255, 255, 0.16), rgba(255, 255, 255, 0.06));
+        border: 1px solid rgba(255, 255, 255, 0.18);
+        box-shadow: 0 0 60px rgba(126, 224, 196, 0.18);
+      }
+
+      .engine-core::before,
+      .engine-core::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        width: 58px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(126, 224, 196, 0), rgba(126, 224, 196, 0.9), rgba(126, 224, 196, 0));
+      }
+
+      .engine-core::before {
+        right: 100%;
+        margin-right: 10px;
+      }
+
+      .engine-core::after {
+        left: 100%;
+        margin-left: 10px;
+      }
+
+      .engine-core strong {
+        display: block;
+        font-size: 18px;
+        line-height: 1.2;
+      }
+
+      .engine-core span {
+        display: block;
+        margin-top: 8px;
+        font-size: 14px;
+        color: rgba(255, 255, 255, 0.76);
+      }
+
+      .section-shell {
+        background: rgba(255, 255, 255, 0.84);
+        border: 1px solid rgba(32, 71, 140, 0.08);
+        border-radius: 36px;
+        box-shadow: var(--shadow-soft);
+        padding: 32px;
+      }
+
+      .section-header {
+        display: flex;
+        justify-content: space-between;
+        gap: 20px;
+        align-items: flex-end;
+        margin-bottom: 28px;
+      }
+
+      .section-header p {
+        max-width: 600px;
+      }
+
+      .artifact-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 16px;
+      }
+
+      .artifact-card,
+      .opportunity-row,
+      .activation-card,
+      .step-card,
+      .proof-card,
+      .faq-item,
+      .comparison-card {
+        background: var(--paper);
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .artifact-card {
+        padding: 20px;
+        border-radius: var(--radius-md);
+      }
+
+      .artifact-card strong {
+        display: block;
+        margin-bottom: 8px;
+        font-size: 18px;
+        color: var(--navy);
+      }
+
+      .artifact-card span {
+        color: var(--muted);
+        font-size: 15px;
+      }
+
+      .problem-close {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 14px;
+        margin-top: 22px;
+      }
+
+      .problem-close .soft-pill {
+        padding: 16px 18px;
+        background: linear-gradient(180deg, rgba(84, 140, 187, 0.06), rgba(255, 255, 255, 0.98));
+        border: 1px solid rgba(84, 140, 187, 0.14);
+      }
+
+      .soft-pill strong {
+        display: block;
+        font-size: 15px;
+        color: var(--navy);
+      }
+
+      .opportunity-board {
+        display: grid;
+        gap: 14px;
+      }
+
+      .opportunity-row {
+        display: grid;
+        grid-template-columns: 220px 1fr 220px 1fr;
+        gap: 12px;
+        align-items: center;
+        padding: 14px;
+        border-radius: var(--radius-md);
+      }
+
+      .opportunity-row .label-cell {
+        padding: 12px 14px;
+        border-radius: 16px;
+        font-weight: 700;
+      }
+
+      .opportunity-row .before {
+        background: rgba(244, 162, 97, 0.12);
+        color: #a85e24;
+      }
+
+      .opportunity-row .after {
+        background: rgba(126, 224, 196, 0.14);
+        color: #17614d;
+      }
+
+      .diagram-orbit {
+        display: grid;
+        gap: 20px;
+      }
+
+      .step-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 18px;
+        align-items: stretch;
+      }
+
+      .step-card {
+        position: relative;
+        padding: 22px;
+        border-radius: 24px;
+      }
+
+      .step-card::after {
+        content: "";
+        position: absolute;
+        top: 50%;
+        right: -14px;
+        width: 28px;
+        height: 2px;
+        background: linear-gradient(90deg, rgba(84, 140, 187, 0.85), rgba(126, 224, 196, 0.85));
+      }
+
+      .step-card:last-child::after {
+        display: none;
+      }
+
+      .step-number {
+        display: inline-flex;
+        align-items: center;
+        justify-content: center;
+        width: 40px;
+        height: 40px;
+        border-radius: 50%;
+        background: linear-gradient(135deg, var(--navy-2), var(--teal));
+        color: var(--white);
+        font-weight: 700;
+        margin-bottom: 16px;
+      }
+
+      .tag-row {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 10px;
+      }
+
+      .tag {
+        display: inline-flex;
+        align-items: center;
+        gap: 8px;
+        padding: 10px 14px;
+        border-radius: 999px;
+        background: rgba(84, 140, 187, 0.08);
+        border: 1px solid rgba(84, 140, 187, 0.12);
+        color: var(--navy-2);
+        font-size: 14px;
+        font-weight: 600;
+      }
+
+      .comparison-grid {
+        display: grid;
+        grid-template-columns: 1fr 1fr;
+        gap: 18px;
+      }
+
+      .comparison-card {
+        padding: 24px;
+        border-radius: 28px;
+      }
+
+      .comparison-card h3 {
+        margin: 0 0 18px;
+        font-size: 20px;
+        color: var(--navy);
+      }
+
+      .comparison-list {
+        display: grid;
+        gap: 14px;
+      }
+
+      .comparison-item {
+        display: grid;
+        gap: 4px;
+        padding-bottom: 14px;
+        border-bottom: 1px solid var(--line);
+      }
+
+      .comparison-item:last-child {
+        border-bottom: 0;
+        padding-bottom: 0;
+      }
+
+      .comparison-item strong {
+        color: var(--navy);
+        font-size: 15px;
+      }
+
+      .fit-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1.15fr) minmax(0, 0.85fr);
+        gap: 22px;
+      }
+
+      .fit-card {
+        padding: 26px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.96), rgba(245, 250, 255, 1));
+        border: 1px solid var(--line);
+        border-radius: 28px;
+        box-shadow: var(--shadow-soft);
+      }
+
+      .fit-list {
+        display: grid;
+        grid-template-columns: repeat(2, minmax(0, 1fr));
+        gap: 12px;
+      }
+
+      .fit-item {
+        padding: 14px 16px;
+        border-radius: 18px;
+        background: rgba(84, 140, 187, 0.07);
+        border: 1px solid rgba(84, 140, 187, 0.12);
+        color: var(--navy);
+        font-weight: 600;
+      }
+
+      .ecosystem-board {
+        position: relative;
+        min-height: 520px;
+        padding: 24px;
+        border-radius: 32px;
+        background:
+          radial-gradient(circle at center, rgba(126, 224, 196, 0.16), transparent 28%),
+          linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(240, 245, 252, 1));
+        border: 1px solid var(--line);
+        overflow: hidden;
+      }
+
+      .ecosystem-ring {
+        position: absolute;
+        inset: 50%;
+        transform: translate(-50%, -50%);
+        border-radius: 50%;
+        border: 1px dashed rgba(84, 140, 187, 0.14);
+      }
+
+      .ecosystem-ring.ring-1 {
+        width: 260px;
+        height: 260px;
+      }
+
+      .ecosystem-ring.ring-2 {
+        width: 420px;
+        height: 420px;
+      }
+
+      .ecosystem-core {
+        position: absolute;
+        left: 50%;
+        top: 50%;
+        transform: translate(-50%, -50%);
+        width: 260px;
+        padding: 26px 22px;
+        border-radius: 32px;
+        background: linear-gradient(145deg, #15284b, #20478c);
+        color: var(--white);
+        text-align: center;
+        box-shadow: 0 28px 70px rgba(17, 29, 53, 0.24);
+      }
+
+      .ecosystem-core strong {
+        display: block;
+        font-size: 21px;
+        line-height: 1.18;
+      }
+
+      .ecosystem-core span {
+        display: block;
+        margin-top: 8px;
+        color: rgba(255, 255, 255, 0.74);
+        font-size: 14px;
+      }
+
+      .orbit-pill {
+        position: absolute;
+        padding: 12px 14px;
+        background: rgba(255, 255, 255, 0.94);
+        border: 1px solid rgba(84, 140, 187, 0.14);
+        box-shadow: var(--shadow-soft);
+        color: var(--navy);
+        font-weight: 600;
+        font-size: 14px;
+      }
+
+      .activation-grid {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .activation-card {
+        padding: 24px;
+        border-radius: 28px;
+        position: relative;
+        overflow: hidden;
+      }
+
+      .activation-card::before {
+        content: "";
+        position: absolute;
+        inset: auto -18px -18px auto;
+        width: 100px;
+        height: 100px;
+        border-radius: 50%;
+        background: radial-gradient(circle, rgba(244, 162, 97, 0.28), transparent 68%);
+      }
+
+      .activation-card strong {
+        display: block;
+        margin-bottom: 10px;
+        color: var(--navy);
+        font-size: 20px;
+      }
+
+      .timeline {
+        display: grid;
+        grid-template-columns: repeat(3, minmax(0, 1fr));
+        gap: 18px;
+      }
+
+      .timeline-card {
+        padding: 22px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(245, 250, 255, 1));
+        border-radius: 26px;
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+      }
+
+      .timeline-card strong {
+        display: flex;
+        align-items: center;
+        gap: 10px;
+        margin-bottom: 10px;
+        font-size: 18px;
+        color: var(--navy);
+      }
+
+      .timeline-index {
+        display: inline-flex;
+        width: 34px;
+        height: 34px;
+        align-items: center;
+        justify-content: center;
+        border-radius: 50%;
+        background: rgba(84, 140, 187, 0.1);
+        color: var(--navy-2);
+        font-size: 14px;
+        font-weight: 700;
+      }
+
+      .feature-grid {
+        display: grid;
+        grid-template-columns: repeat(4, minmax(0, 1fr));
+        gap: 14px;
+      }
+
+      .feature-item {
+        padding: 18px;
+        background: linear-gradient(180deg, rgba(255, 255, 255, 0.98), rgba(246, 250, 254, 1));
+        border: 1px solid var(--line);
+        box-shadow: var(--shadow-soft);
+        font-weight: 600;
+        color: var(--navy);
+      }
+
+      .proof-grid {
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) minmax(0, 0.9fr);
+        gap: 20px;
+      }
+
+      .proof-card {
+        padding: 28px;
+        border-radius: 30px;
+      }
+
+      .proof-signal {
+        display: grid;
+        gap: 12px;
+      }
+
+      .proof-flow {
+        display: grid;
+        gap: 12px;
+      }
+
+      .proof-flow .mini-card {
+        padding: 16px 18px;
+        border: 1px solid rgba(84, 140, 187, 0.12);
+        background: rgba(84, 140, 187, 0.06);
+      }
+
+      .arrow-down {
+        display: flex;
+        justify-content: center;
+        color: var(--teal);
+        font-size: 24px;
+        line-height: 1;
+      }
+
+      .faq-grid {
+        display: grid;
+        gap: 12px;
+      }
+
+      .faq-item {
+        border-radius: 22px;
+        overflow: hidden;
+      }
+
+      .faq-question {
+        width: 100%;
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 14px;
+        padding: 20px 22px;
+        border: 0;
+        background: transparent;
+        text-align: left;
+        color: var(--navy);
+        font-weight: 700;
+        cursor: pointer;
+      }
+
+      .faq-question span:last-child {
+        flex: 0 0 auto;
+        color: var(--teal);
+        transition: transform 0.2s ease;
+      }
+
+      .faq-question[aria-expanded="true"] span:last-child {
+        transform: rotate(45deg);
+      }
+
+      .faq-answer {
+        padding: 0 22px 22px;
+        color: var(--ink);
+      }
+
+      .cta-band {
+        position: relative;
+        overflow: hidden;
+        border-radius: 36px;
+        padding: 38px;
+        background:
+          radial-gradient(circle at 10% 20%, rgba(126, 224, 196, 0.22), transparent 28%),
+          radial-gradient(circle at 100% 100%, rgba(84, 140, 187, 0.24), transparent 28%),
+          linear-gradient(145deg, #111d35 0%, #1a2f58 56%, #20478c 100%);
+        color: var(--white);
+        box-shadow: var(--shadow);
+      }
+
+      .cta-band::before {
+        content: "";
+        position: absolute;
+        inset: 0;
+        background-image:
+          linear-gradient(rgba(255, 255, 255, 0.04) 1px, transparent 1px),
+          linear-gradient(90deg, rgba(255, 255, 255, 0.04) 1px, transparent 1px);
+        background-size: 54px 54px;
+        opacity: 0.5;
+      }
+
+      .cta-grid {
+        position: relative;
+        z-index: 1;
+        display: grid;
+        grid-template-columns: minmax(0, 1fr) auto;
+        gap: 20px;
+        align-items: end;
+      }
+
+      .cta-band .title-lg,
+      .cta-band .copy,
+      .cta-band .muted {
+        color: var(--white);
+      }
+
+      .cta-band .muted {
+        color: rgba(255, 255, 255, 0.68);
+      }
+
+      .cta-actions {
+        display: flex;
+        flex-wrap: wrap;
+        justify-content: flex-end;
+        gap: 12px;
+      }
+
+      .footer {
+        padding: 28px 0 54px;
+      }
+
+      .footer-inner {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+        gap: 12px;
+        color: var(--muted);
+        font-size: 14px;
+      }
+
+      .footer-brand {
+        display: inline-flex;
+        align-items: center;
+        gap: 10px;
+      }
+
+      .footer-brand img {
+        width: 28px;
+        height: 36px;
+      }
+
+      @media (max-width: 1100px) {
+        .hero-grid,
+        .fit-grid,
+        .proof-grid,
+        .cta-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .feature-grid {
+          grid-template-columns: repeat(3, minmax(0, 1fr));
+        }
+
+        .artifact-grid,
+        .activation-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .timeline {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .step-grid {
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+        }
+
+        .step-card:nth-child(2)::after,
+        .step-card:last-child::after {
+          display: none;
+        }
+
+        .ecosystem-board {
+          min-height: 680px;
+        }
+      }
+
+      @media (max-width: 900px) {
+        .nav {
+          top: 8px;
+        }
+
+        .nav-shell {
+          border-radius: 28px;
+          flex-wrap: wrap;
+          justify-content: center;
+        }
+
+        .nav-links {
+          width: 100%;
+          justify-content: center;
+          flex-wrap: wrap;
+        }
+
+        .section {
+          padding: 70px 0;
+        }
+
+        .section-header {
+          display: grid;
+          gap: 14px;
+        }
+
+        .flow-diagram {
+          grid-template-columns: 1fr;
+        }
+
+        .engine-core::before,
+        .engine-core::after {
+          display: none;
+        }
+
+        .artifact-grid,
+        .problem-close,
+        .comparison-grid,
+        .activation-grid,
+        .timeline,
+        .feature-grid,
+        .fit-list {
+          grid-template-columns: 1fr;
+        }
+
+        .opportunity-row {
+          grid-template-columns: 1fr;
+        }
+
+        .step-grid {
+          grid-template-columns: 1fr;
+        }
+
+        .step-card::after {
+          display: none;
+        }
+
+        .ecosystem-board {
+          min-height: auto;
+          padding: 20px;
+        }
+
+        .ecosystem-ring {
+          display: none;
+        }
+
+        .ecosystem-core {
+          position: static;
+          transform: none;
+          width: auto;
+          margin-bottom: 16px;
+        }
+
+        .orbit-pill {
+          position: static;
+        }
+
+        .ecosystem-pills {
+          display: grid;
+          grid-template-columns: repeat(2, minmax(0, 1fr));
+          gap: 10px;
+        }
+
+        .cta-actions {
+          justify-content: flex-start;
+        }
+
+        .footer-inner {
+          flex-direction: column;
+          align-items: flex-start;
+        }
+      }
+
+      @media (max-width: 640px) {
+        .container {
+          width: min(var(--container), calc(100% - 24px));
+        }
+
+        .hero {
+          padding: 120px 0 76px;
+        }
+
+        .section-shell,
+        .cta-band {
+          padding: 22px;
+        }
+
+        .hero-visual {
+          padding: 20px;
+        }
+
+        .eyebrow {
+          font-size: 11px;
+        }
+
+        .ecosystem-pills {
+          grid-template-columns: 1fr;
+        }
+      }
+    </style>
+  </head>
+  <body>
+    <div class="nav">
+      <div class="nav-shell">
+        <a class="brand" href="#top">
+          <img src="assets/skilland.svg" alt="Skilland logo" />
+          <div class="brand-copy">
+            <strong>Skilland</strong>
+            <span data-lang="en">Knowledge Transfer Engine</span>
+            <span data-lang="es">Motor de Transferencia de Conocimiento</span>
+          </div>
+        </a>
+        <div class="nav-links">
+          <a href="#system" data-lang="en">System</a>
+          <a href="#system" data-lang="es">Sistema</a>
+          <a href="#ecosystem" data-lang="en">Ecosystem</a>
+          <a href="#ecosystem" data-lang="es">Ecosistema</a>
+          <a href="#how-it-works" data-lang="en">How it works</a>
+          <a href="#how-it-works" data-lang="es">Cómo funciona</a>
+          <a href="#faq" data-lang="en">FAQ</a>
+          <a href="#faq" data-lang="es">FAQ</a>
+        </div>
+        <div class="nav-tools">
+          <div class="lang-toggle" aria-label="Language selector">
+            <button class="is-active" data-toggle-lang="en" type="button">EN</button>
+            <button data-toggle-lang="es" type="button">ES</button>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <main id="top">
+      <section class="hero">
+        <div class="container hero-grid">
+          <div class="hero-copy stack-lg">
+            <div class="eyebrow">
+              <span data-lang="en">Knowledge Transfer System for European and international cooperation projects</span>
+              <span data-lang="es">Sistema de transferencia de conocimiento para proyectos europeos y de cooperación internacional</span>
+            </div>
+            <div class="stack-md">
+              <h1 class="title-xl" data-lang="en">From dissemination to real knowledge transfer</h1>
+              <h1 class="title-xl" data-lang="es">De la difusión a la transferencia real de conocimiento</h1>
+              <p class="lead" data-lang="en">
+                Skilland helps European consortia transform expert knowledge, project results and field experience into scalable training systems — reusable, measurable and ready for long-term impact.
+              </p>
+              <p class="lead" data-lang="es">
+                Skilland ayuda a los consorcios europeos a transformar conocimiento experto, resultados de proyecto y experiencia de campo en sistemas formativos escalables: reutilizables, medibles y preparados para generar impacto a largo plazo.
+              </p>
+            </div>
+            <!-- TODO: replace CTA href with final booking/contact URL -->
+            <div class="hero-actions">
+              <a class="button button-primary" href="#contact" data-lang="en">Book a project fit session</a>
+              <a class="button button-primary" href="#contact" data-lang="es">Agendar sesión de encaje</a>
+              <a class="button button-secondary" href="#how-it-works" data-lang="en">See how it works</a>
+              <a class="button button-secondary" href="#how-it-works" data-lang="es">Ver cómo funciona</a>
+            </div>
+            <p class="hero-note" data-lang="en">
+              Go beyond events, reports and communication assets. Build a living training infrastructure that turns project knowledge into long-term impact.
+            </p>
+            <p class="hero-note" data-lang="es">
+              Ve más allá de eventos, informes y activos de comunicación. Construye una infraestructura formativa viva que convierta el conocimiento del proyecto en impacto a largo plazo.
+            </p>
+          </div>
+
+          <div class="glass-card hero-visual">
+            <div class="visual-label" data-lang="en">Knowledge transfer engine flow</div>
+            <div class="visual-label" data-lang="es">Flujo del motor de transferencia</div>
+            <div class="flow-diagram">
+              <div class="flow-column">
+                <div class="flow-card">
+                  <strong data-lang="en">Institutions</strong>
+                  <strong data-lang="es">Instituciones</strong>
+                  <span data-lang="en">Consortium coordination and public actors</span>
+                  <span data-lang="es">Coordinación del consorcio y actores públicos</span>
+                </div>
+                <div class="flow-card">
+                  <strong data-lang="en">Experts</strong>
+                  <strong data-lang="es">Expertos</strong>
+                  <span data-lang="en">Methodologies, field insight, sector know-how</span>
+                  <span data-lang="es">Metodologías, experiencia de campo y know-how sectorial</span>
+                </div>
+                <div class="flow-card">
+                  <strong data-lang="en">Companies</strong>
+                  <strong data-lang="es">Empresas</strong>
+                  <span data-lang="en">Project partners, pilot entities, contributors</span>
+                  <span data-lang="es">Partners del proyecto, entidades piloto, contribuyentes</span>
+                </div>
+              </div>
+
+              <div class="engine-core">
+                <strong data-lang="en">Skilland Knowledge Transfer Engine</strong>
+                <strong data-lang="es">Motor de Transferencia de Conocimiento Skilland</strong>
+                <span data-lang="en">Practical training resources. Shared learning infrastructure.</span>
+                <span data-lang="es">Recursos formativos prácticos. Infraestructura compartida de aprendizaje.</span>
+              </div>
+
+              <div class="flow-column">
+                <div class="flow-card">
+                  <strong data-lang="en">Companies</strong>
+                  <strong data-lang="es">Empresas</strong>
+                  <span data-lang="en">Operational and sector-facing training</span>
+                  <span data-lang="es">Formación operativa y orientada al sector</span>
+                </div>
+                <div class="flow-card">
+                  <strong data-lang="en">Entrepreneurs</strong>
+                  <strong data-lang="es">Emprendedores</strong>
+                  <span data-lang="en">Accessible pathways and business skills</span>
+                  <span data-lang="es">Itinerarios accesibles y habilidades de negocio</span>
+                </div>
+                <div class="flow-card">
+                  <strong data-lang="en">Professionals</strong>
+                  <strong data-lang="es">Profesionales</strong>
+                  <span data-lang="en">Measurable, practical capacity building</span>
+                  <span data-lang="es">Desarrollo de capacidades práctico y medible</span>
+                </div>
+                <div class="flow-card">
+                  <strong data-lang="en">Productive sector</strong>
+                  <strong data-lang="es">Tejido productivo</strong>
+                  <span data-lang="en">Knowledge that actually reaches the field</span>
+                  <span data-lang="es">Conocimiento que realmente llega al terreno</span>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section">
+        <div class="container stack-lg">
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">The problem</span>
+                  <span data-lang="es">El problema</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">EU projects create knowledge. Too often, it gets trapped.</h2>
+                <h2 class="title-lg" data-lang="es">Los proyectos europeos generan conocimiento. Con demasiada frecuencia, se queda atrapado.</h2>
+              </div>
+              <p class="copy muted" data-lang="en">
+                European projects produce valuable knowledge every day: expert insights, methodologies, pilot learnings, technical results, field experience and sector-specific know-how.
+              </p>
+              <p class="copy muted" data-lang="es">
+                Los proyectos europeos generan conocimiento valioso cada día: visión experta, metodologías, aprendizajes de pilotos, resultados técnicos, experiencia de campo y know-how sectorial.
+              </p>
+            </div>
+
+            <div class="artifact-grid">
+              <div class="artifact-card">
+                <strong data-lang="en">Reports</strong>
+                <strong data-lang="es">Informes</strong>
+                <span data-lang="en">Documented outputs that rarely become reusable learning.</span>
+                <span data-lang="es">Outputs documentados que pocas veces se convierten en aprendizaje reutilizable.</span>
+              </div>
+              <div class="artifact-card">
+                <strong data-lang="en">Events and workshops</strong>
+                <strong data-lang="es">Eventos y talleres</strong>
+                <span data-lang="en">Visible moments that do not always leave a durable training layer.</span>
+                <span data-lang="es">Momentos visibles que no siempre dejan una capa formativa duradera.</span>
+              </div>
+              <div class="artifact-card">
+                <strong data-lang="en">PDFs and scattered files</strong>
+                <strong data-lang="es">PDFs y archivos dispersos</strong>
+                <span data-lang="en">Knowledge exists, but it is fragmented and hard to activate.</span>
+                <span data-lang="es">El conocimiento existe, pero está fragmentado y es difícil de activar.</span>
+              </div>
+              <div class="artifact-card">
+                <strong data-lang="en">Expert sessions</strong>
+                <strong data-lang="es">Sesiones expertas</strong>
+                <span data-lang="en">High-value insights that often remain tied to live delivery.</span>
+                <span data-lang="es">Insights de alto valor que a menudo quedan ligados a la sesión en directo.</span>
+              </div>
+              <div class="artifact-card">
+                <strong data-lang="en">Pilots and field learnings</strong>
+                <strong data-lang="es">Pilotos y aprendizajes de campo</strong>
+                <span data-lang="en">Practical knowledge that is difficult to scale across audiences.</span>
+                <span data-lang="es">Conocimiento práctico que cuesta escalar entre audiencias.</span>
+              </div>
+              <div class="artifact-card">
+                <strong data-lang="en">Expert heads</strong>
+                <strong data-lang="es">La cabeza de los expertos</strong>
+                <span data-lang="en">Too much value remains tacit instead of becoming shared capability.</span>
+                <span data-lang="es">Demasiado valor permanece tácito en lugar de convertirse en capacidad compartida.</span>
+              </div>
+            </div>
+
+            <div class="problem-close">
+              <div class="soft-pill">
+                <strong data-lang="en">Valuable, but hard to reuse.</strong>
+                <strong data-lang="es">Valioso, pero difícil de reutilizar.</strong>
+              </div>
+              <div class="soft-pill">
+                <strong data-lang="en">Visible, but not always transferable.</strong>
+                <strong data-lang="es">Visible, pero no siempre transferible.</strong>
+              </div>
+              <div class="soft-pill">
+                <strong data-lang="en">Documented, but not always converted into capability.</strong>
+                <strong data-lang="es">Documentado, pero no siempre convertido en capacidad.</strong>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">The opportunity</span>
+                  <span data-lang="es">La oportunidad</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">What if your project outputs became a living learning infrastructure?</h2>
+                <h2 class="title-lg" data-lang="es">¿Y si los outputs de tu proyecto se convirtieran en una infraestructura formativa viva?</h2>
+              </div>
+              <p class="copy muted" data-lang="en">
+                Skilland helps consortia turn their knowledge into structured learning experiences that can be reused across partners, countries, sectors and editions.
+              </p>
+              <p class="copy muted" data-lang="es">
+                Skilland ayuda a los consorcios a convertir su conocimiento en experiencias de aprendizaje estructuradas que pueden reutilizarse entre partners, países, sectores y ediciones.
+              </p>
+            </div>
+
+            <div class="opportunity-board">
+              <div class="opportunity-row">
+                <div class="label-cell before" data-lang="en">PDFs</div>
+                <div class="label-cell before" data-lang="es">PDFs</div>
+                <div class="copy muted" data-lang="en">Static deliverables with low reuse after publication.</div>
+                <div class="label-cell after" data-lang="en">Reusable training pathways</div>
+                <div class="copy muted" data-lang="en">Structured learning that can be activated again and again.</div>
+                <div class="copy muted" data-lang="es">Entregables estáticos con baja reutilización tras su publicación.</div>
+                <div class="label-cell after" data-lang="es">Itinerarios formativos reutilizables</div>
+                <div class="copy muted" data-lang="es">Aprendizaje estructurado que puede activarse una y otra vez.</div>
+              </div>
+              <div class="opportunity-row">
+                <div class="label-cell before" data-lang="en">Events</div>
+                <div class="copy muted" data-lang="en">One-off visibility moments.</div>
+                <div class="label-cell after" data-lang="en">Multilingual learning assets</div>
+                <div class="copy muted" data-lang="en">Content that can travel across countries and audiences.</div>
+                <div class="label-cell before" data-lang="es">Eventos</div>
+                <div class="copy muted" data-lang="es">Momentos puntuales de visibilidad.</div>
+                <div class="label-cell after" data-lang="es">Activos formativos multilingües</div>
+                <div class="copy muted" data-lang="es">Contenido que puede viajar entre países y audiencias.</div>
+              </div>
+              <div class="opportunity-row">
+                <div class="label-cell before" data-lang="en">Isolated workshops</div>
+                <div class="copy muted" data-lang="en">Good sessions, weak continuity.</div>
+                <div class="label-cell after" data-lang="en">Measurable participation</div>
+                <div class="copy muted" data-lang="en">Trackable learning activity and evidence.</div>
+                <div class="label-cell before" data-lang="es">Talleres aislados</div>
+                <div class="copy muted" data-lang="es">Buenas sesiones, poca continuidad.</div>
+                <div class="label-cell after" data-lang="es">Participación medible</div>
+                <div class="copy muted" data-lang="es">Actividad formativa y evidencia trazables.</div>
+              </div>
+              <div class="opportunity-row">
+                <div class="label-cell before" data-lang="en">Expert dependency</div>
+                <div class="copy muted" data-lang="en">Knowledge tied to availability and live delivery.</div>
+                <div class="label-cell after" data-lang="en">Scalable capacity building</div>
+                <div class="copy muted" data-lang="en">Distributed expertise becomes shared capability.</div>
+                <div class="label-cell before" data-lang="es">Dependencia del experto</div>
+                <div class="copy muted" data-lang="es">Conocimiento atado a disponibilidad y sesiones en directo.</div>
+                <div class="label-cell after" data-lang="es">Desarrollo de capacidades escalable</div>
+                <div class="copy muted" data-lang="es">La experiencia distribuida se convierte en capacidad compartida.</div>
+              </div>
+              <div class="opportunity-row">
+                <div class="label-cell before" data-lang="en">Hard-to-measure dissemination</div>
+                <div class="copy muted" data-lang="en">Outputs exist, but follow-through is weak.</div>
+                <div class="label-cell after" data-lang="en">Long-term exploitation</div>
+                <div class="copy muted" data-lang="en">Project knowledge remains useful beyond isolated deliverables.</div>
+                <div class="label-cell before" data-lang="es">Difusión difícil de medir</div>
+                <div class="copy muted" data-lang="es">Los outputs existen, pero el seguimiento es débil.</div>
+                <div class="label-cell after" data-lang="es">Explotación a largo plazo</div>
+                <div class="copy muted" data-lang="es">El conocimiento del proyecto sigue siendo útil más allá de entregables aislados.</div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="system">
+        <div class="container stack-lg">
+          <div class="section-shell stack-lg">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">The system</span>
+                  <span data-lang="es">El sistema</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">A system to capture, structure, deliver and measure knowledge</h2>
+                <h2 class="title-lg" data-lang="es">Un sistema para capturar, estructurar, activar y medir conocimiento</h2>
+              </div>
+              <p class="copy muted" data-lang="en">Skilland reduces the friction between knowing and teaching.</p>
+              <p class="copy muted" data-lang="es">Skilland reduce la fricción entre saber y enseñar.</p>
+            </div>
+
+            <div class="step-grid">
+              <div class="step-card">
+                <div class="step-number">1</div>
+                <h3 class="title-md" data-lang="en">Capture expert knowledge</h3>
+                <h3 class="title-md" data-lang="es">Capturar conocimiento experto</h3>
+                <p class="copy muted" data-lang="en">From partners, experts, pilots, reports, methodologies and field experience.</p>
+                <p class="copy muted" data-lang="es">Desde partners, expertos, pilotos, informes, metodologías y experiencia de campo.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-number">2</div>
+                <h3 class="title-md" data-lang="en">Structure it into learning assets</h3>
+                <h3 class="title-md" data-lang="es">Estructurarlo como activos de aprendizaje</h3>
+                <p class="copy muted" data-lang="en">Courses, capsules, pathways, microlearning units and practical resources.</p>
+                <p class="copy muted" data-lang="es">Cursos, cápsulas, itinerarios, unidades de microlearning y recursos prácticos.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-number">3</div>
+                <h3 class="title-md" data-lang="en">Deliver it through a shared training environment</h3>
+                <h3 class="title-md" data-lang="es">Activarlo en un entorno formativo compartido</h3>
+                <p class="copy muted" data-lang="en">Branded, accessible, asynchronous and scalable.</p>
+                <p class="copy muted" data-lang="es">Con marca, accesible, asíncrono y escalable.</p>
+              </div>
+              <div class="step-card">
+                <div class="step-number">4</div>
+                <h3 class="title-md" data-lang="en">Measure participation and impact</h3>
+                <h3 class="title-md" data-lang="es">Medir participación e impacto</h3>
+                <p class="copy muted" data-lang="en">Progress, completion, usage, feedback and reporting evidence.</p>
+                <p class="copy muted" data-lang="es">Progreso, finalización, uso, feedback y evidencia para reporting.</p>
+              </div>
+            </div>
+
+            <div class="tag-row">
+              <span class="tag" data-lang="en">Asynchronous learning</span>
+              <span class="tag" data-lang="es">Aprendizaje asíncrono</span>
+              <span class="tag" data-lang="en">Personalised content generation</span>
+              <span class="tag" data-lang="es">Generación personalizada de contenido</span>
+              <span class="tag" data-lang="en">AI tutor</span>
+              <span class="tag" data-lang="es">Tutor IA</span>
+              <span class="tag" data-lang="en">Progress tracking</span>
+              <span class="tag" data-lang="es">Seguimiento de progreso</span>
+              <span class="tag" data-lang="en">Expert support</span>
+              <span class="tag" data-lang="es">Soporte experto</span>
+            </div>
+
+            <div class="fit-card">
+              <h3 class="title-md" data-lang="en">Experts do not need to become instructional designers.</h3>
+              <h3 class="title-md" data-lang="es">Los expertos no tienen que convertirse en instructional designers.</h3>
+              <p class="copy muted" data-lang="en">
+                Skilland reduces the friction between knowing and teaching by helping capture, structure and activate knowledge without demanding full course-production effort from experts.
+              </p>
+              <p class="copy muted" data-lang="es">
+                Skilland reduce la fricción entre saber y enseñar ayudando a capturar, estructurar y activar conocimiento sin exigir a los expertos un esfuerzo completo de producción de cursos.
+              </p>
+            </div>
+          </div>
+
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">Not just another LMS</span>
+                  <span data-lang="es">No es otro LMS</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">Not just a platform. A knowledge transfer engine.</h2>
+                <h2 class="title-lg" data-lang="es">No es solo una plataforma. Es un motor de transferencia de conocimiento.</h2>
+              </div>
+              <p class="copy muted" data-lang="en">An LMS stores training. Skilland helps create, structure, deploy and measure it.</p>
+              <p class="copy muted" data-lang="es">Un LMS almacena formación. Skilland ayuda a crearla, estructurarla, desplegarla y medirla.</p>
+            </div>
+
+            <div class="comparison-grid">
+              <div class="comparison-card">
+                <h3 data-lang="en">Traditional LMS</h3>
+                <h3 data-lang="es">LMS tradicional</h3>
+                <div class="comparison-list">
+                  <div class="comparison-item">
+                    <strong data-lang="en">Hosts content</strong>
+                    <strong data-lang="es">Aloja contenido</strong>
+                    <span class="muted" data-lang="en">Useful once learning assets already exist.</span>
+                    <span class="muted" data-lang="es">Útil una vez que los activos formativos ya existen.</span>
+                  </div>
+                  <div class="comparison-item">
+                    <strong data-lang="en">Requires content to already exist</strong>
+                    <strong data-lang="es">Requiere que el contenido ya exista</strong>
+                    <span class="muted" data-lang="en">The knowledge transformation problem remains upstream.</span>
+                    <span class="muted" data-lang="es">El problema de transformación del conocimiento sigue estando aguas arriba.</span>
+                  </div>
+                  <div class="comparison-item">
+                    <strong data-lang="en">Depends on manual course creation</strong>
+                    <strong data-lang="es">Depende de la creación manual de cursos</strong>
+                    <span class="muted" data-lang="en">Experts carry more production friction.</span>
+                    <span class="muted" data-lang="es">Los expertos soportan más fricción de producción.</span>
+                  </div>
+                  <div class="comparison-item">
+                    <strong data-lang="en">Often becomes a repository</strong>
+                    <strong data-lang="es">A menudo se convierte en un repositorio</strong>
+                    <span class="muted" data-lang="en">Stored material does not always become real capability.</span>
+                    <span class="muted" data-lang="es">El material almacenado no siempre se convierte en capacidad real.</span>
+                  </div>
+                  <div class="comparison-item">
+                    <strong data-lang="en">Weak connection with project exploitation</strong>
+                    <strong data-lang="es">Conexión débil con la explotación del proyecto</strong>
+                    <span class="muted" data-lang="en">Tracking may exist, but exploitation logic is thin.</span>
+                    <span class="muted" data-lang="es">Puede existir trazabilidad, pero la lógica de explotación es limitada.</span>
+                  </div>
+                </div>
+              </div>
+
+              <div class="comparison-card" style="background: linear-gradient(180deg, rgba(17, 29, 53, 0.98), rgba(28, 55, 97, 0.98)); color: #fff;">
+                <h3 style="color: #fff;" data-lang="en">Skilland Knowledge Transfer System</h3>
+                <h3 style="color: #fff;" data-lang="es">Sistema de Transferencia de Conocimiento Skilland</h3>
+                <div class="comparison-list">
+                  <div class="comparison-item" style="border-color: rgba(255, 255, 255, 0.12);">
+                    <strong style="color: #fff;" data-lang="en">Helps transform expert knowledge into training</strong>
+                    <strong style="color: #fff;" data-lang="es">Ayuda a transformar conocimiento experto en formación</strong>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="en">The value starts before content hosting.</span>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="es">El valor empieza antes del alojamiento de contenido.</span>
+                  </div>
+                  <div class="comparison-item" style="border-color: rgba(255, 255, 255, 0.12);">
+                    <strong style="color: #fff;" data-lang="en">Supports AI-assisted content generation</strong>
+                    <strong style="color: #fff;" data-lang="es">Soporta generación de contenido asistida por IA</strong>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="en">It helps structure what the project already knows.</span>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="es">Ayuda a estructurar lo que el proyecto ya sabe.</span>
+                  </div>
+                  <div class="comparison-item" style="border-color: rgba(255, 255, 255, 0.12);">
+                    <strong style="color: #fff;" data-lang="en">Structures learning assets from project outputs</strong>
+                    <strong style="color: #fff;" data-lang="es">Estructura activos formativos a partir de outputs del proyecto</strong>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="en">Reports, workshops and methodologies become training inputs.</span>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="es">Informes, talleres y metodologías se convierten en inputs formativos.</span>
+                  </div>
+                  <div class="comparison-item" style="border-color: rgba(255, 255, 255, 0.12);">
+                    <strong style="color: #fff;" data-lang="en">Enables partner-specific and shared environments</strong>
+                    <strong style="color: #fff;" data-lang="es">Permite entornos compartidos y específicos por partner</strong>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="en">Designed for distributed consortia.</span>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="es">Diseñado para consorcios distribuidos.</span>
+                  </div>
+                  <div class="comparison-item" style="border-color: rgba(255, 255, 255, 0.12);">
+                    <strong style="color: #fff;" data-lang="en">Provides tracking and evidence for impact reporting</strong>
+                    <strong style="color: #fff;" data-lang="es">Aporta trazabilidad y evidencia para reporting de impacto</strong>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="en">Participation, progress, completion, usage and feedback become useful evidence.</span>
+                    <span style="color: rgba(255, 255, 255, 0.7);" data-lang="es">Participación, progreso, finalización, uso y feedback se convierten en evidencia útil.</span>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="ecosystem">
+        <div class="container stack-lg">
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">Built for European consortia</span>
+                  <span data-lang="es">Diseñado para consorcios europeos</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">Designed for multi-partner European projects</h2>
+                <h2 class="title-lg" data-lang="es">Diseñado para proyectos europeos con múltiples partners</h2>
+              </div>
+              <p class="copy muted" data-lang="en">
+                When multiple partners generate knowledge, the challenge is not only communication. The challenge is turning distributed expertise into a shared, reusable and measurable learning system.
+              </p>
+              <p class="copy muted" data-lang="es">
+                Cuando varios partners generan conocimiento, el reto no es solo comunicar. El reto es convertir experiencia distribuida en un sistema de aprendizaje compartido, reutilizable y medible.
+              </p>
+            </div>
+
+            <div class="fit-grid">
+              <div class="fit-card stack-md">
+                <h3 class="title-md" data-lang="en">Where this model fits</h3>
+                <h3 class="title-md" data-lang="es">Dónde encaja este modelo</h3>
+                <div class="fit-list">
+                  <div class="fit-item" data-lang="en">Capacity building</div>
+                  <div class="fit-item" data-lang="es">Desarrollo de capacidades</div>
+                  <div class="fit-item" data-lang="en">Dissemination and communication</div>
+                  <div class="fit-item" data-lang="es">Difusión y comunicación</div>
+                  <div class="fit-item" data-lang="en">Exploitation of results</div>
+                  <div class="fit-item" data-lang="es">Explotación de resultados</div>
+                  <div class="fit-item" data-lang="en">Training and upskilling</div>
+                  <div class="fit-item" data-lang="es">Formación y upskilling</div>
+                  <div class="fit-item" data-lang="en">Knowledge transfer</div>
+                  <div class="fit-item" data-lang="es">Transferencia de conocimiento</div>
+                  <div class="fit-item" data-lang="en">Stakeholder engagement</div>
+                  <div class="fit-item" data-lang="es">Implicación de stakeholders</div>
+                  <div class="fit-item" data-lang="en">Business support programmes</div>
+                  <div class="fit-item" data-lang="es">Programas de apoyo empresarial</div>
+                  <div class="fit-item" data-lang="en">International cooperation projects</div>
+                  <div class="fit-item" data-lang="es">Proyectos de cooperación internacional</div>
+                  <div class="fit-item" data-lang="en">Innovation pilots</div>
+                  <div class="fit-item" data-lang="es">Pilotos de innovación</div>
+                  <div class="fit-item" data-lang="en">Sectoral transformation initiatives</div>
+                  <div class="fit-item" data-lang="es">Iniciativas de transformación sectorial</div>
+                </div>
+              </div>
+
+              <div class="fit-card stack-md">
+                <h3 class="title-md" data-lang="en">Why project teams care</h3>
+                <h3 class="title-md" data-lang="es">Por qué le importa al equipo de proyecto</h3>
+                <p class="copy muted" data-lang="en">
+                  This makes the project more ambitious, more defensible, more visible, more scalable and more sustainable. It does not just communicate what the project does. It converts what the project learns into real capability for its beneficiaries.
+                </p>
+                <p class="copy muted" data-lang="es">
+                  Esto hace que el proyecto sea más ambicioso, más defendible, más visible, más escalable y más sostenible. No solo comunica lo que hace el proyecto. Convierte lo que el proyecto aprende en capacidad real para sus beneficiarios.
+                </p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">Ecosystem model</span>
+                  <span data-lang="es">Modelo de ecosistema</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">One ecosystem. Multiple knowledge sources. Shared learning impact.</h2>
+                <h2 class="title-lg" data-lang="es">Un ecosistema. Múltiples fuentes de conocimiento. Impacto formativo compartido.</h2>
+              </div>
+              <p class="copy muted" data-lang="en">
+                Each partner can contribute knowledge. Each target group can access practical learning. The consortium gains a shared infrastructure for long-term impact.
+              </p>
+              <p class="copy muted" data-lang="es">
+                Cada partner puede aportar conocimiento. Cada grupo objetivo puede acceder a aprendizaje práctico. El consorcio gana una infraestructura compartida para impacto a largo plazo.
+              </p>
+            </div>
+
+            <div class="ecosystem-board">
+              <div class="ecosystem-ring ring-1"></div>
+              <div class="ecosystem-ring ring-2"></div>
+              <div class="ecosystem-core">
+                <strong data-lang="en">AfricanTech / Skilland shared training infrastructure</strong>
+                <strong data-lang="es">Infraestructura formativa compartida AfricanTech / Skilland</strong>
+                <span data-lang="en">Multiple institutions and experts contribute knowledge through one common system.</span>
+                <span data-lang="es">Múltiples instituciones y expertos aportan conocimiento a través de un sistema común.</span>
+              </div>
+              <div class="ecosystem-pills">
+                <div class="orbit-pill" style="top: 10%; left: 46%;" data-lang="en">Coordinators</div>
+                <div class="orbit-pill" style="top: 10%; left: 42%;" data-lang="es">Coordinadores</div>
+                <div class="orbit-pill" style="top: 25%; left: 8%;" data-lang="en">Project partners</div>
+                <div class="orbit-pill" style="top: 25%; left: 8%;" data-lang="es">Partners del proyecto</div>
+                <div class="orbit-pill" style="top: 46%; left: 2%;" data-lang="en">Chambers of commerce</div>
+                <div class="orbit-pill" style="top: 46%; left: 2%;" data-lang="es">Cámaras de comercio</div>
+                <div class="orbit-pill" style="top: 68%; left: 10%;" data-lang="en">Public institutions</div>
+                <div class="orbit-pill" style="top: 68%; left: 10%;" data-lang="es">Instituciones públicas</div>
+                <div class="orbit-pill" style="top: 80%; left: 34%;" data-lang="en">Universities</div>
+                <div class="orbit-pill" style="top: 80%; left: 30%;" data-lang="es">Universidades</div>
+                <div class="orbit-pill" style="top: 16%; right: 10%;" data-lang="en">Sector experts</div>
+                <div class="orbit-pill" style="top: 16%; right: 10%;" data-lang="es">Expertos sectoriales</div>
+                <div class="orbit-pill" style="top: 34%; right: 2%;" data-lang="en">Companies</div>
+                <div class="orbit-pill" style="top: 34%; right: 2%;" data-lang="es">Empresas</div>
+                <div class="orbit-pill" style="top: 52%; right: 2%;" data-lang="en">Entrepreneurs</div>
+                <div class="orbit-pill" style="top: 52%; right: 2%;" data-lang="es">Emprendedores</div>
+                <div class="orbit-pill" style="top: 70%; right: 8%;" data-lang="en">Professionals</div>
+                <div class="orbit-pill" style="top: 70%; right: 8%;" data-lang="es">Profesionales</div>
+                <div class="orbit-pill" style="top: 84%; right: 26%;" data-lang="en">Final beneficiaries</div>
+                <div class="orbit-pill" style="top: 84%; right: 22%;" data-lang="es">Beneficiarios finales</div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">What the Chamber / project can activate</span>
+                  <span data-lang="es">Lo que la Cámara / el proyecto puede activar</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">What your project can activate with Skilland</h2>
+                <h2 class="title-lg" data-lang="es">Lo que tu proyecto puede activar con Skilland</h2>
+              </div>
+              <p class="copy muted" data-lang="en">
+                The project can use Skilland as a practical training layer for companies, entrepreneurs and professionals, with reusable content and measurable participation.
+              </p>
+              <p class="copy muted" data-lang="es">
+                El proyecto puede usar Skilland como una capa práctica de formación para empresas, emprendedores y profesionales, con contenido reutilizable y participación medible.
+              </p>
+            </div>
+
+            <div class="activation-grid">
+              <div class="activation-card">
+                <strong data-lang="en">Training for SMEs and entrepreneurs</strong>
+                <strong data-lang="es">Formación para pymes y emprendedores</strong>
+                <p class="copy muted" data-lang="en">Practical learning pathways for business development, digitalisation and competitiveness.</p>
+                <p class="copy muted" data-lang="es">Itinerarios prácticos de aprendizaje para desarrollo empresarial, digitalización y competitividad.</p>
+              </div>
+              <div class="activation-card">
+                <strong data-lang="en">Expert knowledge capsules</strong>
+                <strong data-lang="es">Cápsulas de conocimiento experto</strong>
+                <p class="copy muted" data-lang="en">Convert workshops, methodologies and expert sessions into reusable microlearning.</p>
+                <p class="copy muted" data-lang="es">Convierte talleres, metodologías y sesiones expertas en microlearning reutilizable.</p>
+              </div>
+              <div class="activation-card">
+                <strong data-lang="en">Partner-led training spaces</strong>
+                <strong data-lang="es">Espacios formativos liderados por partners</strong>
+                <p class="copy muted" data-lang="en">Allow each partner to manage its own content, experts and audiences within a shared ecosystem.</p>
+                <p class="copy muted" data-lang="es">Permite que cada partner gestione su propio contenido, expertos y audiencias dentro de un ecosistema compartido.</p>
+              </div>
+              <div class="activation-card">
+                <strong data-lang="en">AI-assisted learning support</strong>
+                <strong data-lang="es">Soporte al aprendizaje asistido por IA</strong>
+                <p class="copy muted" data-lang="en">Tutor, guidance, study support and personalised learning experience.</p>
+                <p class="copy muted" data-lang="es">Tutor, orientación, apoyo al estudio y experiencia de aprendizaje personalizada.</p>
+              </div>
+              <div class="activation-card">
+                <strong data-lang="en">Multilingual training assets</strong>
+                <strong data-lang="es">Activos formativos multilingües</strong>
+                <p class="copy muted" data-lang="en">Adapt content across languages, audiences and contexts.</p>
+                <p class="copy muted" data-lang="es">Adapta contenidos entre idiomas, audiencias y contextos.</p>
+              </div>
+              <div class="activation-card">
+                <strong data-lang="en">Impact and reporting evidence</strong>
+                <strong data-lang="es">Evidencia para impacto y reporting</strong>
+                <p class="copy muted" data-lang="en">Track participation, progress, completion and feedback for project reporting.</p>
+                <p class="copy muted" data-lang="es">Haz seguimiento de participación, progreso, finalización y feedback para el reporting del proyecto.</p>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section" id="how-it-works">
+        <div class="container stack-lg">
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">How it works in practice</span>
+                  <span data-lang="es">Cómo funciona en la práctica</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">From project material to scalable training in weeks, not months</h2>
+                <h2 class="title-lg" data-lang="es">Del material de proyecto a formación escalable en semanas, no en meses</h2>
+              </div>
+              <p class="copy muted" data-lang="en">This is where the model stops being abstract and becomes operational.</p>
+              <p class="copy muted" data-lang="es">Aquí es donde el modelo deja de ser abstracto y se vuelve operativo.</p>
+            </div>
+
+            <div class="timeline">
+              <div class="timeline-card">
+                <strong><span class="timeline-index">1</span><span data-lang="en">Discovery session</span><span data-lang="es">Sesión de descubrimiento</span></strong>
+                <p class="copy muted" data-lang="en">We map your project goals, work packages, audiences and existing knowledge.</p>
+                <p class="copy muted" data-lang="es">Mapeamos los objetivos del proyecto, work packages, audiencias y conocimiento existente.</p>
+              </div>
+              <div class="timeline-card">
+                <strong><span class="timeline-index">2</span><span data-lang="en">Knowledge asset mapping</span><span data-lang="es">Mapeo de activos de conocimiento</span></strong>
+                <p class="copy muted" data-lang="en">We identify what can become training: reports, workshops, experts, methodologies and pilots.</p>
+                <p class="copy muted" data-lang="es">Identificamos qué puede convertirse en formación: informes, talleres, expertos, metodologías y pilotos.</p>
+              </div>
+              <div class="timeline-card">
+                <strong><span class="timeline-index">3</span><span data-lang="en">Learning architecture</span><span data-lang="es">Arquitectura de aprendizaje</span></strong>
+                <p class="copy muted" data-lang="en">We design pathways, capsules, courses and target user journeys.</p>
+                <p class="copy muted" data-lang="es">Diseñamos itinerarios, cápsulas, cursos y recorridos de usuario objetivo.</p>
+              </div>
+              <div class="timeline-card">
+                <strong><span class="timeline-index">4</span><span data-lang="en">Content generation and expert validation</span><span data-lang="es">Generación de contenido y validación experta</span></strong>
+                <p class="copy muted" data-lang="en">AI-assisted production with human review and expert alignment.</p>
+                <p class="copy muted" data-lang="es">Producción asistida por IA con revisión humana y alineación con expertos.</p>
+              </div>
+              <div class="timeline-card">
+                <strong><span class="timeline-index">5</span><span data-lang="en">Launch and onboarding</span><span data-lang="es">Lanzamiento y puesta en marcha</span></strong>
+                <p class="copy muted" data-lang="en">Partners, experts and learners access the platform.</p>
+                <p class="copy muted" data-lang="es">Partners, expertos y participantes acceden a la plataforma.</p>
+              </div>
+              <div class="timeline-card">
+                <strong><span class="timeline-index">6</span><span data-lang="en">Tracking and continuous improvement</span><span data-lang="es">Seguimiento y mejora continua</span></strong>
+                <p class="copy muted" data-lang="en">Analytics, feedback and reporting outputs.</p>
+                <p class="copy muted" data-lang="es">Analítica, feedback y outputs para reporting.</p>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">Functional layer for project managers</span>
+                  <span data-lang="es">Capa funcional para project managers</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">Everything a project team needs to turn knowledge into measurable learning</h2>
+                <h2 class="title-lg" data-lang="es">Todo lo que un equipo de proyecto necesita para convertir conocimiento en aprendizaje medible</h2>
+              </div>
+              <p class="copy muted" data-lang="en">
+                First the vision. Then the system. Then the operational layer.
+              </p>
+              <p class="copy muted" data-lang="es">
+                Primero la visión. Luego el sistema. Después la capa operativa.
+              </p>
+            </div>
+
+            <div class="feature-grid">
+              <div class="feature-item" data-lang="en">Branded project training environment</div>
+              <div class="feature-item" data-lang="es">Entorno formativo del proyecto con marca propia</div>
+              <div class="feature-item" data-lang="en">Partner-specific spaces</div>
+              <div class="feature-item" data-lang="es">Espacios específicos por partner</div>
+              <div class="feature-item" data-lang="en">Creator / expert access</div>
+              <div class="feature-item" data-lang="es">Acceso para creadores y expertos</div>
+              <div class="feature-item" data-lang="en">Learner access</div>
+              <div class="feature-item" data-lang="es">Acceso para participantes</div>
+              <div class="feature-item" data-lang="en">Course and capsule creation</div>
+              <div class="feature-item" data-lang="es">Creación de cursos y cápsulas</div>
+              <div class="feature-item" data-lang="en">AI-assisted content generation</div>
+              <div class="feature-item" data-lang="es">Generación de contenido asistida por IA</div>
+              <div class="feature-item" data-lang="en">AI tutor / study support</div>
+              <div class="feature-item" data-lang="es">Tutor IA y apoyo al estudio</div>
+              <div class="feature-item" data-lang="en">Multilingual content adaptation</div>
+              <div class="feature-item" data-lang="es">Adaptación de contenido multilingüe</div>
+              <div class="feature-item" data-lang="en">Progress tracking</div>
+              <div class="feature-item" data-lang="es">Seguimiento de progreso</div>
+              <div class="feature-item" data-lang="en">Completion data</div>
+              <div class="feature-item" data-lang="es">Datos de finalización</div>
+              <div class="feature-item" data-lang="en">Reporting dashboards</div>
+              <div class="feature-item" data-lang="es">Dashboards para reporting</div>
+              <div class="feature-item" data-lang="en">Onboarding and expert support</div>
+              <div class="feature-item" data-lang="es">Onboarding y soporte experto</div>
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="section section-tight">
+        <div class="container stack-lg">
+          <div class="section-shell">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">Proof / AfricanTech</span>
+                  <span data-lang="es">Prueba / AfricanTech</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">Built from real European project needs</h2>
+                <h2 class="title-lg" data-lang="es">Construido a partir de necesidades reales de proyectos europeos</h2>
+              </div>
+              <p class="copy muted" data-lang="en">
+                The model was shaped through AfricanTech: a multi-entity cooperation project where training, dissemination, capacity building and knowledge transfer need to scale across institutions, experts and productive sectors.
+              </p>
+              <p class="copy muted" data-lang="es">
+                El modelo se ha moldeado a través de AfricanTech: un proyecto de cooperación multi-entidad donde la formación, la difusión, el desarrollo de capacidades y la transferencia de conocimiento necesitan escalar entre instituciones, expertos y sectores productivos.
+              </p>
+            </div>
+
+            <div class="proof-grid">
+              <div class="proof-card stack-md">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">Real deployment framing</span>
+                  <span data-lang="es">Marco de despliegue real</span>
+                </div>
+                <p class="copy muted" data-lang="en">
+                  Inspired by real deployment needs.
+                </p>
+                <p class="copy muted" data-lang="es">
+                  Inspirado en necesidades reales de despliegue.
+                </p>
+                <p class="copy" data-lang="en">
+                  This section should not overclaim a closed public case study. It should show that the model comes from actual cooperation-project conditions.
+                </p>
+                <p class="copy" data-lang="es">
+                  Esta sección no debe sobrerrepresentar un case study público cerrado. Debe mostrar que el modelo nace de condiciones reales de proyectos de cooperación.
+                </p>
+              </div>
+
+              <div class="proof-card">
+                <div class="proof-flow">
+                  <div class="mini-card">
+                    <strong data-lang="en">Consortium expertise</strong>
+                    <strong data-lang="es">Conocimiento experto del consorcio</strong>
+                  </div>
+                  <div class="arrow-down">↓</div>
+                  <div class="mini-card">
+                    <strong data-lang="en">Shared training infrastructure</strong>
+                    <strong data-lang="es">Infraestructura formativa compartida</strong>
+                  </div>
+                  <div class="arrow-down">↓</div>
+                  <div class="mini-card">
+                    <strong data-lang="en">Business capacity building</strong>
+                    <strong data-lang="es">Desarrollo de capacidades empresariales</strong>
+                  </div>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="section-shell" id="faq">
+            <div class="section-header">
+              <div class="stack-sm">
+                <div class="eyebrow eyebrow-light">
+                  <span data-lang="en">FAQ / objections</span>
+                  <span data-lang="es">FAQ / objeciones</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">The questions teams ask before they move</h2>
+                <h2 class="title-lg" data-lang="es">Las preguntas que aparecen antes de avanzar</h2>
+              </div>
+              <p class="copy muted" data-lang="en">The category only works if the objections are answered directly.</p>
+              <p class="copy muted" data-lang="es">La categoría solo funciona si las objeciones se responden de forma directa.</p>
+            </div>
+
+            <div class="faq-grid">
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span data-lang="en">Is this just an LMS?</span>
+                  <span data-lang="es">¿Es esto solo un LMS?</span>
+                  <span>+</span>
+                </button>
+                <div class="faq-answer" hidden>
+                  <p class="copy" data-lang="en">No. An LMS hosts learning content. Skilland helps transform expert knowledge and project outputs into structured, reusable and measurable training experiences.</p>
+                  <p class="copy" data-lang="es">No. Un LMS aloja contenido formativo. Skilland ayuda a transformar conocimiento experto y outputs de proyecto en experiencias formativas estructuradas, reutilizables y medibles.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span data-lang="en">We already have Moodle or another training platform. Why would we need this?</span>
+                  <span data-lang="es">Ya tenemos Moodle u otra plataforma de formación. ¿Por qué necesitaríamos esto?</span>
+                  <span>+</span>
+                </button>
+                <div class="faq-answer" hidden>
+                  <p class="copy" data-lang="en">Because the bottleneck is often not hosting content. The bottleneck is turning fragmented knowledge, expert insight and project outputs into high-quality learning assets that people can actually use.</p>
+                  <p class="copy" data-lang="es">Porque el cuello de botella muchas veces no está en alojar contenido. El cuello de botella está en convertir conocimiento fragmentado, visión experta y outputs de proyecto en activos formativos de alta calidad que la gente pueda usar de verdad.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span data-lang="en">Our experts do not have time to create courses.</span>
+                  <span data-lang="es">Nuestros expertos no tienen tiempo para crear cursos.</span>
+                  <span>+</span>
+                </button>
+                <div class="faq-answer" hidden>
+                  <p class="copy" data-lang="en">That is exactly the point. Skilland reduces the friction for experts by helping capture, structure and transform their knowledge into training without asking them to become instructional designers.</p>
+                  <p class="copy" data-lang="es">Ese es precisamente el punto. Skilland reduce la fricción para los expertos ayudando a capturar, estructurar y transformar su conocimiento en formación sin pedirles que se conviertan en instructional designers.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span data-lang="en">Can each partner manage its own content?</span>
+                  <span data-lang="es">¿Puede cada partner gestionar su propio contenido?</span>
+                  <span>+</span>
+                </button>
+                <div class="faq-answer" hidden>
+                  <p class="copy" data-lang="en">Yes. The system can support a shared project environment while allowing different partners or entities to manage their own training spaces, experts and audiences.</p>
+                  <p class="copy" data-lang="es">Sí. El sistema puede soportar un entorno compartido de proyecto y al mismo tiempo permitir que distintos partners o entidades gestionen sus propios espacios formativos, expertos y audiencias.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span data-lang="en">Can it support dissemination and reporting?</span>
+                  <span data-lang="es">¿Puede servir para difusión y reporting?</span>
+                  <span>+</span>
+                </button>
+                <div class="faq-answer" hidden>
+                  <p class="copy" data-lang="en">Yes. Training participation, progress, completion and feedback can become useful evidence for communication, dissemination, exploitation and impact reporting.</p>
+                  <p class="copy" data-lang="es">Sí. La participación, el progreso, la finalización y el feedback pueden convertirse en evidencia útil para comunicación, difusión, explotación y reporting de impacto.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span data-lang="en">Is this only for formal training?</span>
+                  <span data-lang="es">¿Sirve solo para formación formal?</span>
+                  <span>+</span>
+                </button>
+                <div class="faq-answer" hidden>
+                  <p class="copy" data-lang="en">No. It can support courses, capsules, pathways, onboarding materials, practical guides, sector resources, expert knowledge libraries and capacity-building programmes.</p>
+                  <p class="copy" data-lang="es">No. Puede soportar cursos, cápsulas, itinerarios, materiales de onboarding, guías prácticas, recursos sectoriales, bibliotecas de conocimiento experto y programas de desarrollo de capacidades.</p>
+                </div>
+              </div>
+              <div class="faq-item">
+                <button class="faq-question" type="button" aria-expanded="false">
+                  <span data-lang="en">Can content be reused after the project ends?</span>
+                  <span data-lang="es">¿Puede reutilizarse el contenido después de que termine el proyecto?</span>
+                  <span>+</span>
+                </button>
+                <div class="faq-answer" hidden>
+                  <p class="copy" data-lang="en">That is one of the main advantages. The goal is to turn project knowledge into reusable assets that remain useful beyond isolated events or deliverables.</p>
+                  <p class="copy" data-lang="es">Esa es una de las principales ventajas. El objetivo es convertir el conocimiento del proyecto en activos reutilizables que sigan siendo útiles más allá de eventos o entregables aislados.</p>
+                </div>
+              </div>
+            </div>
+          </div>
+
+          <div class="cta-band" id="contact">
+            <div class="cta-grid">
+              <div class="stack-md">
+                <div class="eyebrow">
+                  <span data-lang="en">Final CTA</span>
+                  <span data-lang="es">CTA final</span>
+                </div>
+                <h2 class="title-lg" data-lang="en">Make your project knowledge reusable, measurable and scalable</h2>
+                <h2 class="title-lg" data-lang="es">Haz que el conocimiento de tu proyecto sea reutilizable, medible y escalable</h2>
+                <p class="copy" data-lang="en">
+                  Let’s explore how your consortium can turn its expertise, outputs and field experience into a living knowledge transfer system.
+                </p>
+                <p class="copy" data-lang="es">
+                  Exploremos cómo tu consorcio puede convertir su expertise, outputs y experiencia de campo en un sistema vivo de transferencia de conocimiento.
+                </p>
+                <p class="muted" data-lang="en">Bring us your work packages. We’ll show you what can become training.</p>
+                <p class="muted" data-lang="es">Traed vuestros work packages. Os mostraremos qué puede convertirse en formación.</p>
+              </div>
+              <div class="cta-actions">
+                <a class="button button-primary" href="#contact" data-lang="en">Book a project fit session</a>
+                <a class="button button-primary" href="#contact" data-lang="es">Agendar sesión de encaje</a>
+                <a class="button button-secondary" href="#how-it-works" data-lang="en">See how it works</a>
+                <a class="button button-secondary" href="#how-it-works" data-lang="es">Ver cómo funciona</a>
+              </div>
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <footer class="footer">
+      <div class="container footer-inner">
+        <div class="footer-brand">
+          <img src="assets/skilland.svg" alt="Skilland logo" />
+          <span data-lang="en">Skilland Knowledge Transfer Engine</span>
+          <span data-lang="es">Motor de Transferencia de Conocimiento Skilland</span>
+        </div>
+        <div>
+          <span data-lang="en">Built as a static bilingual landing for project-fit conversations.</span>
+          <span data-lang="es">Construida como landing bilingüe estática para conversaciones de encaje.</span>
+        </div>
+      </div>
+    </footer>
+
+    <script>
+      (function () {
+        const html = document.documentElement;
+        const langButtons = Array.from(document.querySelectorAll("[data-toggle-lang]"));
+        const langNodes = Array.from(document.querySelectorAll("[data-lang]"));
+        const faqButtons = Array.from(document.querySelectorAll(".faq-question"));
+
+        function setLanguage(lang) {
+          html.lang = lang;
+          langNodes.forEach((node) => {
+            node.style.display = node.getAttribute("data-lang") === lang ? "" : "none";
+          });
+
+          langButtons.forEach((button) => {
+            const isActive = button.getAttribute("data-toggle-lang") === lang;
+            button.classList.toggle("is-active", isActive);
+            button.setAttribute("aria-pressed", isActive ? "true" : "false");
+          });
+        }
+
+        langButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            setLanguage(button.getAttribute("data-toggle-lang"));
+          });
+        });
+
+        faqButtons.forEach((button) => {
+          button.addEventListener("click", () => {
+            const answer = button.nextElementSibling;
+            const expanded = button.getAttribute("aria-expanded") === "true";
+            button.setAttribute("aria-expanded", expanded ? "false" : "true");
+            answer.hidden = expanded;
+          });
+        });
+
+        setLanguage("en");
+      })();
+    </script>
+  </body>
+</html>
